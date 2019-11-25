@@ -1,4 +1,5 @@
-import React from './node_modules/react';
+import React from 'react';
+
 
 class Border extends React.Component{
     render(){

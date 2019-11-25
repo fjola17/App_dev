@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
+import styles from './styles'
+
 
 const Main = () =>{
     return (
-        <View>
+        <View style={ styles.container }>
             <Text>Hello world</Text>
+            <TouchableHighlight><Text>View All boards</Text></TouchableHighlight>
         </View>
     );
     
