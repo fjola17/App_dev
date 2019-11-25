@@ -1,16 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Main from './src/views/Main';
-
-export default function App() {
-  return (
-    <View>
-      <Main />
-    </View>
-    
-  );
-}
-
+import { StyleSheet, View } from 'react-native';
+import Routes from './src/routes'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -19,3 +9,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default function App() {
+  return (
+    <Routes />
+  );
+}
