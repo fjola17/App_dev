@@ -5,8 +5,8 @@ import Main from '../views/Main';
 import Board from '../views/Board';
 
 const StackNavigator = createStackNavigator({
-    Main,
-    Board
-})
+  Main,
+  Board,
+});
 
 export default createAppContainer(StackNavigator);

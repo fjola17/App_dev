@@ -1,11 +1,10 @@
 import React from 'react';
+import { Text } from 'react-native'
+import data from '../../resources/data';
 
-
-class Boards extends React.Component{
-    render(){
-        return(
-            <></>
-        );
-    }
+const Boards = () => {
+  return (
+    <BoardTitle/>
+  )
 }
 export default Boards;
