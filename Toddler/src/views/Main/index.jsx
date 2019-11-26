@@ -8,7 +8,8 @@ import InputModal from '../../components/Board/InputModal';
 class Main extends React.Component {
   state = {
     selectedBoards : [],
-    isModalOpen: false
+    isModalOpen: false,
+    availableBoard: {}
   }
   onLongPress(name){
     if(name != undefined){
@@ -19,13 +20,13 @@ class Main extends React.Component {
   deleteMe(){
     console.log("Hello");
   }
-
+//todo, only be able to select 1 board to update
   render(){
     return (
       <View style={ styles.container }>
         <BoardToolbar onCreate={()=>this.setState({isModalOpen:true})} onUpdate={()=>this.setState({isModalOpen:true})} onDelete={this.deleteMe()}/>
         <Boards />
-        <InputModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } />
+        <InputModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } board={this.state.availableBoard}/>
       </View>
     );
   }  
