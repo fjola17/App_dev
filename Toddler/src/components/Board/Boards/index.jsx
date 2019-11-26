@@ -8,9 +8,7 @@ const boards = data.boards;
 
 
 const Boards = () => {
-  const clickMe = () =>{
-
-  }
+  
   return(
   <View style={styles.container}>
     <FlatList
