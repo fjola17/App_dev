@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
-import styles from './styles'
+import styles from './styles';
 
 
-const Main = () =>{
-    return (
-        <View style={ styles.container }>
-            <Text>Hello world</Text>
-            <TouchableHighlight><Text>View All boards</Text></TouchableHighlight>
-        </View>
-    );
-    
-};
+const Main = () => (
+  <View style={styles.container}>
+    <Text style={styles.textHeader}>DooIt!</Text>
+
+    <TouchableHighlight>
+      <Text style={styles.textTagline}>View All boards</Text>
+    </TouchableHighlight>
+  </View>
+);
 
 export default Main;
