@@ -1,15 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
-import styles from './styles';
-
+import { View } from 'react-native';
+import styles from './styles'
+import Boards from '../../components/Board/Boards';
+import BoardToolbar from '../../components/Board/BoardToolbar';
 
 const Main = () => (
   <View style={styles.container}>
-    <Text style={styles.textHeader}>DooIt!</Text>
-
-    <TouchableHighlight>
-      <Text style={styles.textTagline}>View All boards</Text>
-    </TouchableHighlight>
+    <BoardToolbar />
+    <Boards />
   </View>
 );
 
