@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
     backgroundColor: '#171727',
     padding: 100,
     alignItems: 'center',
@@ -27,10 +26,5 @@ export default StyleSheet.create({
     fontSize: 14,
     fontWeight: 'normal',
     lineHeight: 30,
-=======
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    backgroundColor: 'pink',
->>>>>>> origin/boards
   },
 });
