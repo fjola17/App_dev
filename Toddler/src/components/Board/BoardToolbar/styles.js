@@ -1,10 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
+  texy: {
+    color: 'white',
     justifyContent: 'space-around',
-    backgroundColor: 'pink',
+    padding: 50,
+  },
+  bg: {
+    top: 50,
+    flexDirection: 'row',
   },
 });
