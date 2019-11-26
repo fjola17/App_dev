@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import styles from './styles'
 import Boards from '../../components/Board/Boards';
 import BoardToolbar from '../../components/Board/BoardToolbar';
-import BoardInput from '../../components/Board/BoardInput';
+import InputModal from '../../components/Board/InputModal';
 
 class Main extends React.Component {
   state = {
@@ -25,7 +25,7 @@ class Main extends React.Component {
       <View style={ styles.container }>
         <BoardToolbar onCreate={()=>this.setState({isModalOpen:true})} onUpdate={()=>this.setState({isModalOpen:true})} onDelete={this.deleteMe()}/>
         <Boards />
-        <BoardInput isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } />
+        <InputModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } />
       </View>
     );
   }  
