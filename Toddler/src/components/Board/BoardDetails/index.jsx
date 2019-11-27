@@ -13,7 +13,6 @@ const BoardDetails = ({ id, name, photo, onBoardLongPress, isSelected }) => (
       <Image style={styles.image} source={{ uri: photo }} />
       <Text style={styles.imageName}>{name}</Text>
       <Text style={styles.imageDetail}>Details</Text>
-      <Text>{isSelected ? 'selected' : 'not selected'}</Text>
     </View>
   </TouchableOpacity>
 );

@@ -12,7 +12,7 @@ export const selectFromCameraRoll = async () => {
     quality: 0.8,
     base64: true,
     aspect: [16, 9],
-  }).catch((error) => console.log(error));
+  });
 
   if (result.cancelled) { return ''; }
   return result.uri;

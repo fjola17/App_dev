@@ -5,7 +5,7 @@ import styles from './styles';
 
 const InputModal = ({ isOpen, closeModal, board }) => (
   <Modal isOpen={isOpen} closeModal={closeModal}>
-    <BoardInput closeModal={closeModal} />
+    <BoardInput closeModal={closeModal} board={board} />
   </Modal>
 );
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, Button, Text } from 'react-native';
+import { View, TextInput, Button, Text, Image } from 'react-native';
 import { takePhoto, selectFromCameraRoll } from '../../../services/BoardService';
 import { addImage } from '../../../services/FileService';
 import { Entypo } from '@expo/vector-icons';
@@ -9,9 +9,9 @@ class BoardInput extends React.Component{
     state = {
         name : '',
         description: '',
-        image: '',
+        thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
         nameError: '',
-        submit: false
+        submit: this.props.isOpen,
     }
 
     validate(){ 
@@ -50,8 +50,10 @@ class BoardInput extends React.Component{
         if(this.state.nameError != ''){
             hasErrors = true;
         }
+        const image = this.state.thumbnailPhoto;
         return(
             <View>
+                <Image style={styles.babyyoda} source={{uri: image}} />
                 <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value, nameError: ''}) } value={this.state.name} />
                 <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
                 <Text>{this.state.nameError}</Text>
@@ -60,7 +62,7 @@ class BoardInput extends React.Component{
                 <Button disabled={hasErrors} onPress={() => this.handleSubmit()} title="Submit"><Text>Sub</Text></Button>
             </View>
         );
-  }
+  };
 };
 
 export default BoardInput;
