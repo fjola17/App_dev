@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, TextInput, Button, Text } from 'react-native';
+import { takePhoto } from '../../../services/BoardService';
+import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
-import Modal from '../../Modal';
 
 class BoardInput extends React.Component{
     state = {
         name : '',
         description: '',
+        imgage: '',
         nameError: '',
         submit: false
     }
@@ -29,9 +31,10 @@ class BoardInput extends React.Component{
             return;
         }
         this.setState({submit:true})
-        console.log("I could submit ;)")
     }
-    
+    async takePhoto(){
+        const photo = await takePhoto();
+    }
     render(){
         let hasErrors = false;
         if(this.state.nameError != ''){
@@ -42,7 +45,7 @@ class BoardInput extends React.Component{
                 <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value, nameError: ''}) } value={this.state.name} />
                 <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
                 <Text>{this.state.nameError}</Text>
-                <Button title="Select a image"></Button>
+                <Button title="Camera roll" onPress={() => this.takePhoto()}></Button>
                 <Button disabled={hasErrors} onPress={() => this.handleSubmit()} title="Submit"><Text>Sub</Text></Button>
             </View>
         );

@@ -18,7 +18,7 @@ const Boards = ({ boards, onBoardLongPress, selectedBoards }) => (
           onBoardLongPress={onBoardLongPress}
           isSelected={selectedBoards.indexOf(id) !== -1}
         />}
-      keyExtractor={item => item.id.toString()} />
+      keyExtractor={(item) => item.id.toString()} />
   </View>
 );
 
