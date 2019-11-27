@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text,FlatList } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import styles from './styles';
 import data from '../../../resources/data';
 import BoardDetails from '../BoardDetails/'
@@ -14,11 +14,11 @@ const Boards = () => {
   return(
   <View style={styles.container}>
     <FlatList
-    numColumns={1} 
-    data={ boards } 
-    renderItem={ ({ item: {id, name, thumbnailPhoto }}) => 
-    <BoardDetails id={id} name={name} photo={thumbnailPhoto}/>}
-    keyExtractor={ boards => boards.id.toString() } />
+      numColumns={1}
+      data={ boards }
+      renderItem={ ({ item: {id, name, thumbnailPhoto }}) =>
+      <BoardDetails id={id} name={name} photo={thumbnailPhoto}/>}
+      keyExtractor={ boards => boards.id.toString() } />
   </View>
   )
 }

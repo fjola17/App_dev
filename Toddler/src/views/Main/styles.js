@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native';
+import { mainColor, mainTextColor  } from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#171727',
-    padding: 100,
+    backgroundColor: mainColor,
+    // padding: 100,
     alignItems: 'center',
-    justifyContent: 'space-around',
+    // justifyContent: 'space-around',
   },
   textHeader: {
     // color: 'magenta',

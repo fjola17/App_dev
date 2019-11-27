@@ -6,11 +6,11 @@ import BoardToolbar from '../../components/Board/BoardToolbar';
 
 const Main = () => {
   return (
-    <View style={ styles.container }>
+    <View style={styles.container}>
       <BoardToolbar />
       <Boards />
     </View>
-  );  
+  );
 };
 
 export default Main;

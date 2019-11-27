@@ -1,13 +1,25 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+import { headerColor, headerTextColor } from '../../../styles/colors';
 
 export default StyleSheet.create({
-  texy: {
-    color: 'white',
+  container: {
+    // flex: 1,
+    height: 60,
+    width: Dimensions.get('window').width,
+    backgroundColor: headerColor,
+    // padding: 10,
+    alignItems: 'center',
     justifyContent: 'space-around',
-    padding: 50,
+    flexDirection: 'row',
+  },
+  texy: {
+    color: headerTextColor,
+    fontWeight: '700',
+    // justifyContent: 'space-around',
+    // padding: 30,
   },
   bg: {
-    top: 50,
+    top: 10,
     flexDirection: 'row',
   },
 });
