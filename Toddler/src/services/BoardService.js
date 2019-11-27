@@ -6,7 +6,16 @@ export const getPermissions = async (permissionTypes) => {
 };
 
 export const selectFromCameraRoll = async () => {
+  await getPermissions([Permission.CAMERA_ROLL]);
+  const result = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    quality: 0.8,
+    base64: true,
+    aspect: [16, 9],
+  }).catch((error) => console.log(error));
 
+  if (result.cancelled) { return ''; }
+  return result.uri;
 };
 
 export const takePhoto = async () => {
@@ -22,9 +31,4 @@ export const takePhoto = async () => {
   return results.uri;
 };
 
-
-const data = require('../resources/data');
-
-module.exports.getAllBoards = () => data.boards;
-
-module.exports.createBoard = (boards, newb) => [...boards, newb];
+// export const getBoardById = (boards, id) => boards.filter((brd) => brd.id === id);
