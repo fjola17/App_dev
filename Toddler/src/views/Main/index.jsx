@@ -27,18 +27,19 @@ class Main extends React.Component {
         selectedBoards: [ ...selectedBoards, id ]
       })
     }
-
   }
   deleteMe(){
     const {selectedBoards} = this.state;
   }
 //todo, only be able to select 1 board to update
   render(){
-    console.log(this.state.selectedBoards)
+    const { selectedBoards } = this.state;
     return (
       <View style={ styles.container }>
-        <BoardToolbar onCreate={()=>this.setState({isModalOpen:true})} onUpdate={()=>this.setState({isModalOpen:true})} onDelete={this.deleteMe()}/>
-        <Boards boards={this.state.board} onBoardLongPress={(id) => this.onBoardLongPress(id)}/>
+        <BoardToolbar onCreate={()=>this.setState({isModalOpen:true})} onUpdate={()=>this.setState({isModalOpen:true})} onDelete={this.deleteMe()} />
+        <Boards 
+          boards={this.state.board} onBoardLongPress={(id) => this.onBoardLongPress(id)}
+          selectedBoards={selectedBoards} />
         <InputModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } board={this.state.availableBoard}/>
       </View>
     );
