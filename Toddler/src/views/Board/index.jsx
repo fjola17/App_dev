@@ -9,7 +9,6 @@ const Board = () => {
       <Text>I'm a board with tasks</Text>
     </View>
   );
-    
 };
 
 export default Board;
