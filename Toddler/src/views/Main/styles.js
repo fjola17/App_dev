@@ -10,7 +10,6 @@ export default StyleSheet.create({
     // justifyContent: 'space-around',
   },
   textHeader: {
-    // color: 'magenta',
     color: 'cyan',
     fontSize: 16,
     fontWeight: 'bold',

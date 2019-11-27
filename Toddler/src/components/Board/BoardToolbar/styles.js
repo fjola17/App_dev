@@ -21,5 +21,13 @@ export default StyleSheet.create({
   bg: {
     top: 10,
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'blue',
+    height: 80,
+  },
+  toolbar: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
