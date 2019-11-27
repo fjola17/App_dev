@@ -1,64 +1,62 @@
 import React from 'react';
+import { Entypo } from '@expo/vector-icons';
 import { View, TextInput, Button, Text, Image } from 'react-native';
 import { takePhoto, selectFromCameraRoll } from '../../../services/BoardService';
 import { addImage } from '../../../services/FileService';
-import { Entypo } from '@expo/vector-icons';
+
 import styles from './styles';
 
 class BoardInput extends React.Component{
-    constructor(props){
-        super(props);
+  constructor(props){
+    super(props);
+  }
+  state = {
+    name : '',
+    description: '',
+    thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
+    nameError: '',
+  }
+  componentDidMount(){
+    const photo = this.props.board.thumbnailPhoto
+    if(photo !== ''){
+        this.setState({thumbnailPhoto: photo})
     }
-    state = {
-        name : '',
-        description: '',
-        thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
-        nameError: '',
-    }
-    componentDidMount(){
-        const photo = this.props.board.thumbnailPhoto
-        if(photo !== ''){
-            this.setState({thumbnailPhoto: photo})
-        }
-    }
-    validate(){
-        console.log("Im here")
-        const {name} = this.state;
-        let nameError = '';
-        if(name == ''){
-            console.log("I'm in here")
-            nameError = "Name for the board is required";
-            this.setState({nameError});
-            return false
-        }
-        console.log("Sucess");
-        
-        return true;
-    }
-    handleSubmit(){
-        console.log(this.state);
-        if(!this.validate()){
-            return;
-        }
-        // set state for the prop here
-        this.props.board = {name: name, description: description, thumbnailPhoto: thumbnailPhoto};
-        console.log(this.props.board);
-
-    }
-    async takePhoto(){
-        const photo = await takePhoto();
-        if(photo.lenght > 0){ await this.addImage(photo); }
-    }
-    async selectFromCameraRoll(){
-        const photo = await selectFromCameraRoll();
-        if (photo.length > 0) { await this.addImage(photo); }
-    }
-    async addImage(imageLocation) {
-        const newImage = await addImage(imageLocation);
-        this.setState({thumbnailPhoto: newImage});
+  }
+  validate(){
+    const {name} = this.state;
+    let nameError = '';
+    if(name == ''){
+        nameError = "Name for the board is required";
+        this.setState({nameError});
+        return false
     }
     
-    render(){
+    return true;
+  }
+  handleSubmit(){
+    console.log(this.state);
+    if(!this.validate()){
+        return;
+    }
+    // set state for the prop here
+    this.props.board = {name: name, description: description, thumbnailPhoto: thumbnailPhoto};
+    console.log(this.props.board);
+
+  }
+  async takePhoto(){
+    const photo = await takePhoto();
+    if(photo.lenght > 0){ await this.addImage(photo); }
+  }
+  async selectFromCameraRoll(){
+    const photo = await selectFromCameraRoll();
+    if (photo.length > 0) { await this.addImage(photo); }
+  }
+  async addImage(imageLocation) {
+    const newImage = await addImage(imageLocation);
+    this.setState({thumbnailPhoto: newImage});
+  }
+    
+  render(){
     let {name, thumbnailPhoto, description} = this.state;
     return(
       <View>

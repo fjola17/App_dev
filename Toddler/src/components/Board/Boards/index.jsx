@@ -10,20 +10,34 @@ const Boards = ({ boards, onBoardLongPress, selectedBoards }) => (
       numColumns={1}
       data={boards}
       extraData={selectedBoards}
-      renderItem={({ item: { id, name, thumbnailPhoto } }) =>
+      renderItem={({ item: { id, name, thumbnailPhoto } }) => (
         <BoardDetails
           id={id}
           name={name}
           photo={thumbnailPhoto}
           onBoardLongPress={onBoardLongPress}
           isSelected={selectedBoards.indexOf(id) !== -1}
-        />}
-      keyExtractor={(item) => item.id.toString()} />
+        />
+      )}
+      keyExtractor={(item) => item.id.toString()}
+    />
   </View>
 );
 
 Boards.propTypes = {
   onBoardLongPress: PropTypes.func.isRequired,
+  boards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    photo: PropTypes.string.isRequired,
+  })).isRequired,
+  selectedBoards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    photo: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default Boards;

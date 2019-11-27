@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -20,6 +20,7 @@ const BoardDetails = ({ id, name, photo, onBoardLongPress, isSelected }) => (
 BoardDetails.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
+  // description: PropTypes.string,
   photo: PropTypes.string.isRequired,
   isSelected: PropTypes.bool.isRequired,
   onBoardLongPress: PropTypes.func.isRequired,

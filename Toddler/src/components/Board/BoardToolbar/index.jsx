@@ -9,15 +9,18 @@ const BoardToolbar = ({ onCreate, onUpdate, onDelete, hasSelectedImages }) => (
       <Text style={styles.texy}>Create a new board</Text>
     </TouchableHighlight>
     <TouchableHighlight onPress={onUpdate} style={styles.toolbar} disabled={!hasSelectedImages}>
-      <Text style={[styles.texy, !hasSelectedImages ? { color: 'rgba(155, 155, 155, .5)' } : {} ]}>Update</Text>
+      <Text style={[styles.texy, !hasSelectedImages ? { color: 'rgba(155, 155, 155, .5)' } : {}]}>Update</Text>
     </TouchableHighlight>
     <TouchableHighlight onPress={onDelete} style={styles.toolbar} disabled={!hasSelectedImages}>
-      <Text style={[styles.texy, !hasSelectedImages ? { color: 'rgba(155, 155, 155, .5)' } : {} ]}>Delete</Text>
+      <Text style={[styles.texy, !hasSelectedImages ? { color: 'rgba(155, 155, 155, .5)' } : {}]}>Delete</Text>
     </TouchableHighlight>
   </View>
 );
 
 BoardToolbar.propTypes = {
+  onCreate: PropTypes.node.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   hasSelectedImages: PropTypes.bool.isRequired,
 };
 
