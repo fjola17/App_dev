@@ -6,32 +6,44 @@ import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
 
 class BoardInput extends React.Component{
+    constructor(props){
+        super(props);
+    }
     state = {
         name : '',
         description: '',
         thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
         nameError: '',
-        submit: this.props.isOpen,
     }
-
-    validate(){ 
-        const name = this.state.name;
+    componentDidMount(){
+        const photo = this.props.board.thumbnailPhoto
+        if(photo !== ''){
+            this.setState({thumbnailPhoto: photo})
+        }
+    }
+    validate(){
+        console.log("Im here")
+        const {name} = this.state;
         let nameError = '';
-        if(!name){
-            nameError = "Name for the board is required"
+        if(name == ''){
+            console.log("I'm in here")
+            nameError = "Name for the board is required";
+            this.setState({nameError});
+            return false
         }
-        this.setState({nameError});
-
-        if(Object.keys.errors > 0){
-            return false;
-        }
+        console.log("Sucess");
+        
         return true;
     }
     handleSubmit(){
+        console.log(this.state);
         if(!this.validate()){
             return;
         }
-        this.setState({submit:true})
+        // set state for the prop here
+        this.props.board = {name: name, description: description, thumbnailPhoto: thumbnailPhoto};
+        console.log(this.props.board);
+
     }
     async takePhoto(){
         const photo = await takePhoto();
@@ -43,25 +55,24 @@ class BoardInput extends React.Component{
     }
     async addImage(imageLocation) {
         const newImage = await addImage(imageLocation);
-        this.setState({image: newImage})
+        this.setState({thumbnailPhoto: newImage});
     }
+    
     render(){
-        let hasErrors = false;
-        if(this.state.nameError != ''){
-            hasErrors = true;
-        }
-        const image = this.state.thumbnailPhoto;
-        return(
-            <View>
-                <Image style={styles.babyyoda} source={{uri: image}} />
-                <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value, nameError: ''}) } value={this.state.name} />
-                <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
-                <Text>{this.state.nameError}</Text>
-                <Button title="Camera roll" onPress={() => this.takePhoto()}></Button>
-                <Button title="File" onPress={() => this.selectFromCameraRoll()}></Button>
-                <Button disabled={hasErrors} onPress={() => this.handleSubmit()} title="Submit"><Text>Sub</Text></Button>
-            </View>
-        );
+    let {name, thumbnailPhoto, description} = this.state;
+    return(
+      <View>
+        <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />
+        <Text>{this.props.board.name}</Text>
+        <Text>{this.props.board.description}</Text>
+        <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value, nameError: ''}) } value={this.state.name} />
+        <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
+        <Text>{this.state.nameError}</Text>
+        <Button title="Camera roll" onPress={() => this.takePhoto()}></Button>
+        <Button title="File" onPress={() => this.selectFromCameraRoll()}></Button>
+        <Button title="SUBMIT" onPress={() => this.handleSubmit()} title="Submit"><Text>Sub</Text></Button>
+      </View>
+    );
   };
 };
 
