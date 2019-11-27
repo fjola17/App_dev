@@ -25,4 +25,9 @@ export default StyleSheet.create({
     fontWeight: 'normal',
     lineHeight: 20,
   },
+  checkmark: {
+    position: 'absolute',
+    top: 20,
+    fontSize: 24,
+  },
 });

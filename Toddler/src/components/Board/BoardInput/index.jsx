@@ -24,7 +24,7 @@ class BoardInput extends React.Component{
         return true;
     }
     handleSubmit(){
-        if(!this.validate){
+        if(!this.validate()){
             return;
         }
         this.setState({submit:true})
@@ -41,7 +41,7 @@ class BoardInput extends React.Component{
                 <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value, nameError: ''}) } value={this.state.name} />
                 <Text>{this.state.nameError}</Text>
                 <Button title="Select a image"></Button>
-                <Button disabled={hasErrors} onPress={() => this.validate()} title="Submit"><Text>Sub</Text></Button>
+                <Button disabled={hasErrors} onPress={() => this.handleSubmit()} title="Submit"><Text>Sub</Text></Button>
             </View>
         );
   }
