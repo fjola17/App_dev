@@ -1,7 +1,7 @@
 import React from 'react';
 import { Entypo } from '@expo/vector-icons';
 import { View, TextInput, Button, Text, Image } from 'react-native';
-import { takePhoto, selectFromCameraRoll } from '../../../services/BoardService';
+import { takePhoto, selectFromCameraRoll } from '../../../services/ImageService';
 import { addImage } from '../../../services/FileService';
 
 import styles from './styles';
@@ -17,9 +17,15 @@ class BoardInput extends React.Component{
     nameError: '',
   }
   componentDidMount(){
-    const photo = this.props.board.thumbnailPhoto
-    if(photo !== ''){
-        this.setState({thumbnailPhoto: photo})
+    const {name, description, thumbnailPhoto} = this.props.board;
+    if(thumbnailPhoto){
+        this.setState({thumbnailPhoto: thumbnailPhoto})
+    }
+    if(name){
+      this.setState({name:name})
+    }
+    if(description){
+      this.setState({description:description})
     }
   }
   validate(){
@@ -57,16 +63,14 @@ class BoardInput extends React.Component{
   }
     
   render(){
-    let {name, thumbnailPhoto, description} = this.state;
+    const {thumbnailPhoto} = this.state;
+    console.log(thumbnailPhoto);
     return(
       <View>
         <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />
-        <Text>{this.props.board.name}</Text>
-        <Text>{this.props.board.description}</Text>
         <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value, nameError: ''}) } value={this.state.name} />
         <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
         <Text>{this.state.nameError}</Text>
-        <Button title="Camera roll" onPress={() => this.takePhoto()}></Button>
         <Button title="File" onPress={() => this.selectFromCameraRoll()}></Button>
         <Button title="SUBMIT" onPress={() => this.handleSubmit()} title="Submit"><Text>Sub</Text></Button>
       </View>

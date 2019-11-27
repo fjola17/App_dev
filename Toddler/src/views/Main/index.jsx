@@ -33,7 +33,7 @@ class Main extends React.Component {
     const {selectedBoards} = this.state;
     // Get the most recent selected element from the list
     const currentBoard = selectedBoards[selectedBoards.length - 1];
-    this.setState({isModalOpen:true, availableBoard: board[currentBoard-1]});
+    this.setState({isModalOpen:true, availableBoard: board[currentBoard - 1]});
   }
   deleteMe(){
     const {selectedBoards} = this.state;

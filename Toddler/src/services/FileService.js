@@ -2,6 +2,17 @@ import * as FileSystem from 'expo-file-system';
 
 const imageDirectory = `${FileSystem.documentDirectory}images`;
 
+const onException = (cb, errorHandler) => {
+  try {
+      return cb();
+  } catch (err) {
+      if (errorHandler) {
+          return errorHandler(err);
+      }
+      console.error(err);
+  }
+}
+
 export const copyFile = async (file, newLocation) => {
   return FileSystem.copyAsync({
     from: file,
@@ -10,6 +21,7 @@ export const copyFile = async (file, newLocation) => {
 };
 
 const loadImage = async (fileName) => {
+  await setupDirectory(); //check if directory already exists
   return FileSystem.readAsStringAsync(`${imageDirectory}/${fileName}`, {
     encoding: FileSystem.EncodingType.Base64,
   });
@@ -18,10 +30,18 @@ const loadImage = async (fileName) => {
 export const addImage = async (imageLocation) => {
   const foldersplit = imageLocation.split('/');
   const fileName = foldersplit[foldersplit.length - 1];
-  await copyFile(imageLocation, `${imageLocation}/${fileName}`);
+  await onException(() => copyFile(imageLocation, `${imageDirectory}/${fileName}`));
 
   return {
     name: fileName,
-    file: await loadImage(fileName),
+    type: 'image',
+    file: await loadImage(fileName)
   };
 };
+
+const setupDirectory = async () => {
+  const dir = await FileSystem.getInfoAsync(imageDirectory);
+  if (!dir.exists) {
+      await FileSystem.makeDirectoryAsync(imageDirectory);
+  }
+}

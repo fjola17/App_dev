@@ -30,14 +30,11 @@ Boards.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
-    photo: PropTypes.string.isRequired,
+    thumbnailPhoto: PropTypes.string.isRequired,
   })).isRequired,
   selectedBoards: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    photo: PropTypes.string.isRequired,
-  })).isRequired,
+  })),
 };
 
 export default Boards;

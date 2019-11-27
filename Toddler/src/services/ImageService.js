@@ -30,5 +30,3 @@ export const takePhoto = async () => {
   if (results.cancelled) { return ''; }
   return results.uri;
 };
-
-// export const getBoardById = (boards, id) => boards.filter((brd) => brd.id === id);

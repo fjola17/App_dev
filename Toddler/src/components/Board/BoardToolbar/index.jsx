@@ -18,7 +18,7 @@ const BoardToolbar = ({ onCreate, onUpdate, onDelete, hasSelectedImages }) => (
 );
 
 BoardToolbar.propTypes = {
-  onCreate: PropTypes.node.isRequired,
+  onCreate: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   hasSelectedImages: PropTypes.bool.isRequired,
