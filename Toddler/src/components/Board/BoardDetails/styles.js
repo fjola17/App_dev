@@ -1,12 +1,15 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { imageText } from '../../../styles/colors';
+import { imageText, boardBackColor } from '../../../styles/colors';
 
 export default StyleSheet.create({
   container: {
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    // width: Dimensions.get('window').width,
+    backgroundColor: boardBackColor,
   },
   image: {
-    width: 150,
+    width: Dimensions.get('window').width,
+    // width: 150,
     height: 150,
     // margin: 0,
   },
