@@ -3,6 +3,8 @@ import NativeModal from 'react-native-modal';
 import { View, Text } from 'react-native';
 import styles from './styles';
 
+// Used to create/edit and for general purpose
+
 const Modal = ({ isOpen, closeModal, title, children }) => (
     <NativeModal
         isVisible={ isOpen }
