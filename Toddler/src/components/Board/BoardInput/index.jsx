@@ -13,29 +13,26 @@ class BoardInput extends React.Component{
     super(props);
   }
   state = {
+    id: -1,
     name : '',
-    description: '',
     thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
+    description: '',
   }
   componentDidMount(){
-    const {name, description, thumbnailPhoto} = this.props.board;
+    const {id, name, description, thumbnailPhoto} = this.props.board;
+    if(id){
+      this.setState({id: id});
+    }
     if(thumbnailPhoto){
-        this.setState({thumbnailPhoto: thumbnailPhoto})
+        this.setState({thumbnailPhoto: thumbnailPhoto});
     }
     if(name){
-      this.setState({name:name});
+      this.setState({name: name});
     }
     if(description){
-      this.setState({description:description});
+      this.setState({description: description});
     }
-  }
-  refreshIfModalIsclosed(){
-    this.setState({
-      name : '',
-      description: '',
-      thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
-    })
-  }
+  };
   async takePhoto(){
     const photo = await takePhoto();
     if(photo.lenght > 0){ await this.addImage(photo); }
@@ -49,22 +46,21 @@ class BoardInput extends React.Component{
     this.setState({thumbnailPhoto: newImage.file});
   }
   render(){
-    const {name, thumbnailPhoto} = this.state;
-    const { isOpen, closeModal } = this.props;
+    const {id, name, thumbnailPhoto, description} = this.state;
+    const board = {id: id, name: name, thumbnailPhoto: thumbnailPhoto, description: description};
     let disabled = false;
-    if(name.length < 2){
+    if(!name){
       disabled = true;
     }
-    const board = this.state;
     return(
-      <Modal isOpen={isOpen} closeModal={closeModal}>
+      <View>
         <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />
         <TouchableOpacity onPress={() => this.selectFromCameraRoll()}><Entypo style={styles.img} name="image" /><Text>Change image</Text></TouchableOpacity>    
-        <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value, nameError: ''}) } value={this.state.name} />
+        <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value}) } value={name} />
         <Text>Board name must be at least 2 character</Text>
         <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
         <TouchableOpacity disabled={disabled} onPress={()=> this.props.create(board) }><Text>Confirm</Text></TouchableOpacity>
-      </Modal>
+      </View>
     );
   };
 };

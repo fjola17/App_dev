@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import styles from './styles'
 import Boards from '../../components/Board/Boards';
 import BoardToolbar from '../../components/Board/BoardToolbar';
-import BoardInput from '../../components/Board/BoardInput';
+import InputModal from '../../components/Board/BoardModal';
 import data from '../../resources/data';
 import {deleteMany} from '../../services/dbService';
 
@@ -29,9 +29,7 @@ class Main extends React.Component {
     availableBoard: {},
     hasSelectedImages: false
   }
-  constructor(props){
-    super(props);
-  }
+
   onBoardLongPress(id){
     const { selectedBoards } = this.state;
     if(selectedBoards.indexOf(id) !== -1){
@@ -42,19 +40,21 @@ class Main extends React.Component {
     }else{
       this.setState({
         selectedBoards: [ ...selectedBoards, id ]
-      })
+      });
     }
   }
   create(data){
-    const {board} = this.state;
-    if(data.id){
-      const newboard = board;
-      newboard[data.id -1];
-      this.setState({board: newboard});
-    };
-    data.id = this.state.board.length + 1;
-    console.log(data)
-    this.setState({ isModalOpen: false, board: [...board, data] });
+    const {board, selectedBoards} = this.state;
+    if(data.id !== -1){
+      let newboard = board;
+      newboard[data.id -1] = data;
+      this.setState({ isModalOpen: false, board: newboard, selectedBoards : selectedBoards.filter(board => board !== data.id) });
+      console.log(this.state.board);
+    }
+    else{
+      data.id = this.state.board.length + 1;
+      this.setState({ isModalOpen: false, board: [...board, data] });
+    } 
   }
   clearSelected(){
     this.setState({selectedBoards: []});
@@ -81,7 +81,7 @@ class Main extends React.Component {
         <Boards 
           boards={this.state.board} onBoardLongPress={(id) => this.onBoardLongPress(id)}
           selectedBoards={selectedBoards} />
-        <BoardInput isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } board={availableBoard} create={(board) => this.create(board)}/>
+        <InputModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } board={availableBoard} create={(board) => this.create(board)}/>
       </View>
     );
   }

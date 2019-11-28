@@ -11,6 +11,9 @@ const onException = (cb, errorHandler) => {
       }
   }
 };
+export const cleanDirectory = async () => {
+  await FileSystem.deleteAsync(imageDirectory);
+};
 
 export const copyFile = async (file, newLocation) => {
   return FileSystem.copyAsync({
@@ -43,4 +46,4 @@ const setupDirectory = async () => {
   if (!dir.exists) {
     await FileSystem.makeDirectoryAsync(imageDirectory);
   }
-}
+};
