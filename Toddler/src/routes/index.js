@@ -1,12 +1,13 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
+import BoardView from '../views/BoardView';
 import Main from '../views/Main';
-import Lists from '../views/Lists';
+
 
 const StackNavigator = createStackNavigator({
   Main,
-  Lists,
+  BoardView,
 });
 
 export default createAppContainer(StackNavigator);
