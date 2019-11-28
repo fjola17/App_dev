@@ -27,7 +27,8 @@ class Main extends React.Component {
     board: board,
     isModalOpen: false,
     availableBoard: {},
-    hasSelectedImages: false
+    hasSelectedImages: false,
+    maxlenght: board.length,
   }
 
   onBoardLongPress(id){
@@ -49,11 +50,10 @@ class Main extends React.Component {
       let newboard = board;
       newboard[data.id -1] = data;
       this.setState({ isModalOpen: false, board: newboard, selectedBoards : selectedBoards.filter(board => board !== data.id) });
-      console.log(this.state.board);
     }
     else{
-      data.id = this.state.board.length + 1;
-      this.setState({ isModalOpen: false, board: [...board, data] });
+      data.id = this.state.maxlenght + 1;
+      this.setState({ isModalOpen: false, board: [...board, data], maxlenght: data.id });
     } 
   }
   clearSelected(){
