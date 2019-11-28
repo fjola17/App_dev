@@ -5,6 +5,7 @@ import Boards from '../../components/Board/Boards';
 import BoardToolbar from '../../components/Board/BoardToolbar';
 import InputModal from '../../components/Board/InputModal';
 import data from '../../resources/data';
+import {deleteMany} from '../../services/dbService';
 
 const board = data.boards;
 
@@ -29,22 +30,32 @@ class Main extends React.Component {
       })
     }
   }
+  create(item){
+    if(item.id){
+      const newboard = board[item.id -1];
+      this.setState({board: newboard});
+    };
+    this.setState({board: [...this.state.board, item]})
+  }
   updateBoard(){
     const {selectedBoards} = this.state;
     // Get the most recent selected element from the list
     const currentBoard = selectedBoards[selectedBoards.length - 1];
-    this.setState({isModalOpen:true, availableBoard: board[currentBoard - 1]});
+    this.setState({selectedBoards: [currentBoard], isModalOpen:true, availableBoard: board[currentBoard - 1]});
   }
   deleteMe(){
-    const {selectedBoards} = this.state;
+    let {selectedBoards, board} = this.state;
+    this.setState({
+      selectedBoards: [],
+      board: board.filter(img => selectedBoards.indexOf(img.id) === -1),
+    })
   }
 //todo, only be able to select 1 board to update
   render(){
     const { selectedBoards, availableBoard } = this.state;
-    console.log(availableBoard);
     return (
       <View style={ styles.container }>
-        <BoardToolbar onCreate={()=>this.setState({isModalOpen:true, availableBoard: {}})} onUpdate={()=>this.updateBoard()} onDelete={this.deleteMe()} hasSelectedImages={selectedBoards.length > 0} />
+        <BoardToolbar onCreate={()=>this.setState({isModalOpen:true, availableBoard: {}})} onUpdate={()=>this.updateBoard()} onDelete={() => this.deleteMe()} hasSelectedImages={selectedBoards.length > 0} />
         <Boards 
           boards={this.state.board} onBoardLongPress={(id) => this.onBoardLongPress(id)}
           selectedBoards={selectedBoards} />

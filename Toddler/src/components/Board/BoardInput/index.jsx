@@ -14,7 +14,6 @@ class BoardInput extends React.Component{
     name : '',
     description: '',
     thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
-    nameError: '',
   }
   componentDidMount(){
     const {name, description, thumbnailPhoto} = this.props.board;
@@ -28,27 +27,6 @@ class BoardInput extends React.Component{
       this.setState({description:description})
     }
   }
-  validate(){
-    const {name} = this.state;
-    let nameError = '';
-    if(name == ''){
-        nameError = "Name for the board is required";
-        this.setState({nameError});
-        return false
-    }
-    
-    return true;
-  }
-  handleSubmit(){
-    console.log(this.state);
-    if(!this.validate()){
-        return;
-    }
-    // set state for the prop here
-    this.props.board = {name: name, description: description, thumbnailPhoto: thumbnailPhoto};
-    console.log(this.props.board);
-
-  }
   async takePhoto(){
     const photo = await takePhoto();
     if(photo.lenght > 0){ await this.addImage(photo); }
@@ -59,20 +37,27 @@ class BoardInput extends React.Component{
   }
   async addImage(imageLocation) {
     const newImage = await addImage(imageLocation);
-    this.setState({thumbnailPhoto: newImage});
+    this.setState({thumbnailPhoto: newImage.file});
   }
+  create(board){
     
+  }
   render(){
-    const {thumbnailPhoto} = this.state;
-    console.log(thumbnailPhoto);
+    const {name, thumbnailPhoto} = this.state;
+    let { isOpen, closeModal, board } = this.props;
+    let disabled = false;
+    if(name.length < 2){
+      disabled = true;
+    }
+    board = this.state;
     return(
       <View>
-        <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />
+        <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />     
         <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value, nameError: ''}) } value={this.state.name} />
+        <Text>Board name must be at least 2 character</Text>
         <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
-        <Text>{this.state.nameError}</Text>
         <Button title="File" onPress={() => this.selectFromCameraRoll()}></Button>
-        <Button title="SUBMIT" onPress={() => this.handleSubmit()} title="Submit"><Text>Sub</Text></Button>
+        <Button disabled={disabled} onPress={() => this.create(board)} title="Submit"><Text>Confirm</Text></Button>
       </View>
     );
   };
