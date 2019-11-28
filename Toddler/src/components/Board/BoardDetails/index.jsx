@@ -1,11 +1,16 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const BoardDetails = ({ id, name, photo, onBoardLongPress, isSelected }) => (
-  <TouchableOpacity onLongPress={() => onBoardLongPress(id)} style={styles.container}>
+const BoardDetails = ({ id, name, photo, onBoardLongPress, isSelected, navigation: { navigate }}) => (
+  <TouchableOpacity
+    onLongPress={() => onBoardLongPress(id)}
+    style={styles.container}
+    onPress={() => navigate('Lists', { ListId: id })}
+  >
     {
       isSelected ? <AntDesign name="checkcircleo" style={styles.checkmark} /> : <></>
     }
@@ -26,4 +31,4 @@ BoardDetails.propTypes = {
   onBoardLongPress: PropTypes.func.isRequired,
 };
 
-export default BoardDetails;
+export default withNavigation(BoardDetails);

@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import styles from './styles';
+
 // displays a single board
-const Board = () => (
-  <View style={styles.container}>
+const Lists = ({ListId}) => (
+  <View>
     <Text>Im a board with tasks</Text>
   </View>
 );
 
-export default Board;
+export default Lists;

@@ -4,14 +4,13 @@ const imageDirectory = `${FileSystem.documentDirectory}images`;
 
 const onException = (cb, errorHandler) => {
   try {
-      return cb();
+    return cb();
   } catch (err) {
       if (errorHandler) {
-          return errorHandler(err);
+        return errorHandler(err);
       }
-      console.error(err);
   }
-}
+};
 
 export const copyFile = async (file, newLocation) => {
   return FileSystem.copyAsync({
@@ -35,7 +34,7 @@ export const addImage = async (imageLocation) => {
   return {
     name: fileName,
     type: 'image',
-    file: await loadImage(fileName)
+    file: await loadImage(fileName),
   };
 };
 
