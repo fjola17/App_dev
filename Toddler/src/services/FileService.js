@@ -11,6 +11,9 @@ const onException = (cb, errorHandler) => {
       }
   }
 };
+export const cleanDirectory = async () => {
+  await FileSystem.deleteAsync(imageDirectory);
+};
 
 export const copyFile = async (file, newLocation) => {
   return FileSystem.copyAsync({
@@ -34,13 +37,13 @@ export const addImage = async (imageLocation) => {
   return {
     name: fileName,
     type: 'image',
-    file: await loadImage(fileName),
+    file: `data:image/jpeg;base64,${await loadImage(fileName)}`,
   };
 };
 
 const setupDirectory = async () => {
   const dir = await FileSystem.getInfoAsync(imageDirectory);
   if (!dir.exists) {
-      await FileSystem.makeDirectoryAsync(imageDirectory);
+    await FileSystem.makeDirectoryAsync(imageDirectory);
   }
-}
+};

@@ -10,7 +10,6 @@ const List = ({ lists }) => {
       <FlatList
       numColumns={2}
       data={lists}
-
       renderItem={({ item: { id, name, color, boardId } }) => (
         <ListDetails
           id={id}

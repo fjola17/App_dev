@@ -5,9 +5,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: mainColor,
-    // padding: 100,
     alignItems: 'center',
-    // justifyContent: 'space-around',
   },
   textHeader: {
     color: 'cyan',

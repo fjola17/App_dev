@@ -3,12 +3,25 @@ import { View } from 'react-native';
 import styles from './styles'
 import Boards from '../../components/Board/Boards';
 import BoardToolbar from '../../components/Board/BoardToolbar';
-import InputModal from '../../components/Board/InputModal';
+import InputModal from '../../components/Board/BoardModal';
 import data from '../../resources/data';
+import {deleteMany} from '../../services/dbService';
 
 const board = data.boards;
 
 class Main extends React.Component {
+  static navigationOptions = () => {
+    return {
+      title: 'Toddler Board',
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    };
+  };
   state = {
     selectedBoards : [],
     board: board,
@@ -16,6 +29,7 @@ class Main extends React.Component {
     availableBoard: {},
     hasSelectedImages: false
   }
+
   onBoardLongPress(id){
     const { selectedBoards } = this.state;
     if(selectedBoards.indexOf(id) !== -1){
@@ -26,29 +40,48 @@ class Main extends React.Component {
     }else{
       this.setState({
         selectedBoards: [ ...selectedBoards, id ]
-      })
+      });
     }
+  }
+  create(data){
+    const {board, selectedBoards} = this.state;
+    if(data.id !== -1){
+      let newboard = board;
+      newboard[data.id -1] = data;
+      this.setState({ isModalOpen: false, board: newboard, selectedBoards : selectedBoards.filter(board => board !== data.id) });
+      console.log(this.state.board);
+    }
+    else{
+      data.id = this.state.board.length + 1;
+      this.setState({ isModalOpen: false, board: [...board, data] });
+    } 
+  }
+  clearSelected(){
+    this.setState({selectedBoards: []});
   }
   updateBoard(){
     const {selectedBoards} = this.state;
     // Get the most recent selected element from the list
     const currentBoard = selectedBoards[selectedBoards.length - 1];
-    this.setState({isModalOpen:true, availableBoard: board[currentBoard - 1]});
+    this.setState({ isModalOpen:true, availableBoard: board[currentBoard - 1]});
   }
   deleteMe(){
-    const {selectedBoards} = this.state;
+    let {selectedBoards, board} = this.state;
+    this.setState({
+      selectedBoards: [],
+      board: board.filter(img => selectedBoards.indexOf(img.id) === -1),
+    })
   }
 //todo, only be able to select 1 board to update
   render(){
     const { selectedBoards, availableBoard } = this.state;
-    console.log(availableBoard);
     return (
       <View style={ styles.container }>
-        <BoardToolbar onCreate={()=>this.setState({isModalOpen:true, availableBoard: {}})} onUpdate={()=>this.updateBoard()} onDelete={this.deleteMe()} hasSelectedImages={selectedBoards.length > 0} />
+        <BoardToolbar onCreate={()=>this.setState({isModalOpen:true, availableBoard: {}})} onUpdate={()=>this.updateBoard()} onDelete={() => this.deleteMe()} hasSelectedImages={selectedBoards.length > 0} />
         <Boards 
           boards={this.state.board} onBoardLongPress={(id) => this.onBoardLongPress(id)}
           selectedBoards={selectedBoards} />
-        <InputModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } board={availableBoard}/>
+        <InputModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } board={availableBoard} create={(board) => this.create(board)}/>
       </View>
     );
   }
