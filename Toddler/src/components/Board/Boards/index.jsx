@@ -10,11 +10,12 @@ const Boards = ({ boards, onBoardLongPress, selectedBoards }) => (
       numColumns={1}
       data={boards}
       extraData={selectedBoards}
-      renderItem={({ item: { id, name, thumbnailPhoto } }) => (
+      renderItem={({ item: { id, name, thumbnailPhoto, description } }) => (
         <BoardDetails
           id={id}
           name={name}
           photo={thumbnailPhoto}
+          description={description}
           onBoardLongPress={onBoardLongPress}
           isSelected={selectedBoards.indexOf(id) !== -1}
         />

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Entypo } from '@expo/vector-icons';
-import { View, TextInput, Button, Text, Image } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
 import { takePhoto, selectFromCameraRoll } from '../../../services/ImageService';
 import { addImage } from '../../../services/FileService';
+import { Form } from 'react-native-form';
+import Modal from '../../Modal';
 
 import styles from './styles';
 
@@ -21,11 +23,18 @@ class BoardInput extends React.Component{
         this.setState({thumbnailPhoto: thumbnailPhoto})
     }
     if(name){
-      this.setState({name:name})
+      this.setState({name:name});
     }
     if(description){
-      this.setState({description:description})
+      this.setState({description:description});
     }
+  }
+  refreshIfModalIsclosed(){
+    this.setState({
+      name : '',
+      description: '',
+      thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
+    })
   }
   async takePhoto(){
     const photo = await takePhoto();
@@ -39,26 +48,23 @@ class BoardInput extends React.Component{
     const newImage = await addImage(imageLocation);
     this.setState({thumbnailPhoto: newImage.file});
   }
-  create(board){
-    
-  }
   render(){
     const {name, thumbnailPhoto} = this.state;
-    let { isOpen, closeModal, board } = this.props;
+    const { isOpen, closeModal } = this.props;
     let disabled = false;
     if(name.length < 2){
       disabled = true;
     }
-    board = this.state;
+    const board = this.state;
     return(
-      <View>
-        <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />     
+      <Modal isOpen={isOpen} closeModal={closeModal}>
+        <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />
+        <TouchableOpacity onPress={() => this.selectFromCameraRoll()}><Entypo style={styles.img} name="image" /><Text>Change image</Text></TouchableOpacity>    
         <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value, nameError: ''}) } value={this.state.name} />
         <Text>Board name must be at least 2 character</Text>
         <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
-        <Button title="File" onPress={() => this.selectFromCameraRoll()}></Button>
-        <Button disabled={disabled} onPress={() => this.create(board)} title="Submit"><Text>Confirm</Text></Button>
-      </View>
+        <TouchableOpacity disabled={disabled} onPress={()=> this.props.create(board) }><Text>Confirm</Text></TouchableOpacity>
+      </Modal>
     );
   };
 };

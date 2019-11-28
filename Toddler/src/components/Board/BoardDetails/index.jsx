@@ -5,11 +5,11 @@ import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const BoardDetails = ({ id, name, photo, onBoardLongPress, isSelected, navigation: { navigate }}) => (
+const BoardDetails = ({ id, name, photo, decription, onBoardLongPress, isSelected, navigation: { navigate }}) => (
   <TouchableOpacity
     onLongPress={() => onBoardLongPress(id)}
     style={styles.container}
-    onPress={() => navigate('Lists', { ListId: id })}
+    onPress={() => navigate('Lists', { ListId: id, Title: name })}
   >
     {
       isSelected ? <AntDesign name="checkcircleo" style={styles.checkmark} /> : <></>
@@ -17,7 +17,6 @@ const BoardDetails = ({ id, name, photo, onBoardLongPress, isSelected, navigatio
     <View style={{ opacity: isSelected ? 0.5 : 1 }}>
       <Image style={styles.image} source={{ uri: photo }} />
       <Text style={styles.imageName}>{name}</Text>
-      <Text style={styles.imageDetail}>Details</Text>
     </View>
   </TouchableOpacity>
 );
