@@ -9,7 +9,7 @@ import data from '../../resources/data';
 
 // const lists = data.lists;
 
-class Test extends React.Component {
+class BoardView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,4 +38,4 @@ class Test extends React.Component {
   }
 }
 
-export default Test;
+export default BoardView;
