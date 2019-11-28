@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import data from '../../resources/data';
 import List from '../../components/Lists';
 import ListModal from '../../components/ListModal';
+import ListHeader from '../../components/ListHeader';
 const lists = data.lists;
 // displays a single board
 
@@ -28,9 +29,7 @@ class Lists extends React.Component {
     console.log(lists);
     return (
       <View>
-        <Text>Create</Text>
-        <Text>Delete</Text>
-        <Text>Update</Text>
+        <ListHeader onCreate={() => this.setState({isModalOpen: true})}/>
         <List lists={lists}/>
         <ListModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false })} list={this.state.currentList} create={() => this.create()}/>
       </View>

@@ -3,8 +3,6 @@ import { Entypo } from '@expo/vector-icons';
 import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
 import { takePhoto, selectFromCameraRoll } from '../../../services/ImageService';
 import { addImage } from '../../../services/FileService';
-import { Form } from 'react-native-form';
-import Modal from '../../Modal';
 
 import styles from './styles';
 

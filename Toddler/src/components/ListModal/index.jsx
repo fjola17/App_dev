@@ -1,10 +1,11 @@
 import React from 'react';
+import { Text } from 'react-native';
 import Modal from '../Modal';
-import {Text} from 'react-native'
+import ListInput from '../ListInput';
 
 const ListModal = ({ isOpen, closeModal, list, create }) => (
   <Modal isOpen={isOpen} closeModal={closeModal}>
-    <Text>Hello there obi wan here</Text>
+    <ListInput list={list} create={create} />
   </Modal>
 );
 
