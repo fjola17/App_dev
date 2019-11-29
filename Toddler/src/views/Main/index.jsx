@@ -27,17 +27,18 @@ class Main extends React.Component {
     board: board,
     isModalOpen: false,
     availableBoard: {},
-    hasSelectedImages: false
+    hasSelectedImages: false,
+    maxlenght: board.length,
   }
 
   onBoardLongPress(id){
     const { selectedBoards } = this.state;
-    if(selectedBoards.indexOf(id) !== -1){
-      //board is inside of the list
+    if (selectedBoards.indexOf(id) !== -1) {
+      // board is inside of the list
       this.setState({
-        selectedBoards : selectedBoards.filter(board => board !== id)
+        selectedBoards: selectedBoards.filter((board) => board !== id)
       })
-    }else{
+    } else {
       this.setState({
         selectedBoards: [ ...selectedBoards, id ]
       });
@@ -49,18 +50,18 @@ class Main extends React.Component {
       let newboard = board;
       newboard[data.id -1] = data;
       this.setState({ isModalOpen: false, board: newboard, selectedBoards : selectedBoards.filter(board => board !== data.id) });
-      console.log(this.state.board);
     }
     else{
-      data.id = this.state.board.length + 1;
-      this.setState({ isModalOpen: false, board: [...board, data] });
+      data.id = this.state.maxlenght + 1;
+      this.setState({ isModalOpen: false, board: [...board, data], maxlenght: data.id });
     } 
   }
   clearSelected(){
     this.setState({selectedBoards: []});
   }
-  updateBoard(){
-    const {selectedBoards} = this.state;
+
+  updateBoard() {
+    const { selectedBoards } = this.state;
     // Get the most recent selected element from the list
     const currentBoard = selectedBoards[selectedBoards.length - 1];
     this.setState({ isModalOpen:true, availableBoard: board[currentBoard - 1]});
@@ -72,8 +73,9 @@ class Main extends React.Component {
       board: board.filter(img => selectedBoards.indexOf(img.id) === -1),
     })
   }
-//todo, only be able to select 1 board to update
-  render(){
+// todo, only be able to select 1 board to update
+
+  render() {
     const { selectedBoards, availableBoard } = this.state;
     return (
       <View style={ styles.container }>
@@ -85,6 +87,6 @@ class Main extends React.Component {
       </View>
     );
   }
-};
+}
 
 export default Main;
