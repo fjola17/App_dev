@@ -15,10 +15,14 @@ class List extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log('This is List');
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ color: 'white' }}>{this.state.name}</Text>
+        <Text>{this.state.name}</Text>
         <FlatList
           numColumns={1}
           data={this.state.tasks}

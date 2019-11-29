@@ -54,7 +54,7 @@ class Main extends React.Component {
     else{
       data.id = this.state.maxlenght + 1;
       this.setState({ isModalOpen: false, board: [...board, data], maxlenght: data.id });
-    } 
+    }
   }
   clearSelected(){
     this.setState({selectedBoards: []});
@@ -80,7 +80,7 @@ class Main extends React.Component {
     return (
       <View style={ styles.container }>
         <BoardToolbar onCreate={()=>this.setState({isModalOpen:true, availableBoard: {}})} onUpdate={()=>this.updateBoard()} onDelete={() => this.deleteMe()} hasSelectedImages={selectedBoards.length > 0} />
-        <Boards 
+        <Boards
           boards={this.state.board} onBoardLongPress={(id) => this.onBoardLongPress(id)}
           selectedBoards={selectedBoards} />
         <InputModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } board={availableBoard} create={(board) => this.create(board)}/>

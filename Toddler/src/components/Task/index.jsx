@@ -17,8 +17,8 @@ class Task extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ color: 'white' }}>{this.state.name}</Text>
-        <Text style={{ color: 'white' }}>{this.state.description}</Text>
+        <Text>{this.state.name}</Text>
+        <Text>{this.state.description}</Text>
       </View>
     );
   }
