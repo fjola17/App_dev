@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, Text, TouchableOpacity } from 'react-native';
 import { PropTypes } from 'prop-types'
 import styles from './styles';
 import List from '../../components/List';
@@ -41,13 +41,21 @@ class BoardView extends React.Component {
     console.log(val);
     this.setState({list: [...list, val], isModalOpen: false});
   }
-
+  delete(id){
+    const {list} = this.state; 
+    this.setState({
+      list: list.filter(li => li.id !== id)
+    });
+  }
   render() {
     const { list, tasks } = this.state;
+    data.lists = list;
+    data.tasks = tasks
     
     return (
       <View style={styles.container}>
         <ListHeader onCreate={() => this.setState({ isModalOpen: true })}/>
+        <TouchableOpacity onPress={() => this.delete(1)}><Text>Hard coded delete</Text></TouchableOpacity>
         <ListModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false })} listid={this.state.id} create={(bla) => this.create(bla)}/>
         <FlatList
           horizontal
