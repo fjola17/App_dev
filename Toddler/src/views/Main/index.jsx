@@ -6,7 +6,6 @@ import Boards from '../../components/Board/Boards';
 import BoardToolbar from '../../components/Board/BoardToolbar';
 import InputModal from '../../components/Board/BoardModal';
 import data from '../../resources/data';
-import {deleteMany} from '../../services/dbService';
 
 const board = data.boards;
 

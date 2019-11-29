@@ -22,7 +22,7 @@ const BoardDetails = ({ id, name, photo, description, onBoardLongPress, isSelect
         </View>
         <View style={styles.textView}>
           <Text style={styles.itemName}>{name}</Text>
-          <Text style={styles.itemDetail}>Description: We don't have that in our json file... {description}</Text>
+          <Text style={styles.itemDetail}>{description}</Text>
         </View>
       </View>
     </View>
