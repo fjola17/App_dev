@@ -24,7 +24,7 @@ export default StyleSheet.create({
     fontWeight: 'normal',
     lineHeight: 20,
   },
-  boardContainer: {
+  itemContainer: {
     flex:1,
     flexDirection: 'row',
   },

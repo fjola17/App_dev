@@ -14,6 +14,7 @@ const BoardDetails = ({ id, name, photo, description, onBoardLongPress, isSelect
     {
       isSelected ? <AntDesign name="checkcircleo" style={styles.checkmark} /> : <></>
     }
+    {/* Content styling */}
     <View style={{ opacity: isSelected ? 0.5 : 1 }}>
       <View style={styles.itemContainer}>
         <View style={styles.imageView}>
@@ -21,7 +22,7 @@ const BoardDetails = ({ id, name, photo, description, onBoardLongPress, isSelect
         </View>
         <View style={styles.textView}>
           <Text style={styles.itemName}>{name}</Text>
-          <Text style={styles.itemDetail}>Description: {description}</Text>
+          <Text style={styles.itemDetail}>Description: We don't have that in our json file... {description}</Text>
         </View>
       </View>
     </View>

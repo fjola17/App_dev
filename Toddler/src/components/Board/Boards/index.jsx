@@ -13,8 +13,8 @@ const Boards = ({ boards, onBoardLongPress, selectedBoards }) => (
       renderItem={({ item: { id, name, thumbnailPhoto, description } }) => (
         <BoardDetails
           id={id}
-          name={name}
           photo={thumbnailPhoto}
+          name={name}
           description={description}
           onBoardLongPress={onBoardLongPress}
           isSelected={selectedBoards.indexOf(id) !== -1}
