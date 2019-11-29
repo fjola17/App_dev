@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TextInput, Text, TouchableOpacity, Button } from 'react-native';
-import { ControlledVerticalPicker } from 'react-native-color-picker';
+import { ColorPicker } from 'react-native-color-picker';
 class ListInput extends React.Component{
   constructor(props){
     super(props);
@@ -13,11 +13,14 @@ class ListInput extends React.Component{
 
   }
   componentDidMount(){
-    this.setState({boardId: 1});
+    this.setState({boardId: this.props.listid});
   }
+  onColorChange(color){
+    this.setState({color: color})
+  }
+
   render(){
     const {name, color} = this.state;
-    console.log(this.state)
     let disabled = false;
     if(!name){
       disabled = true;
@@ -25,11 +28,12 @@ class ListInput extends React.Component{
     return(
     <View>
         <Text>Name</Text>
-        <TextInput placeholder="Temporary name" onChangeText={ (value) => this.setState({name:value}) } value={name}/>
-        <Text>Color</Text>
         <TouchableOpacity disabled={disabled}onPress={() => this.props.create(this.state)}>
           <Text>Submit the info</Text>  
         </TouchableOpacity>
+        <TextInput placeholder="Temporary name" onChangeText={ (value) => this.setState({name:value}) } value={name}/>
+        <ColorPicker onColorSelected={(color) => this.onColorChange(color)} />
+
     </View>
     )
   }

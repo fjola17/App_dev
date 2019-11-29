@@ -32,22 +32,23 @@ class BoardView extends React.Component {
   componentDidMount(){
     const { navigation } = this.props;
     const id = navigation.getParam('ListId', '')
-    console.log( this.props );
+    this.setState({maxId: data.lists.length})
     console.log( 'id: ', id )
   }
   create(val){
-    console.log(val)
-
+    const { list } = this.state;
+    val.id = this.state.maxId + 1;
+    console.log(val);
+    this.setState({list: [...list, val], isModalOpen: false});
   }
 
   render() {
     const { list, tasks } = this.state;
-    const { id } = this.props;
     
     return (
       <View style={styles.container}>
         <ListHeader onCreate={() => this.setState({ isModalOpen: true })}/>
-        <ListModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false })} list={{}} create={(data) => this.create(data)}/>
+        <ListModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false })} listid={this.state.id} create={(bla) => this.create(bla)}/>
         <FlatList
           horizontal
           data={[...(list).filter((listi) => listi.boardId === this.state.id)]}
@@ -65,10 +66,6 @@ class BoardView extends React.Component {
       </View>
     );
   }
-}
-
-BoardView.propTypes = {
-  id: PropTypes.number.isRequired,
 }
 
 export default BoardView;
