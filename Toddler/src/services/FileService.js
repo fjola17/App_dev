@@ -6,9 +6,9 @@ const onException = (cb, errorHandler) => {
   try {
     return cb();
   } catch (err) {
-      if (errorHandler) {
-        return errorHandler(err);
-      }
+    if (errorHandler) {
+      return errorHandler(err);
+    }
   }
 };
 export const cleanDirectory = async () => {
@@ -23,7 +23,7 @@ export const copyFile = async (file, newLocation) => {
 };
 
 const loadImage = async (fileName) => {
-  await setupDirectory(); //check if directory already exists
+  await setupDirectory(); // check if directory already exists
   return FileSystem.readAsStringAsync(`${imageDirectory}/${fileName}`, {
     encoding: FileSystem.EncodingType.Base64,
   });
