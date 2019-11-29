@@ -8,6 +8,18 @@ import ListHeader from '../../components/ListHeader';
 import ListModal from '../../components/ListModal';
 
 class BoardView extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.getParam('Title', ''),
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    };
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +27,10 @@ class BoardView extends React.Component {
       tasks: data.tasks,
       isModalOpen: false,
     };
+  }
+  componentDidMount(){
+    const { navigation } = this.props;
+    const id = navigation.getParam('ListId', '')
   }
   create(){
 
