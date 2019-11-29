@@ -15,9 +15,15 @@ const BoardDetails = ({ id, name, photo, description, onBoardLongPress, isSelect
       isSelected ? <AntDesign name="checkcircleo" style={styles.checkmark} /> : <></>
     }
     <View style={{ opacity: isSelected ? 0.5 : 1 }}>
-      <Image style={styles.image} source={{ uri: photo }} />
-      <Text style={styles.imageName}>{name}</Text>
-      <Text>Description: {description}</Text>
+      <View style={styles.boardContainer}>
+        <View style={styles.imageView}>
+          <Image style={styles.image} source={{ uri: photo }} />
+        </View>
+        <View style={styles.textView}>
+          <Text style={styles.itemName}>{name}</Text>
+          <Text style={styles.itemDetail}>Description: {description}</Text>
+        </View>
+      </View>
     </View>
   </TouchableOpacity>
 );

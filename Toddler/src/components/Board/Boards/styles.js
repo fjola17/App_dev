@@ -1,13 +1,15 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { mainColor } from '../../../styles/colors';
+import { mainColor, borderColor, boardBackColor } from '../../../styles/colors';
+import { withOrientation } from 'react-navigation';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    // alignItems: 'center',
-    backgroundColor: mainColor,
-    width: Dimensions.get('window').width,
+    flexDirection: 'row',
+    backgroundColor: boardBackColor,
+    // justifyContent: 'flex-start',
+    // // alignItems: 'center',
+    // backgroundColor: 'white',
+    // width: Dimensions.get('window').width,
   },
 });

@@ -1,29 +1,45 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { imageText, boardBackColor } from '../../../styles/colors';
+import { imageText, boardBackColor, borderColor, imageBorder } from '../../../styles/colors';
 
 export default StyleSheet.create({
   container: {
-    alignItems: 'flex-start',
-    // width: Dimensions.get('window').width,
-    backgroundColor: boardBackColor,
+    borderBottomWidth: 1,
+    borderColor: borderColor,
   },
   image: {
-    width: Dimensions.get('window').width,
-    // width: 150,
-    height: 150,
-    // margin: 0,
+    width: 100,
+    height: 100,
+    borderWidth: 1,
+    borderColor: imageBorder,
   },
-  imageName: {
+  itemName: {
     color: imageText,
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: 'bold',
-    lineHeight: 20,
+    lineHeight: 30,
   },
-  imageDetail: {
+  itemDetail: {
     color: imageText,
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: 'normal',
     lineHeight: 20,
+  },
+  boardContainer: {
+    flex:1,
+    flexDirection: 'row',
+  },
+  imageView: {
+    flex: 1,
+    width: 100,
+    height: 100,
+    alignItems: 'flex-start',
+    paddingRight: 20,
+  },
+  textView: {
+    flex: 3,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    paddingTop: 10,
   },
   checkmark: {
     position: 'absolute',

@@ -4,7 +4,7 @@ import { mainColor } from '../../styles/colors';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: mainColor,
+    backgroundColor: 'white',
     alignItems: 'center',
   },
   textHeader: {

@@ -1,6 +1,13 @@
-export const headerColor = '#181826';
-export const headerTextColor = 'deeppink';
-export const mainColor = '#222230';
+// Header
+export const headerColor = '#303030';
+export const headerTextColor = 'white';
+
+// Main Body
+export const mainColor = 'white';
 export const mainTextColor = '#fff';
+
+// Lists
 export const imageText = '#333333';
-export const boardBackColor = '#eeeeee'
+export const boardBackColor = 'white';
+export const borderColor = '#ccc';
+export const imageBorder = '#f5f5f5';
