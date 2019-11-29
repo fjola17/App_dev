@@ -15,7 +15,7 @@ const BoardDetails = ({ id, name, photo, description, onBoardLongPress, isSelect
       isSelected ? <AntDesign name="checkcircleo" style={styles.checkmark} /> : <></>
     }
     <View style={{ opacity: isSelected ? 0.5 : 1 }}>
-      <View style={styles.boardContainer}>
+      <View style={styles.itemContainer}>
         <View style={styles.imageView}>
           <Image style={styles.image} source={{ uri: photo }} />
         </View>
