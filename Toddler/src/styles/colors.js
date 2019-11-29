@@ -8,10 +8,14 @@ export const mainTextColor = '#fff';
 
 // Lists
 export const imageText = '#333333';
-<<<<<<< HEAD
 export const boardBackColor = 'white';
 export const borderColor = '#ccc';
 export const imageBorder = '#f5f5f5';
-=======
-export const boardBackColor = '#eeeeee';
->>>>>>> fb9bd86ecda095da23e615bbb1fd1ebb4766ae84
+
+// Standby colors
+export const topHeaderBG = 'tomatoe';
+export const topHeaderText = '#fff';
+export const navBarBG = '#ccc';
+export const navBarText = '#fff';
+export const navBarTextDim = '#ccc';
+export const listBG = '#fff';
