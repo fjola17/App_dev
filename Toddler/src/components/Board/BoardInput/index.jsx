@@ -6,18 +6,19 @@ import { addImage } from '../../../services/FileService';
 
 import styles from './styles';
 
-class BoardInput extends React.Component{
-  constructor(props){
+class BoardInput extends React.Component {
+  constructor(props) {
     super(props);
+    this.state = {
+      id: -1,
+      name: '',
+      thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
+      description: '',
+    };
   }
-  state = {
-    id: -1,
-    name : '',
-    thumbnailPhoto: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
-    description: '',
-  }
-  componentDidMount(){
-    const {id, name, description, thumbnailPhoto} = this.props.board;
+
+  componentDidMount() {
+    const{ id, name, description, thumbnailPhoto } = this.props.board;
     if(id){
       this.setState({id: id});
     }
@@ -30,7 +31,7 @@ class BoardInput extends React.Component{
     if(description){
       this.setState({description: description});
     }
-  };
+  }
   async takePhoto(){
     const photo = await takePhoto();
     if(photo.lenght > 0){ await this.addImage(photo); }
@@ -53,7 +54,7 @@ class BoardInput extends React.Component{
     return(
       <View>
         <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />
-        <TouchableOpacity onPress={() => this.selectFromCameraRoll()}><Entypo style={styles.img} name="image" /><Text>Change image</Text></TouchableOpacity>    
+        <TouchableOpacity onPress={() => this.selectFromCameraRoll()}><Entypo style={styles.img} name="image" /><Text>Change image</Text></TouchableOpacity>
         <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value}) } value={name} />
         <Text>Board name must be at least 2 character</Text>
         <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
