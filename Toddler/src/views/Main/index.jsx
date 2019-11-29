@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import styles from './styles'
+import styles from './styles';
+import { topHeaderBG, topHeaderText } from '../../styles/colors';
 import Boards from '../../components/Board/Boards';
 import BoardToolbar from '../../components/Board/BoardToolbar';
 import InputModal from '../../components/Board/BoardModal';
@@ -14,9 +15,9 @@ class Main extends React.Component {
     return {
       title: 'Toddler Board',
       headerStyle: {
-        backgroundColor: '#f4511e',
+        backgroundColor: topHeaderBG,
       },
-      headerTintColor: '#fff',
+      headerTintColor: topHeaderText,
       headerTitleStyle: {
         fontWeight: 'bold',
       },

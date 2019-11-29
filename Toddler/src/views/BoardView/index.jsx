@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, View } from 'react-native';
 import { PropTypes } from 'prop-types'
 import styles from './styles';
+import { topHeaderBG, topHeaderText } from '../../styles/colors';
 import List from '../../components/List';
 import data from '../../resources/data';
 import ListHeader from '../../components/ListHeader';
@@ -12,9 +13,11 @@ class BoardView extends React.Component {
     return {
       title: navigation.getParam('Title', ''),
       headerStyle: {
-        backgroundColor: '#f4511e',
+        // backgroundColor: '#f4511e',
+        backgroundColor: topHeaderBG,
       },
-      headerTintColor: '#fff',
+      // headerTintColor: '#fff',
+      headerTintColor: topHeaderText,
       headerTitleStyle: {
         fontWeight: 'bold',
       },

@@ -4,10 +4,10 @@ import styles from './styles';
 import {PropTypes} from 'prop-types';
 
 const ListHeader = ({onCreate}) => (
-    <View>
-  <TouchableHighlight onPress={onCreate}>
-    <Text >Create a new board</Text>
-  </TouchableHighlight>
+  <View style={styles.container}>
+    <TouchableHighlight onPress={onCreate}>
+      <Text style={styles.texy}>Create a new Task</Text>
+    </TouchableHighlight>
   </View>
 );
 

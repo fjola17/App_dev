@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { imageText, boardBackColor, borderColor, imageBorder } from '../../../styles/colors';
+import { itemText, boardBackColor, borderColor, imageBorder } from '../../../styles/colors';
 
 export default StyleSheet.create({
   container: {
@@ -9,17 +9,17 @@ export default StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    borderWidth: 1,
-    borderColor: imageBorder,
+    // borderWidth: 1,
+    // borderColor: imageBorder,
   },
   itemName: {
-    color: imageText,
+    color: itemText,
     fontSize: 18,
     fontWeight: 'bold',
     lineHeight: 30,
   },
   itemDetail: {
-    color: imageText,
+    color: itemText,
     fontSize: 16,
     fontWeight: 'normal',
     lineHeight: 20,

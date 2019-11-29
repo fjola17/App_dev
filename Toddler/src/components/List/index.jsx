@@ -22,7 +22,7 @@ class List extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.state.name}</Text>
+        <Text style={styles.titleText}>{this.state.name}</Text>
         <FlatList
           numColumns={1}
           data={this.state.tasks}

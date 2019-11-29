@@ -17,8 +17,15 @@ class Task extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.state.name}</Text>
-        <Text>{this.state.description}</Text>
+        <View style={styles.itemContainer}>
+          {/* <View styles={styles.iconView}>
+            <Text style={{color: 'red'}}>Icon</Text>
+          </View> */}
+          <View styles={styles.textView}>
+            <Text style={styles.itemName}>{this.state.name}</Text>
+            <Text style={styles.itemDetail}>{this.state.description}</Text>
+          </View>
+          </View>
       </View>
     );
   }

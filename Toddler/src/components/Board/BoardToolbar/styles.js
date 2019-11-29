@@ -11,6 +11,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     flexDirection: 'row',
+    paddingHorizontal: 15,
   },
   texy: {
     color: headerTextColor,
