@@ -1,6 +1,5 @@
 import React from 'react';
-import { Entypo } from '@expo/vector-icons';
-import { View, TextInput, Text, TouchableOpacity } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity, Button } from 'react-native';
 import { ControlledVerticalPicker } from 'react-native-color-picker';
 class ListInput extends React.Component{
   constructor(props){
@@ -13,15 +12,24 @@ class ListInput extends React.Component{
     boardId: -1,
 
   }
+  componentDidMount(){
+    this.setState({boardId: 1});
+  }
   render(){
+    const {name, color} = this.state;
+    console.log(this.state)
+    let disabled = false;
+    if(!name){
+      disabled = true;
+    }
     return(
     <View>
         <Text>Name</Text>
-        <TextInput placeholder="Temporary name"/>
-        <Text>Description</Text>
-        <TextInput placeholder="Temporary Description"/>
+        <TextInput placeholder="Temporary name" onChangeText={ (value) => this.setState({name:value}) } value={name}/>
         <Text>Color</Text>
-        <TouchableOpacity><Text>Submit the info</Text></TouchableOpacity>   
+        <TouchableOpacity disabled={disabled}onPress={() => this.props.create(this.state)}>
+          <Text>Submit the info</Text>  
+        </TouchableOpacity>
     </View>
     )
   }
