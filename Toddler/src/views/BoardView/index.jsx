@@ -23,6 +23,7 @@ class BoardView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.navigation.getParam('ListId', 0),
       list: data.lists,
       tasks: data.tasks,
       isModalOpen: false,
@@ -31,6 +32,8 @@ class BoardView extends React.Component {
   componentDidMount(){
     const { navigation } = this.props;
     const id = navigation.getParam('ListId', '')
+    console.log( this.props );
+    console.log( 'id: ', id )
   }
   create(val){
     console.log(val)
@@ -47,7 +50,7 @@ class BoardView extends React.Component {
         <ListModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false })} list={{}} create={(data) => this.create(data)}/>
         <FlatList
           horizontal
-          data={[...(list).filter((listi) => listi.boardId === 1)]}
+          data={[...(list).filter((listi) => listi.boardId === this.state.id)]}
           renderItem={({ item }) => (
             <List
               id={item.id}
