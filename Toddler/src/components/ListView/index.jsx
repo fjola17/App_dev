@@ -35,7 +35,7 @@ ListView.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
-    done: PropTypes.bool.isRequired,
+    isFinished: PropTypes.bool.isRequired,
   })).isRequired,
   remove: PropTypes.func.isRequired,
 };

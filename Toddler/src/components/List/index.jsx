@@ -27,13 +27,15 @@ class List extends React.Component {
       color,
       // boardId,
       tasks,
+      maxid: tasks.length,
     });
   }
 
   create(data) {
-    const { tasks } = this.state;
-    data.id = tasks.length + 1;
-    this.setState({ isModalOpen: false, tasks: [...tasks, data] });
+    const { tasks, maxid } = this.state;
+    // eslint-disable-next-line no-param-reassign
+    data.id = maxid + 1;
+    this.setState({ isModalOpen: false, tasks: [...tasks, data], maxid: data.id });
     this.props.tasks = tasks;
   }
 
@@ -43,10 +45,10 @@ class List extends React.Component {
     return (
       <View style={[styles.container, { backgroundColor: color }]}>
         <TouchableOpacity onPress={() => remove(id)}>
-          <Text>Delete list</Text>
+          <Text style={styles.titleText}>Delete list</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.setState({ isModalOpen: true })}>
-          <Text>Create a new task</Text>
+          <Text style={styles.titleText}>Create a new task</Text>
         </TouchableOpacity>
         <TaskCreator
           isOpen={isModalOpen}
