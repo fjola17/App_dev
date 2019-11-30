@@ -30,11 +30,10 @@ class Task extends React.Component {
       <TouchableOpacity>
         <View style={styles.container}>
           <View style={styles.itemContainer}>
-          {/* <View styles={styles.iconView}>
-            <Text style={{color: 'red'}}>Icon</Text>
-          </View> */}
-            <View styles={styles.textView}>
+            <View style={styles.iconView}>
               <Switch onValueChange={this.toggleSwitch} value={this.state.switchValue} />
+            </View>
+            <View style={styles.textView}>
               <Text style={styles.itemName}>{this.state.name}</Text>
               <Text style={styles.itemDetail}>{this.state.description}</Text>
             </View>

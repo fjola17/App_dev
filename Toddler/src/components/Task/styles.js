@@ -6,7 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     backgroundColor: boardBackColor,
-    paddingLeft: 20,
+    paddingLeft: 5,
     paddingRight: 20,
     paddingTop: 5,
     paddingBottom: 10,
@@ -34,9 +34,7 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
   },
   iconView: {
-    flex: 1,
-    // alignItems: 'flex-start',
-    // paddingHorizontal: 10,
+    alignContent: 'flex-start',
   },
   textView: {
     flex: 1,

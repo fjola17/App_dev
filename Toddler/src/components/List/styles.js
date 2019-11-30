@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { mainColor, imageBorder, itemText } from '../../styles/colors';
+import { mainColor, imageBorder, itemText, borderColor } from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
@@ -7,7 +7,8 @@ export default StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     backgroundColor: mainColor,
-
+    borderWidth: 1,
+    borderColor: borderColor,
   },
   titleText: {
     // flex: 1,

@@ -28,10 +28,20 @@ class ListInput extends React.Component{
     return(
     <View>
         <Text>Name</Text>
-        <TouchableOpacity disabled={disabled}onPress={() => this.props.create(this.state)}>
-          <Text>Submit the info</Text>  
-        </TouchableOpacity>
         <TextInput placeholder="Temporary name" onChangeText={ (value) => this.setState({name:value}) } value={name}/>        
+        <TouchableOpacity disabled={disabled}onPress={() => this.props.create(this.state)}>
+          <Text style={{
+            fontWeight: 'bold', 
+            fontSize: 16, 
+            color: 'white',
+            paddingTop: 5,
+            paddingBottom: 5,
+            paddingHorizontal: 10,
+            borderRadius: 10,
+            borderColor: 'white',
+            borderWidth: 1,
+            backgroundColor: 'green'}}>Submit the info</Text>  
+        </TouchableOpacity>
         <ColorPicker onColorChange={(color) => this.onColorChange(fromHsv(color))}/>
 
     </View>

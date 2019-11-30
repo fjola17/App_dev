@@ -9,10 +9,10 @@ const BoardToolbar = ({ onCreate, onUpdate, onDelete, hasSelectedImages }) => (
       <Text style={styles.texy}>Create a new board</Text>
     </TouchableHighlight>
     <TouchableHighlight onPress={onUpdate} style={styles.toolbar} disabled={!hasSelectedImages}>
-      <Text style={[styles.texy, !hasSelectedImages ? { color: 'rgba(155, 155, 155, .5)' } : {}]}>Update</Text>
+      <Text style={[styles.texy, !hasSelectedImages ? { color: 'rgba(200, 200, 200, .7)' } : {}]}>Update</Text>
     </TouchableHighlight>
     <TouchableHighlight onPress={onDelete} style={styles.toolbar} disabled={!hasSelectedImages}>
-      <Text style={[styles.texy, !hasSelectedImages ? { color: 'rgba(155, 155, 155, .5)' } : {}]}>Delete selected</Text>
+      <Text style={[styles.texy, !hasSelectedImages ? { color: 'rgba(200, 200, 200, .7)' } : {}]}>Delete selected</Text>
     </TouchableHighlight>
   </View>
 );
