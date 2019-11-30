@@ -11,6 +11,6 @@ export default StyleSheet.create({
       borderRadius: 10,
       borderColor: 'white',
       borderWidth: 1,
-      backgroundColor: 'green'
+      backgroundColor: 'green',
   },
 });
