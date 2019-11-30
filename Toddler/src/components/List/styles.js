@@ -8,7 +8,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: mainColor,
     borderWidth: 1,
-    borderColor: borderColor,
+    borderColor,
     width: Dimensions.get('window').width,
   },
   titleText: {

@@ -79,12 +79,12 @@ class BoardInput extends React.Component {
 
 BoardInput.propTypes = {
   create: PropTypes.func.isRequired,
-  /*board: PropTypes.shape({
+  board: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
     description: PropTypes.string,
     thumbnailPhoto: PropTypes.string,
-  }),*/
+  }).isRequired,
 };
 
 export default BoardInput;

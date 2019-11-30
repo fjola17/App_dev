@@ -33,10 +33,10 @@ class ListInput extends React.Component {
     }
     return (
       <View>
-        <Text>Name</Text>
         <TouchableOpacity disabled={disabled} onPress={() => create(this.state)}>
           <Text style={[styles.button, disabled ? { color: 'rgba(155, 155, 155, .5)' } : {}]}>Create</Text>
         </TouchableOpacity>
+        <Text>Name</Text>
         <TextInput placeholder="Temporary name" onChangeText={(value) => this.setState({ name: value })} value={name} />
         <ColorPicker onColorChange={(color) => this.onColorChange(fromHsv(color))} />
       </View>

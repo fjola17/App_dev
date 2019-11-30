@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   button: {
-    fontWeight: 'bold', 
-    fontSize: 16, 
+    fontWeight: 'bold',
+    fontSize: 16,
     color: 'white',
     paddingTop: 5,
     paddingBottom: 5,

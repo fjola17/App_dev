@@ -40,7 +40,7 @@ class BoardView extends React.Component {
     const { list, maxId } = this.state;
     // eslint-disable-next-line no-param-reassign
     val.id = maxId + 1;
-    this.setState({ list: [...list, val], isModalOpen: false });
+    this.setState({ list: [...list, val], isModalOpen: false, maxId: val.id });
   }
 
   remove(id) {
