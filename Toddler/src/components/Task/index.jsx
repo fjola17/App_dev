@@ -33,6 +33,7 @@ class Task extends React.Component {
         <View style={styles.container}>
           <View style={styles.itemContainer}>
             <View style={styles.iconView}>
+              <Text>Finished</Text>
               <Switch onValueChange={() => this.toggleSwitch()} value={isFinished} />
             </View>
             <View style={styles.textView}>

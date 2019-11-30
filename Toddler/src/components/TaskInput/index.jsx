@@ -40,6 +40,7 @@ class TaskInput extends React.Component {
           onChangeText={(text) => this.setState({ description: text })}
           value={description}
         />
+        <Text>Finished</Text>
         <Switch onValueChange={() => this.toggleSwitch()} value={isFinished} />
         <TouchableOpacity disabled={disabled} onPress={() => create(this.state)}>
           <Text style={[styles.button, disabled ? { color: 'rgba(155, 155, 155, .5)' } : {}]}>Create</Text>
