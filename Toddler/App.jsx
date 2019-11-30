@@ -1,22 +1,11 @@
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Main from './src/views/Main';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// import { StyleSheet, View } from 'react-native';
+import Routes from './src/routes';
 
 export default function App() {
   return (
-    <View>
-      <Main />
-    </View>
-
+    // Main route controller
+    <Routes />
   );
 }
