@@ -1,14 +1,10 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { itemText, borderColor, boardBackColor } from '../../styles/colors';
-import { readDirectoryAsync } from 'expo-file-system';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
     alignItems: 'flex-start',
-    // justifyContent: 'space-around',
-    // backgroundColor: mainColor,
     backgroundColor: boardBackColor,
     paddingLeft: 20,
     paddingRight: 20,

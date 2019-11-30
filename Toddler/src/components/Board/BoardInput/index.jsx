@@ -1,6 +1,6 @@
 import React from 'react';
-import { Entypo } from '@expo/vector-icons';
-import { View, TextInput, Text, Image, TouchableOpacity, Button } from 'react-native';
+import { PropTypes } from 'prop-types'
+import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
 import { takePhoto, selectFromCameraRoll } from '../../../services/ImageService';
 import { addImage } from '../../../services/FileService';
 
@@ -18,53 +18,71 @@ class BoardInput extends React.Component {
   }
 
   componentDidMount() {
-    const{ id, name, description, thumbnailPhoto } = this.props.board;
-    if(id){
-      this.setState({id: id});
+    const { board } = this.props;
+    const { id, name, description, thumbnailPhoto } = board;
+    if (id) {
+      this.setState({ id });
     }
-    if(thumbnailPhoto){
-        this.setState({thumbnailPhoto: thumbnailPhoto});
+    if (thumbnailPhoto) {
+      this.setState({ thumbnailPhoto});
     }
-    if(name){
-      this.setState({name: name});
+    if (name) {
+      this.setState({ name });
     }
-    if(description){
-      this.setState({description: description});
+    if (description) {
+      this.setState({ description });
     }
   }
-  async takePhoto(){
+
+  async takePhoto() {
     const photo = await takePhoto();
-    if(photo.lenght > 0){ await this.addImage(photo); }
+    if (photo.lenght > 0) {
+      await this.addImage(photo);
+    }
   }
-  async selectFromCameraRoll(){
+
+  async selectFromCameraRoll() {
     const photo = await selectFromCameraRoll();
     if (photo.length > 0) { await this.addImage(photo); }
   }
+
   async addImage(imageLocation) {
     const newImage = await addImage(imageLocation);
     this.setState({thumbnailPhoto: newImage.file});
   }
-  render(){
-    const {id, name, thumbnailPhoto, description} = this.state;
-    const board = {id: id, name: name, thumbnailPhoto: thumbnailPhoto, description: description};
+
+  render() {
+    const { id, name, thumbnailPhoto, description } = this.state;
+    const board = { id, name, thumbnailPhoto, description };
+    const { create } = this.props;
     let disabled = false;
-    if(!name){
+    if (!name) {
       disabled = true;
     }
-    return(
+    return (
       <View style={styles.view}>
         <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
           <Text style={styles.data}>Change current image</Text>
-          <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />
+          <Image style={styles.babyyoda} source={{ uri: thumbnailPhoto }} />
         </TouchableOpacity>
         <Text style={styles.data}>Name</Text>
-        <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value}) } value={name} />
+        <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({ name: value })} value={name} />
         <Text style={styles.data}>Description</Text>
-        <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
-        <TouchableOpacity disabled={disabled} onPress={()=> this.props.create(board) }><Text style={styles.button}>Confirm</Text></TouchableOpacity>
+        <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({ description: text })} value={description} />
+        <TouchableOpacity disabled={disabled} onPress={() => create(board)}><Text style={styles.button}>Confirm</Text></TouchableOpacity>
       </View>
     );
-  };
+  }
+}
+
+BoardInput.propTypes = {
+  create: PropTypes.func.isRequired,
+  board: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    thumbnailPhoto: PropTypes.string,
+  }).isRequired,
 };
 
 export default BoardInput;

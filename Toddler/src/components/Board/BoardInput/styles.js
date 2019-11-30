@@ -9,6 +9,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   button: {
-    color: "red",
-  }
+    color: 'red',
+  },
 });

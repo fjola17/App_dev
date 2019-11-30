@@ -22,13 +22,16 @@ class Main extends React.Component {
       },
     };
   };
-  state = {
-    selectedBoards : [],
-    board: board,
-    isModalOpen: false,
-    availableBoard: {},
-    hasSelectedImages: false,
-    maxlenght: board.length,
+  constructor(props){
+    super(props);
+      this.state = {
+      selectedBoards : [],
+      board: board,
+      isModalOpen: false,
+      availableBoard: {},
+      hasSelectedImages: false,
+      maxlenght: board.length,
+    }
   }
 
   onBoardLongPress(id){

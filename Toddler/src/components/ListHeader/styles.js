@@ -9,7 +9,6 @@ export default StyleSheet.create({
     backgroundColor: headerColor,
     // padding: 10,
     alignItems: 'center',
-    justifyContent: 'space-around',
     justifyContent: 'flex-start',
     // paddingStart: 10,
     paddingHorizontal: 20,

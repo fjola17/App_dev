@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { mainColor, boardBackColor, imageBorder, itemText } from '../../styles/colors';
+import { mainColor, imageBorder, itemText } from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: boardBackColor,
     justifyContent: 'flex-start',
     backgroundColor: mainColor,
 
