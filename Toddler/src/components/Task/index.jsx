@@ -30,8 +30,8 @@ class Task extends React.Component {
           {/* <View styles={styles.iconView}>
             <Text style={{color: 'red'}}>Icon</Text>
           </View> */}
-          <View styles={styles.textView}>
             <Switch onValueChange={this.toggleSwitch} value={this.state.switchValue} />
+          <View styles={styles.textView}>
             <Text style={styles.itemName}>{this.state.name}</Text>
             <Text style={styles.itemDetail}>{this.state.description}</Text>
           </View>
