@@ -5,13 +5,12 @@ import { ColorPicker, fromHsv } from 'react-native-color-picker';
 class ListInput extends React.Component{
   constructor(props){
     super(props);
-  }
-  state = {
-    id: -1,
-    name: '',
-    color: '',
-    boardId: -1,
-
+    this.state = {
+      id: -1,
+      name: '',
+      color: '',
+      boardId: -1,
+    }
   }
   componentDidMount(){
     this.setState({boardId: this.props.listid});

@@ -1,10 +1,11 @@
 import React from 'react'
-import { Text} from 'react-native';
 import Modal from '../Modal';
-//import TaskInput from 
+import TaskInput from '../TaskInput';
 
-const TaskCreator = ({isOpen, closeModal, id}) => (
-    <Modal isOpen={isOpen} closeModal={closeModal}><Text>Guay</Text></Modal>
+const TaskCreator = ({isOpen, closeModal, id, create}) => (
+    <Modal isOpen={isOpen} closeModal={closeModal}>
+        <TaskInput id={id} create={create}/>
+    </Modal>
 )
 
 export default TaskCreator;

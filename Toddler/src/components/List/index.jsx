@@ -5,6 +5,7 @@ import styles from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import TaskCreator from '../TaskCreator';
 
+
 class List extends React.Component {
   constructor(props) {
     super(props);
@@ -18,20 +19,19 @@ class List extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log('This is List');
-  }
-  createTask(){
-
+  create(id){
+    const {tasks} = this.props;
+    id.id = this.state.tasks.length + 1;
+    this.setState({isModalOpen: false, tasks: [...tasks, id]});
+    console.log(this.state.tasks);
   }
   render() {
     const {id, color} = this.state;
-
     return (
       <View style={[styles.container, {backgroundColor:color}]}>
         <TouchableOpacity onPress={() => this.props.remove(this.state.id)}><Text>Delete list</Text></TouchableOpacity>
         <TouchableOpacity onPress={() => this.setState({isModalOpen: true})}><Text>Create a new task</Text></TouchableOpacity>
-        <TaskCreator isOpen={this.state.isModalOpen} closeModal={() => this.setState({isModalOpen: false})} id={id}/>
+        <TaskCreator isOpen={this.state.isModalOpen} closeModal={() => this.setState({isModalOpen: false})} id={id} create={(data) => this.create(data)}/>
         <Text style={styles.titleText}>{this.state.name}</Text>
         <FlatList
           numColumns={1}

@@ -6,7 +6,7 @@ import {PropTypes} from 'prop-types';
 const ListHeader = ({onCreate}) => (
   <View style={styles.container}>
     <TouchableHighlight onPress={onCreate}>
-      <Text style={styles.texy}>Create a new Task</Text>
+      <Text style={styles.texy}>Create a new List</Text>
     </TouchableHighlight>
   </View>
 );
