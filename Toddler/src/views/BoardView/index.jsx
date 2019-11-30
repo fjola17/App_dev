@@ -51,7 +51,6 @@ class BoardView extends React.Component {
   render() {
     const { id, list, tasks } = this.state;
     data.lists = list;
-    data.tasks = tasks
     
     return (
       <View style={styles.container}>
