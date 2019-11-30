@@ -35,6 +35,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     // justifyContent: 'space-around',
     alignItems: 'center',
+    paddingHorizontal: 20,
   },
   iconView: {
     flex: 1,
@@ -45,6 +46,7 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-around',
+    // paddingHorizontal: 20,
   },
   checkmark: {
     position: 'absolute',
