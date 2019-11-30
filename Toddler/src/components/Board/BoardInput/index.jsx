@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'prop-types'
+import { PropTypes } from 'prop-types';
 import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
 import { takePhoto, selectFromCameraRoll } from '../../../services/ImageService';
 import { addImage } from '../../../services/FileService';
@@ -24,7 +24,7 @@ class BoardInput extends React.Component {
       this.setState({ id });
     }
     if (thumbnailPhoto) {
-      this.setState({ thumbnailPhoto});
+      this.setState({ thumbnailPhoto });
     }
     if (name) {
       this.setState({ name });
@@ -48,7 +48,7 @@ class BoardInput extends React.Component {
 
   async addImage(imageLocation) {
     const newImage = await addImage(imageLocation);
-    this.setState({thumbnailPhoto: newImage.file});
+    this.setState({ thumbnailPhoto: newImage.file });
   }
 
   render() {
@@ -66,10 +66,12 @@ class BoardInput extends React.Component {
           <Image style={styles.babyyoda} source={{ uri: thumbnailPhoto }} />
         </TouchableOpacity>
         <Text style={styles.data}>Name</Text>
-        <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({ name: value })} value={name} />
+        <TextInput placeholder="Please enter a name for your board" onChangeText={(value) => this.setState({ name: value })} value={name} />
         <Text style={styles.data}>Description</Text>
         <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({ description: text })} value={description} />
-        <TouchableOpacity disabled={disabled} onPress={() => create(board)}><Text style={styles.button}>Confirm</Text></TouchableOpacity>
+        <TouchableOpacity disabled={disabled} onPress={() => create(board)}>
+          <Text style={styles.button}>Confirm</Text>
+        </TouchableOpacity>
       </View>
     );
   }

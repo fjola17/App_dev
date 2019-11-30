@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { View, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import TaskView from '../TaskView';
 import styles from './styles';
 import TaskCreator from '../TaskCreator';
-
 
 class List extends React.Component {
   constructor(props) {
