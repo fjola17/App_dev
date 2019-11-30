@@ -53,10 +53,11 @@ class Main extends React.Component {
     if (dat.id !== -1) {
       const newboard = board;
       newboard[dat.id - 1] = dat;
-      const filter = selectedBoards.filter((brd) => brd !== data.id);
-      this.setState({ isModalOpen: false, board: newboard, selectedBoards: filter });
+      selectedBoards.pop();
+      this.setState({ isModalOpen: false, board: newboard, selectedBoards });
     } else {
-      data.id = maxlenght + 1;
+      // eslint-disable-next-line no-param-reassign
+      dat.id = maxlenght + 1;
       this.setState({ isModalOpen: false, board: [...board, dat], maxlenght: data.id });
     }
   }
