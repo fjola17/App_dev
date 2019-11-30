@@ -2,6 +2,7 @@ import * as FileSystem from 'expo-file-system';
 
 const imageDirectory = `${FileSystem.documentDirectory}images`;
 
+// eslint-disable-next-line consistent-return
 const onException = (cb, errorHandler) => {
   try {
     return cb();
@@ -11,7 +12,9 @@ const onException = (cb, errorHandler) => {
     }
   }
 };
-export const cleanDirectory = async () =>   await FileSystem.deleteAsync(imageDirectory);
+export const cleanDirectory = async () => {
+  await FileSystem.deleteAsync(imageDirectory);
+};
 
 const setupDirectory = async () => {
   const dir = await FileSystem.getInfoAsync(imageDirectory);
@@ -19,12 +22,11 @@ const setupDirectory = async () => {
     await FileSystem.makeDirectoryAsync(imageDirectory);
   }
 };
-export const copyFile = async (file, newLocation) => {
-  return FileSystem.copyAsync({
-    from: file,
-    to: newLocation,
-  });
-};
+export const copyFile = async (file, newLocation) => FileSystem.copyAsync({
+  from: file,
+  to: newLocation,
+});
+
 
 const loadImage = async (fileName) => {
   await setupDirectory(); // check if directory already exists

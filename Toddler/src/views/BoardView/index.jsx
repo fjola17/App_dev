@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { PropTypes } from 'prop-types';
 import styles from './styles';
 import { topHeaderBG, topHeaderText } from '../../styles/colors';
 import data from '../../resources/data';
@@ -69,11 +68,5 @@ class BoardView extends React.Component {
     );
   }
 }
-
-BoardView.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 export default BoardView;

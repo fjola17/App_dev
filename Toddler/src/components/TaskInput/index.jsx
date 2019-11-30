@@ -1,6 +1,7 @@
 import React from 'react';
-import { TextInput, View, Text, TouchableOpacity } from 'react-native';
+import { TextInput, View, Text, TouchableOpacity, Switch } from 'react-native';
 import PropTypes from 'prop-types';
+import styles from './styles';
 
 class TaskInput extends React.Component {
   constructor(props) {
@@ -10,13 +11,20 @@ class TaskInput extends React.Component {
       id: -1,
       name: '',
       description: '',
-      done: false,
+      isFinished: false,
       Listid: id,
+      switchValue: true,
     };
   }
 
+  toggleSwitch(value) {
+    const { isFinished } = this.state;
+    this.setState({ switchValue: value });
+    this.setState({ isFinished: !isFinished });
+  }
+
   render() {
-    const { name, description } = this.state;
+    const { name, description, isFinished } = this.state;
     const { create } = this.props;
     let disabled = false;
     if (!name) {
@@ -32,8 +40,9 @@ class TaskInput extends React.Component {
           onChangeText={(text) => this.setState({ description: text })}
           value={description}
         />
+        <Switch onValueChange={() => this.toggleSwitch()} value={isFinished} />
         <TouchableOpacity disabled={disabled} onPress={() => create(this.state)}>
-          <Text>Create</Text>
+          <Text style={[styles.button, disabled ? { color: 'rgba(155, 155, 155, .5)' } : {}]}>Create</Text>
         </TouchableOpacity>
       </View>
     );

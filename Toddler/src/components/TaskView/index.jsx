@@ -2,7 +2,6 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-named-as-default
-// eslint-disable-next-line import/no-named-as-default-member
 import Task from '../Task';
 
 const TaskView = ({ tasks }) => (
@@ -27,7 +26,7 @@ TaskView.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
-    done: PropTypes.bool.isRequired,
+    isFinished: PropTypes.bool.isRequired,
   })).isRequired,
 };
 

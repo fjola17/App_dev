@@ -5,7 +5,9 @@ import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const BoardDetails = ({ id, name, photo, description, onBoardLongPress, isSelected, navigation: { navigate }}) => (
+const BoardDetails = ({
+  id, name, photo, description, onBoardLongPress, isSelected, navigation: { navigate },
+}) => (
   <TouchableOpacity
     onLongPress={() => onBoardLongPress(id)}
     style={styles.container}

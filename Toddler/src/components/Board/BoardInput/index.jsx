@@ -70,7 +70,7 @@ class BoardInput extends React.Component {
         <Text style={styles.data}>Description</Text>
         <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({ description: text })} value={description} />
         <TouchableOpacity disabled={disabled} onPress={() => create(board)}>
-          <Text style={styles.button}>Confirm</Text>
+          <Text style={[styles.button, disabled ? { color: 'rgba(155, 155, 155, .5)' } : {}]}>Confirm</Text>
         </TouchableOpacity>
       </View>
     );
