@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TextInput, Text, TouchableOpacity, Button } from 'react-native';
-import { ColorPicker } from 'react-native-color-picker';
+import { ColorPicker, fromHsv } from 'react-native-color-picker';
+
 class ListInput extends React.Component{
   constructor(props){
     super(props);
@@ -8,7 +9,7 @@ class ListInput extends React.Component{
   state = {
     id: -1,
     name: '',
-    color: '#000000',
+    color: '',
     boardId: -1,
 
   }
@@ -16,11 +17,11 @@ class ListInput extends React.Component{
     this.setState({boardId: this.props.listid});
   }
   onColorChange(color){
-    this.setState({color: color})
+    this.setState({color:color})
   }
-
   render(){
-    const {name, color} = this.state;
+    const {name} = this.state;
+    console.log(this.state)
     let disabled = false;
     if(!name){
       disabled = true;
@@ -28,11 +29,11 @@ class ListInput extends React.Component{
     return(
     <View>
         <Text>Name</Text>
-        <TextInput placeholder="Temporary name" onChangeText={ (value) => this.setState({name:value}) } value={name}/>
         <TouchableOpacity disabled={disabled}onPress={() => this.props.create(this.state)}>
           <Text>Submit the info</Text>  
         </TouchableOpacity>
-        <ColorPicker onColorSelected={(color) => this.onColorChange(color)} />
+        <TextInput placeholder="Temporary name" onChangeText={ (value) => this.setState({name:value}) } value={name}/>        
+        <ColorPicker onColorChange={(color) => this.onColorChange(fromHsv(color))}/>
 
     </View>
     )

@@ -8,6 +8,8 @@
     "lint": "node ./node_modules/eslint/bin/eslint.js **/*.js"
   },
   "dependencies": {
+    "@davidmarkclements/hsl-to-hex": "^1.0.2",
+    "color-convert": "^2.0.1",
     "expo": "^35.0.0",
     "expo-file-system": "~7.0.0",
     "expo-image-picker": "~7.0.0",

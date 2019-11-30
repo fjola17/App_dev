@@ -9,7 +9,7 @@ const BoardDetails = ({ id, name, photo, description, onBoardLongPress, isSelect
   <TouchableOpacity
     onLongPress={() => onBoardLongPress(id)}
     style={styles.container}
-    onPress={() => navigate('BoardView', { ListId: id, Title: name })}
+    onPress={() => navigate('BoardView', { BoardId: id, Title: name })}
   >
     {
       isSelected ? <AntDesign name="checkcircleo" style={styles.checkmark} /> : <></>

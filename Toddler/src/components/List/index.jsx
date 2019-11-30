@@ -2,6 +2,7 @@ import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 import Task from '../Task';
 import styles from './styles';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class List extends React.Component {
   constructor(props) {
@@ -20,9 +21,14 @@ class List extends React.Component {
   }
 
   render() {
+    const {id, color} = this.state;
+
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>{this.state.name}</Text>
+        <TouchableOpacity onPress={() => this.props.remove(this.state.id)}><Text>Delete list</Text></TouchableOpacity>
+        <TouchableOpacity><Text>Create a new task</Text></TouchableOpacity>
+        <Text style={[styles.titleText, `backgroundColor=${this.state.color}`]}>{this.state.name}</Text>
+        <Text>{this.state.color}</Text>
         <FlatList
           numColumns={1}
           data={this.state.tasks}
