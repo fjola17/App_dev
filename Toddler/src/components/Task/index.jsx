@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Switch } from 'react-native';
 import styles from './styles';
 
 class Task extends React.Component {
@@ -11,7 +11,16 @@ class Task extends React.Component {
       description: this.props.description,
       isFinished: this.props.isFinished,
       listId: this.props.listId,
+      switchValue: this.props.isFinished,
     };
+  }
+
+  toggleSwitch = (value) => {
+    // console.log( 'toggleSwitch value: ', value )
+    // console.log( 'Before: this.state.isFinished: ', this.state.isFinished )
+    this.setState({switchValue: value })
+    this.setState({isFinished: !this.state.isFinished })
+    // console.log( 'Task: switch toggled: isFinished: ', this.state.isFinished )
   }
 
   render() {
@@ -22,6 +31,7 @@ class Task extends React.Component {
             <Text style={{color: 'red'}}>Icon</Text>
           </View> */}
           <View styles={styles.textView}>
+            <Switch onValueChange={this.toggleSwitch} value={this.state.switchValue} />
             <Text style={styles.itemName}>{this.state.name}</Text>
             <Text style={styles.itemDetail}>{this.state.description}</Text>
           </View>
