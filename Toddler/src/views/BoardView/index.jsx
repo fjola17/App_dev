@@ -39,6 +39,7 @@ class BoardView extends React.Component {
 
   create(val) {
     const { list, maxId } = this.state;
+    // eslint-disable-next-line no-param-reassign
     val.id = maxId + 1;
     this.setState({ list: [...list, val], isModalOpen: false });
   }
@@ -68,5 +69,11 @@ class BoardView extends React.Component {
     );
   }
 }
+
+BoardView.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default BoardView;

@@ -4,7 +4,7 @@ import { itemText, borderColor } from '../../../styles/colors';
 export default StyleSheet.create({
   container: {
     borderBottomWidth: 1,
-    borderColor: borderColor,
+    borderColor,
   },
   image: {
     width: 100,

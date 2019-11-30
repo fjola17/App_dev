@@ -7,10 +7,9 @@ import BoardToolbar from '../../components/Board/BoardToolbar';
 import InputModal from '../../components/Board/BoardModal';
 import data from '../../resources/data';
 
-const board = data.boards;
 
 class Main extends React.Component {
-  static navigationOptions = () => {
+  static navigationOptions() {
     return {
       title: 'Toddler Board',
       headerStyle: {
@@ -21,72 +20,83 @@ class Main extends React.Component {
         fontWeight: 'bold',
       },
     };
-  };
-  constructor(props){
-    super(props);
-      this.state = {
-      selectedBoards : [],
-      board: board,
-      isModalOpen: false,
-      availableBoard: {},
-      hasSelectedImages: false,
-      maxlenght: board.length,
-    }
   }
 
-  onBoardLongPress(id){
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedBoards: [],
+      board: data.boards,
+      isModalOpen: false,
+      availableBoard: {},
+      // hasSelectedImages: false,
+      maxlenght: data.boards.length,
+    };
+  }
+
+  onBoardLongPress(id) {
     const { selectedBoards } = this.state;
     if (selectedBoards.indexOf(id) !== -1) {
       // board is inside of the list
       this.setState({
-        selectedBoards: selectedBoards.filter((board) => board !== id)
-      })
+        selectedBoards: selectedBoards.filter((bo) => bo !== id),
+      });
     } else {
       this.setState({
-        selectedBoards: [ ...selectedBoards, id ]
+        selectedBoards: [...selectedBoards, id],
       });
     }
   }
-  create(data){
-    const {board, selectedBoards} = this.state;
-    if(data.id !== -1){
-      let newboard = board;
-      newboard[data.id -1] = data;
-      this.setState({ isModalOpen: false, board: newboard, selectedBoards : selectedBoards.filter(board => board !== data.id) });
+
+  create(dat) {
+    const { board, selectedBoards, maxlenght } = this.state;
+    if (dat.id !== -1) {
+      const newboard = board;
+      newboard[dat.id - 1] = dat;
+      const filter = selectedBoards.filter((brd) => brd !== data.id);
+      this.setState({ isModalOpen: false, board: newboard, selectedBoards: filter });
+    } else {
+      data.id = maxlenght + 1;
+      this.setState({ isModalOpen: false, board: [...board, dat], maxlenght: data.id });
     }
-    else{
-      data.id = this.state.maxlenght + 1;
-      this.setState({ isModalOpen: false, board: [...board, data], maxlenght: data.id });
-    }
-  }
-  clearSelected(){
-    this.setState({selectedBoards: []});
   }
 
   updateBoard() {
-    const { selectedBoards } = this.state;
+    const { selectedBoards, board } = this.state;
     // Get the most recent selected element from the list
     const currentBoard = selectedBoards[selectedBoards.length - 1];
-    this.setState({ isModalOpen:true, availableBoard: board[currentBoard - 1]});
+    this.setState({ isModalOpen: true, availableBoard: board[currentBoard - 1] });
   }
-  deleteMe(){
-    let {selectedBoards, board} = this.state;
+
+  deleteMe() {
+    const { selectedBoards, board } = this.state;
     this.setState({
       selectedBoards: [],
-      board: board.filter(img => selectedBoards.indexOf(img.id) === -1),
-    })
+      board: board.filter((img) => selectedBoards.indexOf(img.id) === -1),
+    });
   }
-// todo, only be able to select 1 board to update
 
   render() {
-    const { selectedBoards, availableBoard } = this.state;
+    const { selectedBoards, availableBoard, board, isModalOpen } = this.state;
     return (
-      <View style={ styles.container }>
-        <BoardToolbar onCreate={()=>this.setState({isModalOpen:true, availableBoard: {}})} onUpdate={()=>this.updateBoard()} onDelete={() => this.deleteMe()} hasSelectedImages={selectedBoards.length > 0} />
+      <View style={styles.container}>
+        <BoardToolbar
+          onCreate={() => this.setState({ isModalOpen: true, availableBoard: {} })}
+          onUpdate={() => this.updateBoard()}
+          onDelete={() => this.deleteMe()}
+          hasSelectedImages={selectedBoards.length > 0}
+        />
         <Boards
-          boards={this.state.board} onBoardLongPress={(id) => this.onBoardLongPress(id)}
-          selectedBoards={selectedBoards} />
-        <InputModal isOpen={this.state.isModalOpen} closeModal={ () => this.setState({ isModalOpen: false }) } board={availableBoard} create={(board) => this.create(board)}/>
+          boards={board}
+          onBoardLongPress={(id) => this.onBoardLongPress(id)}
+          selectedBoards={selectedBoards}
+        />
+        <InputModal
+          isOpen={isModalOpen}
+          closeModal={() => this.setState({ isModalOpen: false })}
+          board={availableBoard}
+          create={(aboard) => this.create(aboard)}
+        />
       </View>
     );
   }

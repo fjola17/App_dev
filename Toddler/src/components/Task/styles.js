@@ -11,7 +11,7 @@ export default StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 10,
     borderBottomWidth: 1,
-    borderColor: borderColor,
+    borderColor,
     width: Dimensions.get('window').width,
   },
   itemName: {

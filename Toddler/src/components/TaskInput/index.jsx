@@ -1,40 +1,38 @@
 import React from 'react';
-import {
-  TextInput, View, Text, TouchableOpacity
-} from 'react-native';
+import { TextInput, View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 class TaskInput extends React.Component {
   constructor(props) {
     super(props);
+    const { id } = props;
     this.state = {
       id: -1,
       name: '',
       description: '',
       done: false,
-      Listid: this.props.id,
-    }
-  }
-
-  componentDidMount() {
-    console.log('Hello there')
+      Listid: id,
+    };
   }
 
   render() {
-    if(!this.state.name) {
-      disabled = true
+    const { name, description } = this.state;
+    const { create } = this.props;
+    let disabled = false;
+    if (!name) {
+      disabled = true;
     }
     return (
       <View>
         <Text>Name</Text>
-        <TextInput placeholder="Name for your task" onChangeText={(name) => this.setState({ name: name })} value={this.state.name} />
+        <TextInput placeholder="Name for your task" onChangeText={(val) => this.setState({ name: val })} value={name} />
         <Text>Description</Text>
         <TextInput
           placeholder="Description for your task"
           onChangeText={(text) => this.setState({ description: text })}
-          value={this.state.description}
+          value={description}
         />
-        <TouchableOpacity onPress={() => this.props.create(this.state)}>
+        <TouchableOpacity disabled={disabled} onPress={() => create(this.state)}>
           <Text>Create</Text>
         </TouchableOpacity>
       </View>
@@ -43,11 +41,8 @@ class TaskInput extends React.Component {
 }
 
 TaskInput.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  description: PropTypes.string,
-  done: PropTypes.bool,
-  ListId: PropTypes.number,
-}
+  id: PropTypes.number.isRequired,
+  create: PropTypes.func.isRequired,
+};
 
 export default TaskInput;

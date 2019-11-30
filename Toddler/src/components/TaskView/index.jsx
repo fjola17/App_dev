@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-named-as-default
+// eslint-disable-next-line import/no-named-as-default-member
 import Task from '../Task';
 
-const TaskView = ({id, tasks}) => (
+const TaskView = ({ tasks }) => (
   <FlatList
     numColumns={1}
     data={tasks}
@@ -21,11 +23,12 @@ const TaskView = ({id, tasks}) => (
 );
 
 TaskView.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  isFinished: PropTypes.bool.isRequired,
-  listId: PropTypes.number.isRequired,
-}
+  tasks: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    done: PropTypes.bool.isRequired,
+  })).isRequired,
+};
 
 export default TaskView;

@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../Modal';
 import TaskInput from '../TaskInput';
 
 const TaskCreator = ({
-  isOpen, closeModal, id, create
+  isOpen, closeModal, id, create,
 }) => (
   <Modal isOpen={isOpen} closeModal={closeModal}>
     <TaskInput id={id} create={create} />
@@ -12,10 +12,10 @@ const TaskCreator = ({
 );
 
 TaskCreator.propTypes = {
-  isOpen: PropTypes.bool,
-  closeModal: PropTypes.func,
-  id: PropTypes.number,
-  create: PropTypes.func,
-}
+  isOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  create: PropTypes.func.isRequired,
+};
 
 export default TaskCreator;
