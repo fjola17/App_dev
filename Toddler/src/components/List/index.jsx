@@ -3,6 +3,7 @@ import { View, FlatList, Text } from 'react-native';
 import Task from '../Task';
 import styles from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import TaskCreator from '../TaskCreator';
 
 class List extends React.Component {
   constructor(props) {
@@ -13,22 +14,25 @@ class List extends React.Component {
       color: this.props.color,
       boardId: this.props.boardId,
       tasks: this.props.tasks,
+      isModalOpen: false,
     };
   }
 
   componentDidMount() {
     console.log('This is List');
   }
+  createTask(){
 
+  }
   render() {
     const {id, color} = this.state;
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {backgroundColor:color}]}>
         <TouchableOpacity onPress={() => this.props.remove(this.state.id)}><Text>Delete list</Text></TouchableOpacity>
-        <TouchableOpacity><Text>Create a new task</Text></TouchableOpacity>
-        <Text style={[styles.titleText, `backgroundColor=${this.state.color}`]}>{this.state.name}</Text>
-        <Text>{this.state.color}</Text>
+        <TouchableOpacity onPress={() => this.setState({isModalOpen: true})}><Text>Create a new task</Text></TouchableOpacity>
+        <TaskCreator isOpen={this.state.isModalOpen} closeModal={() => this.setState({isModalOpen: false})} id={id}/>
+        <Text style={styles.titleText}>{this.state.name}</Text>
         <FlatList
           numColumns={1}
           data={this.state.tasks}

@@ -1,17 +1,14 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import { mainColor, boardBackColor, borderColor, imageBorder, itemText } from '../../styles/colors';
+import { StyleSheet } from 'react-native';
+import { mainColor, boardBackColor, imageBorder, itemText } from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
     backgroundColor: boardBackColor,
-    // flexDirection: 'column',
     justifyContent: 'flex-start',
-    // alignItems: 'center',
     backgroundColor: mainColor,
-    // backgroundColor: boardBackColor,
-    // width: Dimensions.get('window').width,
+
   },
   titleText: {
     // flex: 1,

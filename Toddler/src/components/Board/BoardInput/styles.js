@@ -5,7 +5,10 @@ export default StyleSheet.create({
     height: 100,
     width: 150,
   },
-  img: {
-    fontSize: 50,
+  data: {
+    fontWeight: 'bold',
   },
+  button: {
+    color: "red",
+  }
 });

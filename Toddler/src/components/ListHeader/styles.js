@@ -18,8 +18,6 @@ export default StyleSheet.create({
   texy: {
     color: headerTextColor,
     fontWeight: '700',
-    // justifyContent: 'space-around',
-    // padding: 30,
   },
   bg: {
     top: 10,

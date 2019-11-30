@@ -1,6 +1,6 @@
 import React from 'react';
 import { Entypo } from '@expo/vector-icons';
-import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, Button } from 'react-native';
 import { takePhoto, selectFromCameraRoll } from '../../../services/ImageService';
 import { addImage } from '../../../services/FileService';
 
@@ -52,13 +52,16 @@ class BoardInput extends React.Component {
       disabled = true;
     }
     return(
-      <View>
-        <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />
-        <TouchableOpacity onPress={() => this.selectFromCameraRoll()}><Entypo style={styles.img} name="image" /><Text>Change image</Text></TouchableOpacity>
+      <View style={styles.view}>
+        <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
+          <Text style={styles.data}>Change current image</Text>
+          <Image style={styles.babyyoda} source={{uri: thumbnailPhoto}} />
+        </TouchableOpacity>
+        <Text style={styles.data}>Name</Text>
         <TextInput placeholder="Please enter a name for your board" onChangeText={ (value) => this.setState({name:value}) } value={name} />
-        <Text>Board name must be at least 2 character</Text>
+        <Text style={styles.data}>Description</Text>
         <TextInput placeholder="Please enter a description for your board" onChangeText={(text) => this.setState({description:text})} value={this.state.description} />
-        <TouchableOpacity disabled={disabled} onPress={()=> this.props.create(board) }><Text>Confirm</Text></TouchableOpacity>
+        <TouchableOpacity disabled={disabled} onPress={()=> this.props.create(board) }><Text style={styles.button}>Confirm</Text></TouchableOpacity>
       </View>
     );
   };
