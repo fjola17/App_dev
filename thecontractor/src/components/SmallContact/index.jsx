@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { TouchableOpacity, View, Image, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
@@ -13,12 +13,17 @@ class SmallContact extends React.Component {
     };
   }
 
+  /*
+  onPress = () => {
+    // TODO: Navigate to Contact Details
+  }*/
+
   render() {
     const { name, image } = this.state;
     return (
-      <View style={styles.container}>
-        <Image styles={styles.image} source={{ uri: image }} />
-        <Text style={styles.name}>{name}</Text>
+      <View>
+        <Image style={styles.image} source={{ uri: image }} />
+        <Text style={styles.text}>{name}</Text>
       </View>
     );
   }
