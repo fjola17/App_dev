@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { impDark, impLighterDark, impRed, impWhite } from '../../styles/colors';
+import { impBlack, impDark, impLighterDark, impRed, impWhite, impOrange, impBlasterGreen } from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: impDark,
-    alignItems: 'center',
+    backgroundColor: impBlack,
   },
   textHeader: {
     color: impRed,
@@ -24,5 +23,8 @@ export default StyleSheet.create({
     fontSize: 14,
     fontWeight: 'normal',
     lineHeight: 30,
+  },
+  safeArea: {
+      backgroundColor: impDark,
   },
 });

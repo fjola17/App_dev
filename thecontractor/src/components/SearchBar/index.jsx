@@ -13,13 +13,15 @@ class SearchBar extends React.Component {
   render() {
     const { input } = this.state;
     return (
-      <View>
+      <View style={styles.container}>
         <TextInput
           placeholder="Search string"
+          placeholderTextColor="white"
           onChangeText={(val) => this.setState({ input: val })}
           value={input}
+          style={styles.textSearchBox}
         />
-        <TouchableOpacity><Text>Search</Text></TouchableOpacity>
+        <TouchableOpacity><Text style={styles.textSearchHeader}>Search</Text></TouchableOpacity>
       </View>
     );
   }

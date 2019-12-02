@@ -24,4 +24,7 @@ export default StyleSheet.create({
     fontWeight: 'normal',
     lineHeight: 30,
   },
+  safeArea: {
+      backgroundColor: impDark,
+  },
 });
