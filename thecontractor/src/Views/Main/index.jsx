@@ -19,11 +19,10 @@ class Main extends React.Component {
       <SmallContact key={name} name={name} image={image} />
     ));
     return (
-      console.log('Main: contacts: ', contacts),
-        <View>
-          <SearchBar contacts={contacts} />
-          {result}
-        </View>
+      <View>
+        <SearchBar contacts={contacts} />
+        {result}
+      </View>
     );
   }
 }
