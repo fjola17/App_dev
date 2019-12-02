@@ -6,4 +6,5 @@ export const impRed = '#ed424d';
 export const impBlasterRed = '#f23207';
 export const impOrange = '#e08e1a';
 export const impWhite = '#f9f9f9';
-// export const impDark = '#333';
+export const impSaberBlue = '#50b2c0';
+export const impBlasterGreen = '#50bf78';
