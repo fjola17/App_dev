@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import SearchBar from '../../components/SearchBar';
 import SmallContact from '../../components/SmallContact';
 import data from '../../resources/contacts';
@@ -15,17 +15,15 @@ class Main extends React.Component {
 
   render() {
     const { contacts } = this.state;
-    const result = contacts.map(({ name, image }) => {
-      return (
-        <SmallContact key={name} name={name} image={image} />
-      )
-    })
-
+    const result = contacts.map(({ name, image }) => (
+      <SmallContact key={name} name={name} image={image} />
+    ));
     return (
-      <View>
-        <SearchBar />
-        {result}
-      </View>
+      console.log('Main: contacts: ', contacts),
+        <View>
+          <SearchBar contacts={contacts} />
+          {result}
+        </View>
     );
   }
 }
