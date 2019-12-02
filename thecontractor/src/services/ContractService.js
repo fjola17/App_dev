@@ -1,6 +1,7 @@
 import data from '../resources/contacts';
 
-export const getAllContacts = () => {
-    return data.contacts;
-};
+const getAllContacts = () => data.contacts;
 
+export default {
+  getAllContacts,
+};

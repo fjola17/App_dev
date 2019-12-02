@@ -18,13 +18,12 @@ class Main extends React.Component {
     const result = contacts.map(({ name, image }) => {
       return (
         <SmallContact key={name} name={name} image={image} />
-      )
-    })
+      );
+    });
 
     return (
       <View>
-        <SearchBar />
-        <Text>wassap</Text>
+        <SearchBar contacts={contacts} />
         {result}
       </View>
     );

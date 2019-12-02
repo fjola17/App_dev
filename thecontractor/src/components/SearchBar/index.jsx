@@ -1,18 +1,17 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-// import { getAllContacts } from '../../services/ContractService';
-import data from '../../resources/contacts';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
+    const { contacts } = this.props;
     this.state = {
       input: '',
-      contacts: data.contacts,
+      contacts,
     };
   }
-
 
   search() {
     const { input, contacts } = this.state;
@@ -31,5 +30,14 @@ class SearchBar extends React.Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    phone: PropTypes.string,
+    image: PropTypes.string,
+  })).isRequired,
+};
 
 export default SearchBar;
