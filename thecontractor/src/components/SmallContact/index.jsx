@@ -21,8 +21,8 @@ class SmallContact extends React.Component {
   render() {
     const { name, image } = this.state;
     return (
-      <View>
-        <Image style={styles.image} source={{ uri: image }} />
+      <View syle={styles.container}>
+        <Image style={{ width: 50, height: 50 }} source={{ uri: image }} />
         <Text style={styles.text}>{name}</Text>
       </View>
     );

@@ -24,7 +24,6 @@ class Main extends React.Component {
     return (
       <View>
         <SearchBar />
-        <Text>wassap</Text>
         {result}
       </View>
     );
