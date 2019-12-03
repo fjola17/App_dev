@@ -3,13 +3,10 @@ import { impRed, impDark, impLighterDark, impWhite, impBlasterGreen, impBlack, i
 
 export default StyleSheet.create({
   container: {
-    // flex: 1,
-    // flexDirection: 'column',
+    flex: 1,
+    justifyContent: 'space-around',
     height: 100,
-    backgroundColor: impRed,
-    paddingHorizontal: 15,
-    borderBottomWidth: 1,
-    borderColor: impDark,
+    width: 400,
   },
   textSearchHeader: {
     color: impWhite,

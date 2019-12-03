@@ -1,8 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
+import { impBlack, impWhite, impRed } from '../../styles/colors';
 import Contact from '../../components/Contact';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class ContactDetails extends React.Component {
   constructor(props) {
@@ -13,11 +15,30 @@ class ContactDetails extends React.Component {
     };
   }
 
+  static navigationOptions() {
+    return {
+      title: 'Contact Information',
+      headerStyle: {
+        backgroundColor: impRed,
+      },
+      headerTintColor: impBlack,
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 25,
+      },
+    };
+  }
+
   render() {
     const { contact } = this.state;
     return (
-      <View>
+      <View style={styles.container}>
         <Contact contact={contact} />
+        <View style={styles.buttonBox}>
+          <TouchableOpacity style={styles.buttonBox}>
+            <Text style={styles.updateButton}>Update Info</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

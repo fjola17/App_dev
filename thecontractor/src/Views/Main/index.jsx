@@ -6,6 +6,9 @@ import data from '../../resources/contacts';
 import { getContactsFromPhone } from '../../services/ContractService';
 import { getContacts } from '../../services/FileService';
 import Spinner from '../../components/Spinner';
+import styles from './styles';
+import { impBlack, impWhite, impRed } from '../../styles/colors';
+
 
 class Main extends React.Component {
   constructor(props) {
@@ -18,6 +21,20 @@ class Main extends React.Component {
       search: '',
       result: [],
       isLoading: false,
+    };
+  }
+
+  static navigationOptions() {
+    return {
+      title: 'Home',
+      headerStyle: {
+        backgroundColor: impRed,
+      },
+      headerTintColor: impBlack,
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 25,
+      },
     };
   }
 
@@ -52,7 +69,7 @@ class Main extends React.Component {
   render() {
     const { result, search, navigation, isLoading } = this.state;
     return (
-      <View>
+      <View style={styles.container}>
         <SearchBar
           searchIcon={{ size: 24 }} // Size of the search icon
           onChangeText={(text) => this.SearchFilterFunction(text)}

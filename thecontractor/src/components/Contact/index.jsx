@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
 import styles from './styles';
 
 class Contact extends React.Component {
@@ -13,13 +14,24 @@ class Contact extends React.Component {
     };
   }
 
+  setNavigationColor = (color) => {
+    changeNavigationBarColor(color);
+  };
+
   render() {
     const { contact } = this.state;
+    this.setNavigationColor('red');
     return (
       <View style={styles.container}>
-        <Image style={{ width: 200, height: 200 }} source={{ uri: contact.image }} />
-        <Text style={styles.name}>{contact.name}</Text>
-        <Text style={styles.phone}>{contact.phone}</Text>
+        <Image style={styles.image} source={{ uri: contact.image }} />
+        <View style={styles.textBoxAlign}>
+          <Text>icon</Text>
+          <Text style={styles.nameFormat}>{contact.name}</Text>
+        </View>
+        <View style={styles.textBoxAlign}>
+          <Text>icon</Text>
+          <Text style={styles.phoneFormat}>{contact.phone}</Text>
+        </View>
       </View>
     );
   }
