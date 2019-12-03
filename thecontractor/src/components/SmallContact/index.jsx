@@ -6,32 +6,29 @@ import styles from './styles';
 class SmallContact extends React.Component {
   constructor(props) {
     super(props);
-    const { name, image } = this.props;
+    const { contacts } = this.props;
     this.state = {
-      name,
-      image,
+      contacts
     };
   }
 
-  /*
-  onPress = () => {
-    // TODO: Navigate to Contact Details
-  }*/
-
   render() {
-    const { name, image } = this.state;
+    const { contacts } = this.state;
     return (
       <View syle={styles.container}>
-        <Image style={{ width: 50, height: 50 }} source={{ uri: image }} />
-        <Text style={styles.text}>{name}</Text>
+        <TouchableOpacity>
+          <Image style={{ width: 50, height: 50 }} source={{ uri: contacts.image }} />
+          <Text style={styles.text}>{contacts.name}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
+/*
 SmallContact.propTypes = {
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-};
+}; */
 
 export default SmallContact;
