@@ -3,6 +3,9 @@ import { View, FlatList } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import SmallContact from '../../components/SmallContact';
 import data from '../../resources/contacts';
+import { getContactsFromPhone } from '../../services/ContractService';
+import { getContacts } from '../../services/FileService';
+import Spinner from '../../components/Spinner';
 
 class Main extends React.Component {
   constructor(props) {
@@ -17,17 +20,12 @@ class Main extends React.Component {
     };
   }
 
-<<<<<<< HEAD
-  componentDidMount() {
-=======
   async componentDidMount() {
     this.setState({ isLoading: true });
     await getContactsFromPhone();
     const contact = await getContacts();
-    //console.log(contact);
     this.setState({ contacts: contact });
     this.sortContacts();
->>>>>>> 7bd91a66e3ffcf3a84c210e68d350e5bd4277d55
     this.SearchFilterFunction(''); // To show full list on start
   }
 
@@ -38,11 +36,7 @@ class Main extends React.Component {
   }
 
   SearchFilterFunction(text) {
-<<<<<<< HEAD
-=======
-    const { contacts } = this.state;
     this.setState({ isLoading: true })
->>>>>>> 7bd91a66e3ffcf3a84c210e68d350e5bd4277d55
     // passing the inserted text in textinput
     const newData = this.state.contacts.filter((item) => {
       // applying filter for the inserted text in search bar
@@ -67,24 +61,22 @@ class Main extends React.Component {
           searchIcon={{ size: 24 }} // Size of the search icon
           onChangeText={(text) => this.SearchFilterFunction(text)}
           // Filter the list using the keywords inserted in searchbar
-          onClear={(text) => this.SearchFilterFunction('')}
+          onClear={() => this.SearchFilterFunction('')}
           placeholder="Type Here..."
           value={search}
         />
-<<<<<<< HEAD
-        <FlatList
-=======
         {
-          isLoading ? <Spinner/> : <>
-         <FlatList
->>>>>>> 7bd91a66e3ffcf3a84c210e68d350e5bd4277d55
-          data={result}
-          renderItem={({ item }) => (
-            <SmallContact contact={item} navigation={navigation} />
-          )}
-          keyExtractor={(item) => item.name}
-        />
-        </>
+          isLoading ? <Spinner /> : (
+            <>
+              <FlatList
+                data={result}
+                renderItem={({ item }) => (
+                  <SmallContact contact={item} navigation={navigation} />
+                )}
+                keyExtractor={(item) => item.name}
+              />
+            </>
+          )
         }
       </View>
     );
