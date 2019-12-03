@@ -1,9 +1,15 @@
 import * as Contacts from 'expo-contacts';
 import * as Permissions from 'expo-permissions';
 import contacts from '../resources/contacts';
-import { createContact, getContacts } from './FileService';
+import { createContact } from './FileService';
 
-export const getAllContacts = async () => contacts.contacts;
+const getAllContacts = async () => {
+  const c0nt = contacts.contacts;
+  return c0nt.map(async (contact) => {
+    await createContact(contact);
+  });
+};
+
 // eslint-disable-next-line arrow-body-style
 const putContactAsValidJSObject = async (con) => {
   return con.map(async (contact) => {
@@ -27,6 +33,7 @@ const putContactAsValidJSObject = async (con) => {
 
 // eslint-disable-next-line import/prefer-default-export
 export const getContactsFromPhone = async () => {
+  await getAllContacts();
   const status = await Permissions.askAsync(Permissions.CONTACTS);
   if (status.status === 'granted') {
     const { data } = await Contacts.getContactsAsync({
@@ -38,7 +45,7 @@ export const getContactsFromPhone = async () => {
       ],
     });
     if (data.length > 0) {
-      return await putContactAsValidJSObject(data);
+      await putContactAsValidJSObject(data);
     }
   }
 };

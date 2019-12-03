@@ -14,7 +14,7 @@ class Main extends React.Component {
     const { contacts } = data;
     this.state = {
       navigation,
-      contacts: contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0),
+      contacts,
       search: '',
       result: [],
       isLoading: false,
@@ -25,9 +25,17 @@ class Main extends React.Component {
     this.setState({ isLoading: true });
     await getContactsFromPhone();
     const contact = await getContacts();
+    //console.log(contact);
     this.setState({ contacts: contact });
+    this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
     this.setState({ isLoading: false });
+  }
+
+  sortContacts() {
+    const { contacts } = this.state;
+    const sorted = contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0)
+    this.setState({ contacts: sorted });
   }
 
   SearchFilterFunction(text) {
