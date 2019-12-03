@@ -6,30 +6,29 @@ import styles from './styles';
 class Contact extends React.Component {
   constructor(props) {
     super(props);
-    const { name, phone, image } = this.props;
+    console.log('Contact: props: ', this.props);
+    const { contact } = this.props;
     this.state = {
-      name,
-      phone,
-      image,
+      contact,
     };
   }
 
   render() {
-    const { name, phone, image } = this.state;
+    const { contact } = this.state;
     return (
       <View style={styles.container}>
-        <Image styles={styles.image} source={{ uri: image }} />
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.phone}>{phone}</Text>
+        <Image style={{ width: 200, height: 200 }} source={{ uri: contact.image }} />
+        <Text style={styles.name}>{contact.name}</Text>
+        <Text style={styles.phone}>{contact.phone}</Text>
       </View>
     );
   }
 }
-
+/*
 Contact.propTypes = {
   name: PropTypes.string.isRequired,
   phone: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
-};
+}; */
 
 export default Contact;
