@@ -14,7 +14,7 @@ class Main extends React.Component {
     const { contacts } = data;
     this.state = {
       navigation,
-      contacts: contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0),
+      contacts,
       search: '',
       result: [],
       isLoading: false,
@@ -25,13 +25,22 @@ class Main extends React.Component {
     this.setState({ isLoading: true });
     await getContactsFromPhone();
     const contact = await getContacts();
+    //console.log(contact);
     this.setState({ contacts: contact });
+    this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
     this.setState({ isLoading: false });
   }
 
+  sortContacts() {
+    const { contacts } = this.state;
+    const sorted = contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0)
+    this.setState({ contacts: sorted });
+  }
+
   SearchFilterFunction(text) {
     const { contacts } = this.state;
+    this.setState({ isLoading: true })
     // passing the inserted text in textinput
     const newData = contacts.filter((item) => {
       // applying filter for the inserted text in search bar
@@ -44,11 +53,12 @@ class Main extends React.Component {
       // After setting the data it will automatically re-render the view
       result: newData,
       search: text,
+      isLoading: false,
     });
   }
 
   render() {
-    const { result, search, navigation } = this.state;
+    const { result, search, navigation, isLoading } = this.state;
     return (
       <View>
         <SearchBar
@@ -59,6 +69,8 @@ class Main extends React.Component {
           placeholder="Type Here..."
           value={search}
         />
+        {
+          isLoading ? <Spinner/> : <>
          <FlatList
           data={result}
           renderItem={({ item }) => (
@@ -66,6 +78,8 @@ class Main extends React.Component {
           )}
           keyExtractor={(item) => item.name}
         />
+        </>
+        }
       </View>
     );
   }
