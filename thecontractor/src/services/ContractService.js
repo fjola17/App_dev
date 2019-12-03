@@ -1,10 +1,12 @@
 import * as Contacts from 'expo-contacts';
 import * as Permissions from 'expo-permissions';
 import contacts from '../resources/contacts';
+import { createContact, getContacts } from './FileService';
 
-export const getAllContacts = () => contacts.contacts;
+export const getAllContacts = async () => contacts.contacts;
+// eslint-disable-next-line arrow-body-style
 const putContactAsValidJSObject = (con) => {
-  return con.map((contact) => {
+  return con.map(async (contact) => {
     const name = contact.name;
     let phone = '0';
     let image = 'http://www.digitaldownpour.com.au/wp-content/themes/arkahost/assets/images/default.png';
@@ -14,9 +16,12 @@ const putContactAsValidJSObject = (con) => {
     if (contact.imageAvailable) {
       image = contact.image.uri;
     }
-    return {
+    const value = {
       name, phone, image,
     };
+    if (value) {
+      await createContact(value);
+    }
   });
 };
 
@@ -33,7 +38,7 @@ export const getContactsFromPhone = async () => {
       ],
     });
     if (data.length > 0) {
-      return putContactAsValidJSObject(data);
+      return await putContactAsValidJSObject(data);
     }
   }
 };

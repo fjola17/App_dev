@@ -4,6 +4,7 @@ import SearchBar from '../../components/SearchBar';
 import SmallContact from '../../components/SmallContact';
 import data from '../../resources/contacts';
 import { getContactsFromPhone } from '../../services/ContractService';
+import { createContact, getContacts } from '../../services/FileService';
 
 class Main extends React.Component {
   constructor(props) {
@@ -15,9 +16,10 @@ class Main extends React.Component {
   }
 
   async componentDidMount() {
-    const contact = await getContactsFromPhone();
+    await getContactsFromPhone();
+    const contact = await getContacts();
     console.log(contact);
-    this.setState({contacts: contact});
+    this.setState({ contacts: contact });
   }
 
   render() {
