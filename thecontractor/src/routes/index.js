@@ -2,12 +2,14 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 // Main View
-import Contacts from '../Views/Contacts';
+import Main from '../Views/Main';
 // Contact view
+import ContactDetails from '../Views/ContactDetails';
 // create view
 
 const StackNavigatior = createStackNavigator({
-  Contacts,
+  Main,
+  ContactDetails,
 });
 
 export default createAppContainer(StackNavigatior);
