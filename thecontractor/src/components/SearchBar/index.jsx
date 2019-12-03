@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { View, TextInput, Text, TouchableOpacity } from 'react-native';
+import { View, TextInput } from 'react-native';
 import styles from './styles';
 
 class SearchBar extends React.Component {
@@ -10,22 +10,21 @@ class SearchBar extends React.Component {
     this.state = {
       input: '',
       contacts,
+      filtered: contacts,
     };
   }
 
-  search() {
-    const { input, contacts } = this.state;
-    return contacts.filter((con) => con.name.toLowerCase().indexOf(input.toLowerCase()) !== -1);
+  search(val) {
+    const { contacts } = this.state;
+    const fi = contacts.filter((con) => con.name.toLowerCase().indexOf(val.toLowerCase()) !== -1);
+    this.setState({ filtered: fi, input: val });
   }
 
   render() {
     const { input } = this.state;
-    this.search();
     return (
       <View style={styles.container}>
-        <TextInput placeholder="Search string" onChangeText={(val) => this.setState({ input: val })} value={input} />
-        <TouchableOpacity><Text>Search</Text></TouchableOpacity>
-
+        <TextInput placeholder="Search string" onChangeText={(val) => this.search(val)} value={input} />
       </View>
     );
   }
