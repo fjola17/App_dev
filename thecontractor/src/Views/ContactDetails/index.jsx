@@ -4,16 +4,30 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import Contact from '../../components/Contact';
 
-const ContactDetails = ({ photo, name, phone }) => (
-  <View style={styles.container}>
-    <Contact photo={photo} name={name} phone={phone} />
-  </View>
-);
+class ContactDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+    this.state = {
+      contact: navigation.getParam('contact'),
+    };
+  }
 
+  render() {
+    const { contact } = this.state;
+    return (
+      <View>
+        <Contact contact={contact} />
+      </View>
+    );
+  }
+}
+
+/*
 ContactDetails.propTypes = {
   photo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   phone: PropTypes.number.isRequired,
-};
+}; */
 
 export default ContactDetails;

@@ -6,19 +6,20 @@ import styles from './styles';
 class SmallContact extends React.Component {
   constructor(props) {
     super(props);
-    const { contacts } = this.props;
+    const { contact, navigation } = this.props;
     this.state = {
-      contacts
+      contact,
+      navigation,
     };
   }
 
   render() {
-    const { contacts } = this.state;
+    const { contact, navigation } = this.state;
     return (
       <View syle={styles.container}>
-        <TouchableOpacity>
-          <Image style={{ width: 50, height: 50 }} source={{ uri: contacts.image }} />
-          <Text style={styles.text}>{contacts.name}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('ContactDetails', { contact })}>
+          <Image style={{ width: 50, height: 50 }} source={{ uri: contact.image }} />
+          <Text style={styles.text}>{contact.name}</Text>
         </TouchableOpacity>
       </View>
     );

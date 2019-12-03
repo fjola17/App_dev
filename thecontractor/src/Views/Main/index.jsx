@@ -7,10 +7,10 @@ import data from '../../resources/contacts';
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    const { navigate } = this.props;
+    const { navigation } = this.props;
     const { contacts } = data;
     this.state = {
-      navigate,
+      navigation,
       contacts: contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0),
       search: '',
       result: [],
@@ -38,7 +38,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { result, search, navigate } = this.state;
+    const { result, search, navigation } = this.state;
     return (
       <View>
         <SearchBar
@@ -52,7 +52,7 @@ class Main extends React.Component {
         <FlatList
           data={result}
           renderItem={({ item }) => (
-            <SmallContact contacts={item} />
+            <SmallContact contact={item} navigation={navigation} />
           )}
           keyExtractor={(item) => item.name}
         />
