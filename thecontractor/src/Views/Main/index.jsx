@@ -11,17 +11,38 @@ class Main extends React.Component {
     const { contacts } = data;
     this.state = {
       navigation,
-      contacts: contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0),
+      contacts,
       search: '',
       result: [],
     };
   }
 
+<<<<<<< HEAD
   componentDidMount() {
+=======
+  async componentDidMount() {
+    this.setState({ isLoading: true });
+    await getContactsFromPhone();
+    const contact = await getContacts();
+    //console.log(contact);
+    this.setState({ contacts: contact });
+    this.sortContacts();
+>>>>>>> 7bd91a66e3ffcf3a84c210e68d350e5bd4277d55
     this.SearchFilterFunction(''); // To show full list on start
   }
 
+  sortContacts() {
+    const { contacts } = this.state;
+    const sorted = contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0)
+    this.setState({ contacts: sorted });
+  }
+
   SearchFilterFunction(text) {
+<<<<<<< HEAD
+=======
+    const { contacts } = this.state;
+    this.setState({ isLoading: true })
+>>>>>>> 7bd91a66e3ffcf3a84c210e68d350e5bd4277d55
     // passing the inserted text in textinput
     const newData = this.state.contacts.filter((item) => {
       // applying filter for the inserted text in search bar
@@ -34,11 +55,12 @@ class Main extends React.Component {
       // After setting the data it will automatically re-render the view
       result: newData,
       search: text,
+      isLoading: false,
     });
   }
 
   render() {
-    const { result, search, navigation } = this.state;
+    const { result, search, navigation, isLoading } = this.state;
     return (
       <View>
         <SearchBar
@@ -49,13 +71,21 @@ class Main extends React.Component {
           placeholder="Type Here..."
           value={search}
         />
+<<<<<<< HEAD
         <FlatList
+=======
+        {
+          isLoading ? <Spinner/> : <>
+         <FlatList
+>>>>>>> 7bd91a66e3ffcf3a84c210e68d350e5bd4277d55
           data={result}
           renderItem={({ item }) => (
             <SmallContact contact={item} navigation={navigation} />
           )}
           keyExtractor={(item) => item.name}
         />
+        </>
+        }
       </View>
     );
   }
