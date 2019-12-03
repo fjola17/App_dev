@@ -4,8 +4,8 @@ import { PropTypes } from 'prop-types';
 import styles from './styles';
 import { impWhite, impDark, impLighterDark, impRed } from '../../styles/colors';
 
-// import { takePhoto, selectFromCameraRoll } from '../../../services/ImageService';
-// import { addImage } from '../../../services/FileService';
+import { takePhoto, selectFromCameraRoll } from '../../services/ImageService';
+import { addImage } from '../../services/FileService';
 
 //Base contact form class component to update or add new contacts
 class ContactForm extends Component {
@@ -65,13 +65,13 @@ class ContactForm extends Component {
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
           <Text style={styles.textHeader}>Change photo</Text>
-          <Image style={ heigh: 200, width: 200 } source={{ uri: image }} />
+          <Image style={{ height: 200, width: 200 }} source={{ uri: image }} />
         </TouchableOpacity>
 
         <Text style={styles.textHeader}>Name:</Text>
         <TextInput placeholder="Your Name" onChangeText={(value) => this.setState({ name: value })} value={name} />
         <Text style={styles.textHeader}>Phone</Text>
-        <TextInput placeholder="Your phone number: 666-6666" onChangeText={(text) => this.setState({ phone: text })} value={phone} />
+        <TextInput placeholder="Your phone number: 666-6666" onChangeText={(value) => this.setState({ phone: value })} value={phone} />
         <TouchableOpacity disabled={disabled} onPress={() => create(contact)}>
           <Text style={[styles.button, disabled ? { color: 'rgba(155, 155, 155, .5)' } : {}]}>Update or Add New</Text>
         </TouchableOpacity>
