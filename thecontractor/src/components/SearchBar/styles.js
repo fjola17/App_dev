@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     // flex: 1,
     // flexDirection: 'column',
-    height: 50,
+    height: 100,
     backgroundColor: impRed,
     paddingHorizontal: 15,
     borderBottomWidth: 1,
