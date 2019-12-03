@@ -4,7 +4,8 @@ import { SearchBar } from 'react-native-elements';
 import SmallContact from '../../components/SmallContact';
 import data from '../../resources/contacts';
 import { getContactsFromPhone } from '../../services/ContractService';
-import { createContact, getContacts } from '../../services/FileService';
+import { getContacts } from '../../services/FileService';
+import Spinner from '../../components/Spinner';
 
 class Main extends React.Component {
   constructor(props) {
@@ -16,19 +17,23 @@ class Main extends React.Component {
       contacts: contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0),
       search: '',
       result: [],
+      isLoading: false,
     };
   }
 
   async componentDidMount() {
+    this.setState({ isLoading: true });
     await getContactsFromPhone();
     const contact = await getContacts();
     this.setState({ contacts: contact });
     this.SearchFilterFunction(''); // To show full list on start
+    this.setState({ isLoading: false });
   }
 
   SearchFilterFunction(text) {
+    const { contacts } = this.state;
     // passing the inserted text in textinput
-    const newData = this.state.contacts.filter((item) => {
+    const newData = contacts.filter((item) => {
       // applying filter for the inserted text in search bar
       const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
       const textData = text.toUpperCase();
@@ -54,7 +59,7 @@ class Main extends React.Component {
           placeholder="Type Here..."
           value={search}
         />
-        <FlatList
+         <FlatList
           data={result}
           renderItem={({ item }) => (
             <SmallContact contact={item} navigation={navigation} />
