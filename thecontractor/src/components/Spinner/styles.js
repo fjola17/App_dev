@@ -4,10 +4,11 @@ export default StyleSheet.create({
   spinner: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   vader: {
-    height: 200,
-    width: 200,
+    height: 350,
+    width: 350,
+    top: 300,
   },
 });

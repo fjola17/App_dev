@@ -5,7 +5,7 @@ import { createContact, getContacts } from './FileService';
 
 export const getAllContacts = async () => contacts.contacts;
 // eslint-disable-next-line arrow-body-style
-const putContactAsValidJSObject = (con) => {
+const putContactAsValidJSObject = async (con) => {
   return con.map(async (contact) => {
     const name = contact.name;
     let phone = '0';
