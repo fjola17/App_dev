@@ -36,7 +36,7 @@ class EditContact extends React.Component {
       <View style={styles.container}>
         <ContactForm contact={contact} />
         <View style={styles.buttonBox}>
-          <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('Main')}>
+          <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('Main'), { contact }}>
               <Text style={styles.updateButton}>
                 <Entypo style={{fontSize: 25}} name="save" />  Save Info
               </Text>
