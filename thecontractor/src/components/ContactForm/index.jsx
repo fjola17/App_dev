@@ -11,11 +11,22 @@ import { selectFromCameraRoll, addImage } from '../../services/ImageService';
 class ContactForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      image: 'https://lumiere-a.akamaihd.net/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768',
-      name: "Darth Vader",
-      phone: "xxx-xxxx",
-    };
+    console.log(this.props);
+    if(this.props) {
+      //check if props is populated
+      const { contact } = this.props;
+      this.state = {
+        contact,
+      };
+    } else {
+      //if not populated put in default values
+      console.log('missing contacts in props');
+      const { contact } = [];
+      this.state = {
+        contact,
+      };
+    }
+    // console.log(this.state.contact.name);
   }
 
   async selectFromCameraRoll() {
@@ -29,22 +40,30 @@ class ContactForm extends Component {
   }
 
   render() {
-    const { image, name, phone, hasImage } = this.state;
+    if(!this.state.contact) {
+      console.log('missing contacts');
+      this.setState({
+        contact: {
+          image: "https://lumiere-a.akamaihd.net/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768",
+          name: "Darth Vader",
+          phone: "xxx-xxxx",
+        },
+      });
+    }
+    const { image, name, phone } = this.state.contact;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
-          <Text style={styles.textHeader}>Change photo</Text>
-          <Image style={{ height: 200, width: 200 }} source={{ uri: image }} />
+          <Text style={styles.iconFormat}>Change photo</Text>
+          <Image style={styles.image} source={{ uri: image }} />
         </TouchableOpacity>
         <View style={styles.textBoxAlign}>
           <Entypo style={styles.iconFormat} name="user" />
-          {/* <Text style={styles.nameFormat}>{name}</Text> */}
           <TextInput style={styles.nameFormat} placeholder={name} onChangeText={console.log('Add name pressed!')} />
         </View>
         <View style={styles.textBoxAlign}>
           <TouchableOpacity style={styles.touchBox}>
             <Entypo style={styles.iconFormat} name="phone" />
-            {/* <Text style={styles.phoneFormat}>{phone}</Text> */}
             <TextInput style={styles.phoneFormat} placeholder={phone} onChangeText={console.log('Add phone pressed!')} />
           </TouchableOpacity>
         </View>

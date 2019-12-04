@@ -14,6 +14,9 @@ class EditContact extends React.Component {
     this.state = {
       contact: navigation.getParam('contact'),
     }
+    console.log(this.state.contact.name);
+    console.log(this.state.contact.phone);
+    console.log(this.state.contact.image);
   }
  
   static navigationOptions() {
@@ -36,7 +39,7 @@ class EditContact extends React.Component {
       <View style={styles.container}>
         <ContactForm contact={contact} />
         <View style={styles.buttonBox}>
-          <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('Main'), { contact }}>
+          <TouchableOpacity style={styles.buttonBox} onPress={(contact) => navigation.navigate('Main', { contact })}>
               <Text style={styles.updateButton}>
                 <Entypo style={{fontSize: 25}} name="save" />  Save Info
               </Text>

@@ -79,7 +79,8 @@ class Main extends React.Component {
   }
 
   render() {
-    const { result, search, navigation, isLoading } = this.state;
+    const { result, search, navigation, isLoading, contacts } = this.state;
+    // console.log(`main view: ${contacts}`);
     return (
       <View style={styles.container}>
         <SearchBar
@@ -107,7 +108,7 @@ class Main extends React.Component {
             </>
           )
         }
-        <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact')}>
+        <TouchableOpacity style={styles.buttonBox} onPress={(contact) => navigation.navigate('EditContact', {contact})}>
           <Text style={styles.updateButton}>
             <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />  Add new contact
           </Text>
