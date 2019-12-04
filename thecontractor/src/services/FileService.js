@@ -10,7 +10,7 @@ const onException = (cb, errorHandler) => {
     if (errorHandler) {
       return errorHandler(err);
     }
-    console.error(err);
+    // console.error(err);
   }
 };
 
@@ -25,6 +25,13 @@ const setupDirectory = async () => {
   }
 };
 
+const getContact = async (fileName) => {
+  const dat = await onException(() => FileSystem.readAsStringAsync(`${contactDir}/${fileName}`), {
+    encoding: FileSystem.EncodingType.UTF8,
+  });
+  return JSON.parse(dat);
+};
+
 export const getContacts = async () => {
   await setupDirectory();
   const result = await onException(() => FileSystem.readDirectoryAsync(contactDir));
@@ -35,15 +42,8 @@ export const getContacts = async () => {
 
 export const createContact = async (data) => {
   const newf = data.name.toLowerCase().replace(' ', '-');
-  const fileuri = contactDir + '/' + newf + '.json';
+  const fileuri = `${contactDir}/${newf}.json`;
   const jsonstr = JSON.stringify(data);
   await setupDirectory();
   await FileSystem.writeAsStringAsync(fileuri, jsonstr);
-};
-
-const getContact = async (fileName) => {
-  const dat = await onException(() => FileSystem.readAsStringAsync(`${contactDir}/${fileName}`), {
-      encoding: FileSystem.EncodingType.UTF8,
-  });
-  return JSON.parse(dat);
 };
