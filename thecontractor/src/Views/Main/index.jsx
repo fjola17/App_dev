@@ -13,18 +13,7 @@ import { impBlack, impWhite, impRed, impOrange, impBlasterGreen, impLighterDark,
 
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    const { navigation } = this.props;
-    const { contacts } = [];
-    this.state = {
-      navigation,
-      contacts,
-      search: '',
-      result: [],
-    };
-  }
-
+  // Set Top navigation header/menu options
   static navigationOptions() {
     return {
       title: 'Home',
@@ -41,6 +30,27 @@ class Main extends React.Component {
       },
     };
   }
+
+  // Define initial states
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+    const { contacts } = [];
+    // Default contact
+    const contact = {
+      image: 'https://lumiere-a.akamaihd.net/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768',
+      name: 'Evil Name',
+      phone: '000-0000',
+    };
+    this.state = {
+      navigation,
+      contacts,
+      search: '',
+      result: [],
+      contact,
+    };
+  }
+
 
   async componentDidMount() {
     this.setState({ isLoading: true });
@@ -79,8 +89,8 @@ class Main extends React.Component {
   }
 
   render() {
-    const { result, search, navigation, isLoading, contacts } = this.state;
-    // console.log(`main view: ${contacts}`);
+    const { result, search, navigation, isLoading, contact } = this.state;
+    // console.log(`main view: ${contact.image}`);
     return (
       <View style={styles.container}>
         <SearchBar
@@ -108,7 +118,7 @@ class Main extends React.Component {
             </>
           )
         }
-        <TouchableOpacity style={styles.buttonBox} onPress={(contact) => navigation.navigate('EditContact', {contact})}>
+        <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact', {contact})}>
           <Text style={styles.updateButton}>
             <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />  Add new contact
           </Text>
