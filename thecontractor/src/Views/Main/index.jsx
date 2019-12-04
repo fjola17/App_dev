@@ -114,16 +114,27 @@ class Main extends React.Component {
               <FlatList
                 data={result}
                 renderItem={({ item }) => (
-                  <SmallContact contact={item} navigation={navigation} />
+                  <SmallContact
+                    contact={item}
+                    navigation={navigation}
+                  />
                 )}
                 keyExtractor={(item) => item.name}
               />
             </>
           )
         }
-        <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact', {contact})}>
+        <TouchableOpacity
+          style={styles.buttonBox}
+          onPress={() => navigation.navigate('EditContact', { contact })}
+        >
           <Text style={styles.updateButton}>
-            <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />Add new contact
+            <Entypo
+              style={{ fontSize: 25 }}
+              name="circle-with-plus"
+            />
+            {'  '}
+            Add new contact
           </Text>
         </TouchableOpacity>
       </View>
