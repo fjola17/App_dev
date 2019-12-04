@@ -1,6 +1,6 @@
 import * as FileSystem from 'expo-file-system';
 
-const contactDir = `${FileSystem.documentDirectory}/Contacts`;
+const contactDir = `${FileSystem.documentDirectory}Contacts`;
 
 // eslint-disable-next-line consistent-return
 export const onException = (cb, errorHandler) => {
@@ -18,7 +18,7 @@ export const onException = (cb, errorHandler) => {
 const setupDirectory = async () => {
   const dir = await FileSystem.getInfoAsync(contactDir);
   if (!dir.exists) {
-    await FileSystem.makeDirectoryAsync(contactDir);
+    await onException(() => FileSystem.makeDirectoryAsync(contactDir));
   }
 };
 
@@ -45,7 +45,7 @@ const getContact = async (fileName) => {
 };
 
 export const getContacts = async () => {
-//  await setupDirectory();
+  await setupDirectory();
   const result = await onException(() => FileSystem.readDirectoryAsync(contactDir));
   // eslint-disable-next-line arrow-body-style
   const data = await Promise.all(result.map(async (filename) => getContact(filename)));
@@ -53,7 +53,7 @@ export const getContacts = async () => {
 };
 
 export const createContact = async (data) => {
-  // await setupDirectory();
+  await setupDirectory();
   const newf = data.name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
   const fileuri = `${contactDir}/${newf}.json`;
   // const dir = await FileSystem.getInfoAsync(fileuri);
