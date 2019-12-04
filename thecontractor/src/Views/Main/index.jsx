@@ -6,7 +6,7 @@ import { SearchBar } from 'react-native-elements';
 import SmallContact from '../../components/SmallContact';
 import data from '../../resources/contacts';
 import { getContactsFromPhone } from '../../services/ContractService';
-import { getContacts } from '../../services/FileService';
+import { getContacts, cleanDirectory } from '../../services/FileService';
 import Spinner from '../../components/Spinner';
 import styles from './styles';
 import { impBlack, impWhite, impRed, impOrange, impBlasterGreen, impLighterDark, impSaberBlue } from '../../styles/colors';
@@ -16,7 +16,7 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     const { navigation } = this.props;
-    const { contacts } = data;
+    const { contacts } = [];
     this.state = {
       navigation,
       contacts,
@@ -41,6 +41,8 @@ class Main extends React.Component {
 
   async componentDidMount() {
     this.setState({ isLoading: true });
+    // Incase you get dublicates, or something isn't working correctly take the comment away from line below
+    // await cleanDirectory();
     await getContactsFromPhone();
     const contact = await getContacts();
     this.setState({ contacts: contact });
