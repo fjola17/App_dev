@@ -44,8 +44,7 @@ class Main extends React.Component {
 
   async componentDidMount() {
     this.setState({ isLoading: true });
-    // Incase you get dublicates, or something isn't working correctly take the comment away from line below
-    // await cleanDirectory();
+    await cleanDirectory();
     await getContactsFromPhone();
     const contact = await getContacts();
     this.setState({ contacts: contact });
@@ -109,7 +108,7 @@ class Main extends React.Component {
         }
         <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact')}>
           <Text style={styles.updateButton}>
-            <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />  Add new contact
+            <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />Add new contact
           </Text>
         </TouchableOpacity>
       </View>
