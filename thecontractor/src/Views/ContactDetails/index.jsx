@@ -38,7 +38,9 @@ class ContactDetails extends React.Component {
         <Contact contact={contact} />
         <View style={styles.buttonBox}>
           <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact')}>
-            <Text style={styles.updateButton}><Entypo style={{fontSize: 25}} name="info-with-circle" />Update Info</Text>
+            <Text style={styles.updateButton}>
+              <Entypo style={{fontSize: 25}} name="info-with-circle" />  Update Info
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

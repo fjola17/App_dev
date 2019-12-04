@@ -35,6 +35,9 @@ class Main extends React.Component {
       headerTitleStyle: {
         fontWeight: 'bold',
         fontSize: 25,
+        textAlign: 'center',
+        alignSelf: 'center',
+        justifyContent: 'center',
       },
     };
   }
@@ -105,7 +108,9 @@ class Main extends React.Component {
           )
         }
         <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact')}>
-        <Text style={styles.updateButton}><Entypo style={{fontSize: 25}} name="circle-with-plus" />  Add Contact</Text>
+          <Text style={styles.updateButton}>
+            <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />  Add new contact
+          </Text>
         </TouchableOpacity>
       </View>
     );
