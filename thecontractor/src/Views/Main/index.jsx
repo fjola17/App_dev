@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SearchBar } from 'react-native-elements';
 import SmallContact from '../../components/SmallContact';
 import data from '../../resources/contacts';
@@ -89,6 +90,9 @@ class Main extends React.Component {
         />
         </>
         }
+        <TouchableOpacity style={styles.buttonBox}>
+            <Text style={styles.updateButton}>Add Contact</Text>
+          </TouchableOpacity>
       </View>
     );
   }

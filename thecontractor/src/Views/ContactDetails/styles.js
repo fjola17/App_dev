@@ -21,10 +21,6 @@ export default StyleSheet.create({
         backgroundColor: impBlack,
     },
     buttonBox: {
-        flex: 1,
-        // paddingBottom: 50,
-        // marginBottom: 50,
-        // alignItems: 'center',
         alignItems: 'flex-start',
     },
     mainText: {
@@ -40,7 +36,6 @@ export default StyleSheet.create({
         color: impBlasterGreen,
     },
     updateButton: {
-        // width: winWidth * 0.5,
         width: winWidth,
         height: 120,
         alignItems: 'center',
@@ -52,8 +47,5 @@ export default StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 5,
         paddingHorizontal: 10,
-        // borderRadius: 5,
-        // borderColor: impBlack,
-        // borderWidth: 2,
     },
 });

@@ -30,19 +30,15 @@ export default StyleSheet.create({
     borderColor: impDark,
   },
   image: {
-    // flex: 1,
     alignSelf: "center",
     width: imgSize,
     height: imgSize,
     borderRadius: imgSize / 2,
-    overflow: "hidden",
+    overflow: 'hidden',
     borderWidth: 5,
     borderColor: impBlasterGreen,
   },
   nameFormat: {
-    //   flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     paddingTop: 15,
     paddingLeft: 25,
     // fontFamily: '',
@@ -62,5 +58,5 @@ export default StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 5,
     paddingHorizontal: 10
-  }
+  },
 });

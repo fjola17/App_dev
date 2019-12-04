@@ -15,13 +15,13 @@ const { width: winWidth } = Dimensions.get('window');
 export default StyleSheet.create({
     container: {
         flex: 1,
-        // flexDirection: 'column',
-        // justifyContent: 'flex-end',
-        // alignItems: 'center',
         backgroundColor: impBlack,
     },
     buttonBox: {
-        alignItems: 'flex-start',
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        marginBottom: 80,
     },
     mainText: {
         fontFamily: '',
@@ -38,7 +38,7 @@ export default StyleSheet.create({
     updateButton: {
         width: winWidth,
         height: 120,
-        alignItems: 'center',
+        // alignItems: 'center',
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 25,
@@ -47,5 +47,7 @@ export default StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 5,
         paddingHorizontal: 10,
+        // borderRadius: 10,
+        // overflow: 'hidden',
     },
 });
