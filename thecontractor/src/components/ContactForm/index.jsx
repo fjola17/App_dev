@@ -13,7 +13,7 @@ class ContactForm extends Component {
     this.state = {
       name: '',
       phone: '',
-      image: '',
+      image: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
       hasImage: false,
     };
   }
@@ -22,11 +22,10 @@ class ContactForm extends Component {
     const { name, phone, image, hasImage } = this.state;
     return (
       <View style={styles.container}>
-        <Text>This is one hell of an app!</Text>
         <TouchableOpacity onPress={console.log("Edit image pressed!")}>
           <Text style={styles.textHeader}>Change photo</Text>
 
-          <Image style={{ height: 200, width: 200 }} source={{uri: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780'}} />
+          <Image style={{ height: 200, width: 200 }} source={{uri: this.state.image}} />
         </TouchableOpacity>
 
         <Text style={styles.textHeader}>Name:</Text>

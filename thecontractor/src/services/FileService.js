@@ -3,7 +3,7 @@ import * as FileSystem from 'expo-file-system';
 const contactDir = `${FileSystem.documentDirectory}/contacts`;
 
 // eslint-disable-next-line consistent-return
-const onException = (cb, errorHandler) => {
+export const onException = (cb, errorHandler) => {
   try {
     return cb();
   } catch (err) {
