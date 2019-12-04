@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   spinner: {
@@ -7,8 +7,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   vader: {
-    height: 350,
-    width: 350,
-    top: 300,
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width,
   },
 });

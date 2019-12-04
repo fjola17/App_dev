@@ -15,7 +15,10 @@ export const onException = (cb, errorHandler) => {
 };
 
 export const cleanDirectory = async () => {
-  await FileSystem.deleteAsync(contactDir);
+  const dir = await FileSystem.getInfoAsync(contactDir);
+  if (dir.exists) {
+    await FileSystem.deleteAsync(contactDir);
+  }
 };
 
 const setupDirectory = async () => {
@@ -41,7 +44,7 @@ export const getContacts = async () => {
 };
 
 export const createContact = async (data) => {
-  const newf = data.name.toLowerCase().replace(' ', '-');
+  const newf = data.name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
   const fileuri = `${contactDir}/${newf}.json`;
   const jsonstr = JSON.stringify(data);
   await setupDirectory();

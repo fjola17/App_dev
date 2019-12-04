@@ -32,12 +32,15 @@ class ContactDetails extends React.Component {
 
   render() {
     const { contact } = this.state;
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Contact contact={contact} />
         <View style={styles.buttonBox}>
-          <TouchableOpacity style={styles.buttonBox}>
-            <Text style={styles.updateButton}><Entypo style={{fontSize: 25}} name="info-with-circle" />  Update Info</Text>
+          <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact')}>
+            <Text style={styles.updateButton}>
+              <Entypo style={{fontSize: 25}} name="info-with-circle" />  Update Info
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
