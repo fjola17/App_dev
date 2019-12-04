@@ -23,18 +23,18 @@ class ContactForm extends Component {
     const { image, name, phone, hasImage } = this.state;
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={{ uri: this.state.image }} />
+        <Image style={styles.image} source={{ uri: image }} />
         <Text style={styles.textHeader}>Change photo</Text>
         <View style={styles.textBoxAlign}>
           <Entypo style={styles.iconFormat} name="user" />
-          <Text style={styles.nameFormat}>{name}</Text>
-          <TextInput placeholder="Your Name " onChangeText={console.log('Add name pressed!')} />
+          {/* <Text style={styles.nameFormat}>{name}</Text> */}
+          <TextInput style={styles.nameFormat} placeholder={name} onChangeText={console.log('Add name pressed!')} />
         </View>
         <View style={styles.textBoxAlign}>
           <TouchableOpacity style={styles.touchBox}>
             <Entypo style={styles.iconFormat} name="phone" />
-            <Text style={styles.phoneFormat}>{phone}</Text>
-            <TextInput placeholder="Your phone: 666-6666" onChangeText={console.log('Add phone pressed!')} />
+            {/* <Text style={styles.phoneFormat}>{phone}</Text> */}
+            <TextInput style={styles.phoneFormat} placeholder={phone} onChangeText={console.log('Add phone pressed!')} />
           </TouchableOpacity>
         </View>
       </View>
