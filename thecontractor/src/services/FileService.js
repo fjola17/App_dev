@@ -10,6 +10,7 @@ export const onException = (cb, errorHandler) => {
     if (errorHandler) {
       return errorHandler(err);
     }
+    // eslint-disable-next-line no-console
     console.error(err);
   }
 };
@@ -26,8 +27,10 @@ export const cleanDirectory = async () => {
   await setupDirectory();
 };
 
+// eslint-disable-next-line arrow-body-style
 export const remove = async (name) => {
-  return await onException(() => FileSystem.deleteAsync(`${imageDirectory}/${name}`, { idempotent: true }));
+  // eslint-disable-next-line no-return-await
+  return await onException(() => FileSystem.deleteAsync(`${contactDir}/${name}`, { idempotent: true }));
 };
 
 const getContact = async (fileName) => {
@@ -44,7 +47,7 @@ export const getContacts = async () => {
   const data = await Promise.all(result.map(async (filename) => getContact(filename)));
   return data;
 };
-// export const modifyContact = async
+
 export const createContact = async (data) => {
   // await setupDirectory();
   const newf = data.name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
@@ -52,4 +55,16 @@ export const createContact = async (data) => {
   // const dir = await FileSystem.getInfoAsync(fileuri);
   const jsonstr = JSON.stringify(data);
   await onException(() => FileSystem.writeAsStringAsync(fileuri, jsonstr));
+};
+
+export const AddOrModifyContact = async (curr, data) => {
+  if (curr.name) {
+    const newf = curr.name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
+    const fileuri = `${contactDir}/${newf}.json`;
+    const dir = await FileSystem.getInfoAsync(fileuri);
+    if (dir.exists) {
+      await remove(fileuri);
+    }
+  }
+  await createContact(data);
 };
