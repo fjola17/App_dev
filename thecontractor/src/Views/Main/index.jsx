@@ -19,10 +19,9 @@ class Main extends React.Component {
     const { contacts } = data;
     this.state = {
       navigation,
-      contacts: contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0),
+      contacts,
       search: '',
       result: [],
-      isLoading: false,
     };
   }
 
@@ -45,15 +44,20 @@ class Main extends React.Component {
     await getContactsFromPhone();
     const contact = await getContacts();
     this.setState({ contacts: contact });
+    this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
-    this.setState({ isLoading: false });
+  }
+
+  sortContacts() {
+    const { contacts } = this.state;
+    const sorted = contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0)
+    this.setState({ contacts: sorted });
   }
 
   SearchFilterFunction(text) {
-    const { contacts } = this.state;
     this.setState({ isLoading: true })
     // passing the inserted text in textinput
-    const newData = contacts.filter((item) => {
+    const newData = this.state.contacts.filter((item) => {
       // applying filter for the inserted text in search bar
       const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
       const textData = text.toUpperCase();
@@ -80,20 +84,22 @@ class Main extends React.Component {
           searchIcon={{ size: 24, fontWeight: 'bold', color: impSaberBlue }} // Size of the search icon
           onChangeText={(text) => this.SearchFilterFunction(text)}
           // Filter the list using the keywords inserted in searchbar
-          onClear={(text) => this.SearchFilterFunction('')}
+          onClear={() => this.SearchFilterFunction('')}
           placeholder="Type Here..."
           value={search}
         />
         {
-          isLoading ? <Spinner/> : <>
-         <FlatList
-          data={result}
-          renderItem={({ item }) => (
-            <SmallContact contact={item} navigation={navigation} />
-          )}
-          keyExtractor={(item) => item.name}
-        />
-        </>
+          isLoading ? <Spinner /> : (
+            <>
+              <FlatList
+                data={result}
+                renderItem={({ item }) => (
+                  <SmallContact contact={item} navigation={navigation} />
+                )}
+                keyExtractor={(item) => item.name}
+              />
+            </>
+          )
         }
         <TouchableOpacity style={styles.buttonBox}>
             <Text style={styles.updateButton}><Entypo style={{fontSize: 25}} name="circle-with-plus" />  Add Contact</Text>

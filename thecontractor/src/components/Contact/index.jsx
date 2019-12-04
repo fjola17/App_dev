@@ -8,7 +8,6 @@ import styles from './styles';
 class Contact extends React.Component {
   constructor(props) {
     super(props);
-    console.log('Contact: props: ', this.props);
     const { contact } = this.props;
     this.state = {
       contact,
