@@ -56,6 +56,21 @@ class ContactForm extends Component {
             />
           </TouchableOpacity>
         </View>
+        <View style={styles.boxContainer}>
+          <TouchableOpacity
+            style={styles.buttonBox}
+            onPress={() => navigation.navigate('Main', { contact })}
+          >
+            <Text style={styles.updateButton}>
+              <Entypo 
+                style={{ fontSize: 25 }}
+                name="save"
+              />
+              {'  '}
+              Save Info NEW
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

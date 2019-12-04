@@ -62,4 +62,20 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         color: impSaberBlue,
     },
+    buttonBox: {
+      alignItems: 'flex-end',
+  },
+    updateButton: {
+      width: winWidth,
+      height: 80,
+      alignItems: 'center',
+      textAlign: 'center',
+      fontWeight: 'bold',
+      fontSize: 25,
+      color: impBlack,
+      backgroundColor: impRed,
+      paddingTop: 10,
+      paddingBottom: 5,
+      paddingHorizontal: 10,
+},
 });

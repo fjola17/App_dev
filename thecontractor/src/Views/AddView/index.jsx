@@ -35,7 +35,7 @@ class EditContact extends React.Component {
     return (
       <View style={styles.container}>
         <ContactForm contact={contact} />
-        <View style={styles.buttonBox}>
+        {/* <View style={styles.buttonBox}>
           <TouchableOpacity
             style={styles.buttonBox}
             onPress={() => navigation.navigate('Main', { contact })}
@@ -49,7 +49,7 @@ class EditContact extends React.Component {
               Save Info
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     );
   }
