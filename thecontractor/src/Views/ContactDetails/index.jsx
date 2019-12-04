@@ -31,7 +31,8 @@ class ContactDetails extends React.Component {
   }
 
   render() {
-    const { contact, navigation } = this.state;
+    const { contact } = this.state;
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Contact contact={contact} />

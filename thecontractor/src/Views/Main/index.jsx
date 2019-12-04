@@ -53,14 +53,15 @@ class Main extends React.Component {
 
   sortContacts() {
     const { contacts } = this.state;
-    const sorted = contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0)
+    const sorted = contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
     this.setState({ contacts: sorted });
   }
 
   SearchFilterFunction(text) {
-    this.setState({ isLoading: true })
+    this.setState({ isLoading: true });
+    const { contacts } = this.state;
     // passing the inserted text in textinput
-    const newData = this.state.contacts.filter((item) => {
+    const newData = contacts.filter((item) => {
       // applying filter for the inserted text in search bar
       const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
       const textData = text.toUpperCase();
@@ -80,10 +81,10 @@ class Main extends React.Component {
     return (
       <View style={styles.container}>
         <SearchBar
-          containerStyle={{backgroundColor: impBlack, padding: 0, borderRadius: 10}}
-          inputContainerStyle={{backgroundColor: impBlack}}
+          containerStyle={{ backgroundColor: impBlack, padding: 0, borderRadius: 10 }}
+          inputContainerStyle={{ backgroundColor: impBlack }}
           placeholderTextColor={impLighterDark}
-          inputStyle={{color: impSaberBlue}}
+          inputStyle={{ color: impSaberBlue }}
           searchIcon={{ size: 24, fontWeight: 'bold', color: impSaberBlue }} // Size of the search icon
           onChangeText={(text) => this.SearchFilterFunction(text)}
           // Filter the list using the keywords inserted in searchbar
@@ -105,10 +106,10 @@ class Main extends React.Component {
           )
         }
         <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact')}>
-            <Text style={styles.updateButton}>
-              <Entypo style={{fontSize: 25}} name="circle-with-plus" />  Add Contact
-            </Text>
-          </TouchableOpacity>
+          <Text style={styles.updateButton}>
+            <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />  Add new contact
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
