@@ -124,7 +124,7 @@ class Main extends React.Component {
             </>
           )
         }
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.buttonBox}
           onPress={() => navigation.navigate('EditContact', { contact })}
         >
@@ -136,7 +136,22 @@ class Main extends React.Component {
             {'  '}
             Add new contact
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <View style={styles.boxContainer}>
+          <TouchableOpacity
+            style={styles.buttonBox}
+            onPress={() => navigation.navigate('EditContact', { contact })}
+          >
+            <Text style={styles.updateButton}>
+              <Entypo 
+                style={{ fontSize: 25 }}
+                name="circle-with-plus"
+              />
+              {'  '}
+              Add New Contact
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

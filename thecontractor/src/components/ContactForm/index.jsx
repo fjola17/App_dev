@@ -67,7 +67,7 @@ class ContactForm extends Component {
                 name="save"
               />
               {'  '}
-              Save Info NEW
+              Save Info
             </Text>
           </TouchableOpacity>
         </View>
