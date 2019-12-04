@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text, Modal } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons';
 import { SearchBar } from 'react-native-elements';
@@ -94,7 +94,7 @@ class Main extends React.Component {
           value={search}
         />
         {
-          isLoading ? <Spinner /> : (
+          isLoading ? <Modal animationType="fade"><Spinner /></Modal> : (
             <>
               <FlatList
                 data={result}

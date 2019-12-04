@@ -3,6 +3,7 @@ import { View, Image, Text, Linking } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
+import makeAPhoneCall from '../../services/CallService';
 import styles from './styles';
 
 class Contact extends React.Component {
@@ -12,16 +13,6 @@ class Contact extends React.Component {
     this.state = {
       contact,
     };
-  }
-
-  makeAPhoneCall() {
-    const { contact } = this.state;
-    const phoneNumber = `tel:${contact.phone}`;
-    try {
-      Linking.openURL(phoneNumber);
-    } catch (error) {
-      console.log('makeAPhoneCall(): Error: ', error);
-    }
   }
 
   render() {
@@ -34,7 +25,7 @@ class Contact extends React.Component {
           <Text style={styles.nameFormat}>{contact.name}</Text>
         </View>
         <View style={styles.textBoxAlign}>
-          <TouchableOpacity style={styles.touchBox} onPress={() => this.makeAPhoneCall()}>
+          <TouchableOpacity style={styles.touchBox} onPress={() => makeAPhoneCall(contact.phone)}>
             <Entypo style={styles.iconFormat} name="phone" />
             <Text style={styles.phoneFormat}>{contact.phone}</Text>
           </TouchableOpacity>
