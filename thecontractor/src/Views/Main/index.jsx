@@ -58,6 +58,10 @@ class Main extends React.Component {
     this.setState({ contacts: sorted });
   }
 
+  sortResults(a, b) {
+    return a.name.length - b.name.length;
+  }
+
   SearchFilterFunction(text) {
     this.setState({ isLoading: true });
     const { contacts } = this.state;
@@ -71,7 +75,7 @@ class Main extends React.Component {
     this.setState({
       // setting the filtered newData on datasource
       // After setting the data it will automatically re-render the view
-      result: newData,
+      result: text.length > 0 ? newData.sort((a, b) => this.sortResults(a, b)) : newData,
       search: text,
       isLoading: false,
     });
