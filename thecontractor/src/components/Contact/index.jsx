@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
-import { TouchableOpacity, Platform, Linking } from 'react-native-gesture-handler';
+import { View, Image, Text, Linking } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -14,18 +14,14 @@ class Contact extends React.Component {
     };
   }
 
-  MakeAPhoneCall() {
+  makeAPhoneCall() {
     const { contact } = this.state;
-    console.log ( 'Contact: MakeAPhoneCall: ', contact);
-    let phoneNumber = '';
-    /*
-    if (Platform.OS === 'android') {
-      phoneNumber = `tel:${contact.phone}`;
-    } else {
-      phoneNumber = `telprompt:${contact.phone}`;
-    } */
-    phoneNumber = `telprompt:${contact.phone}`;
-    Linking.openURL(phoneNumber);
+    const phoneNumber = `tel:${contact.phone}`;
+    try {
+      Linking.openURL(phoneNumber);
+    } catch (error) {
+      console.log('makeAPhoneCall(): Error: ', error);
+    }
   }
 
   render() {
@@ -38,7 +34,7 @@ class Contact extends React.Component {
           <Text style={styles.nameFormat}>{contact.name}</Text>
         </View>
         <View style={styles.textBoxAlign}>
-          <TouchableOpacity style={styles.touchBox} onPress={() => this.MakeAPhoneCall()}>
+          <TouchableOpacity style={styles.touchBox} onPress={() => this.makeAPhoneCall()}>
             <Entypo style={styles.iconFormat} name="phone" />
             <Text style={styles.phoneFormat}>{contact.phone}</Text>
           </TouchableOpacity>

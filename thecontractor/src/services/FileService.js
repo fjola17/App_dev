@@ -23,8 +23,12 @@ const setupDirectory = async () => {
 };
 
 export const cleanDirectory = async () => {
-  await onException(() => FileSystem.deleteAsync(contactDir, { idempotent: true }));
-  await setupDirectory();
+  try {
+    await onException(() => FileSystem.deleteAsync(contactDir, { idempotent: true }));
+    await setupDirectory();
+  } catch (error) {
+    console.log('cleanDirectory: Error: ', error);
+  }
 };
 
 // eslint-disable-next-line arrow-body-style
