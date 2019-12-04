@@ -4,7 +4,7 @@ import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { impWhite, impDark, impLighterDark, impRed } from '../../styles/colors';
 
-import { selectFromCameraRoll } from '../../services/ImageService';
+import { selectFromCameraRoll, addImage } from '../../services/ImageService';
 
 //Base contact form class component to update or add new contacts
 class ContactForm extends Component {
@@ -14,18 +14,27 @@ class ContactForm extends Component {
       name: '',
       phone: '',
       image: 'https://heavyeditorial.files.wordpress.com/2019/11/baby-yoda-toys.jpg?quality=65&strip=all&w=780',
-      hasImage: false,
     };
   }
 
+  async selectFromCameraRoll() {
+    const photo = await selectFromCameraRoll();
+    if (photo.length > 0) { await this.addImage(photo); }
+  }
+
+  async addImage(imageLocation) {
+    const newImage = await addImage(imageLocation);
+    this.setState({ image: newImage.file });
+  }
+
   render() {
-    const { name, phone, image, hasImage } = this.state;
+    const { name, phone, image } = this.state;
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={console.log("Edit image pressed!")}>
+        <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
           <Text style={styles.textHeader}>Change photo</Text>
 
-          <Image style={{ height: 200, width: 200 }} source={{uri: this.state.image}} />
+          <Image style={{ height: 200, width: 200 }} source={{ uri: image }} />
         </TouchableOpacity>
 
         <Text style={styles.textHeader}>Name:</Text>

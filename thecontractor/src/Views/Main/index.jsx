@@ -103,9 +103,7 @@ class Main extends React.Component {
           )
         }
         <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact')}>
-          <Text style={styles.updateButton}>
-            <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />Add new contact
-          </Text>
+        <Text style={styles.updateButton}><Entypo style={{fontSize: 25}} name="circle-with-plus" />  Add Contact</Text>
         </TouchableOpacity>
       </View>
     );
