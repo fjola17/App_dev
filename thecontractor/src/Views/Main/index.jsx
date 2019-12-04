@@ -58,8 +58,8 @@ class Main extends React.Component {
     this.setState({ contacts: sorted });
   }
 
-  sortResults(a, b) {
-    return a.name.length - b.name.length;
+  sortResult(a, b, text) {
+    return a.name.toUpperCase().indexOf(text.toUpperCase()) - b.name.toUpperCase().indexOf(text.toUpperCase());
   }
 
   SearchFilterFunction(text) {
@@ -75,7 +75,7 @@ class Main extends React.Component {
     this.setState({
       // setting the filtered newData on datasource
       // After setting the data it will automatically re-render the view
-      result: text.length > 0 ? newData.sort((a, b) => this.sortResults(a, b)) : newData,
+      result: text.length > 0 ? newData.sort((a, b) => this.sortResult(a, b, text)) : newData,
       search: text,
       isLoading: false,
     });
