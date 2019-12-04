@@ -5,7 +5,7 @@ import styles from './styles';
 import { impWhite, impDark, impLighterDark, impRed } from '../../styles/colors';
 import { Entypo } from '@expo/vector-icons';
 
-import { selectFromCameraRoll } from '../../services/ImageService';
+import { selectFromCameraRoll, addImage } from '../../services/ImageService';
 
 //Base contact form class component to update or add new contacts
 class ContactForm extends Component {
@@ -15,16 +15,27 @@ class ContactForm extends Component {
       image: 'https://lumiere-a.akamaihd.net/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768',
       name: "Darth Vader",
       phone: "xxx-xxxx",
-      hasImage: false,
     };
+  }
+
+  async selectFromCameraRoll() {
+    const photo = await selectFromCameraRoll();
+    if (photo.length > 0) { await this.addImage(photo); }
+  }
+
+  async addImage(imageLocation) {
+    const newImage = await addImage(imageLocation);
+    this.setState({ image: newImage.file });
   }
 
   render() {
     const { image, name, phone, hasImage } = this.state;
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={{ uri: image }} />
-        <Text style={styles.textHeader}>Change photo</Text>
+        <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
+          <Text style={styles.textHeader}>Change photo</Text>
+          <Image style={{ height: 200, width: 200 }} source={{ uri: image }} />
+        </TouchableOpacity>
         <View style={styles.textBoxAlign}>
           <Entypo style={styles.iconFormat} name="user" />
           {/* <Text style={styles.nameFormat}>{name}</Text> */}
