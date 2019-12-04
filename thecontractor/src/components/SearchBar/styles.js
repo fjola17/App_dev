@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { impRed, impDark, impLighterDark, impWhite, impBlasterGreen, impBlack, impSaberBlue } from '../../styles/colors';
+import { impRed, impDark, impLighterDark, impWhite, impBlasterGreen, impBlack, impSaberBlue, impOrange } from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {

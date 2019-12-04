@@ -17,6 +17,11 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: impBlack,
     },
+    searchBar: {
+        borderWidth: 1,
+        color: impOrange,
+        backgroundColor: impBlasterGreen,
+    },
     buttonBox: {
         flex: 1,
         justifyContent: 'flex-start',

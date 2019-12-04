@@ -37,7 +37,7 @@ export default StyleSheet.create({
     },
     updateButton: {
         width: winWidth,
-        height: 120,
+        height: 80,
         alignItems: 'center',
         textAlign: 'center',
         fontWeight: 'bold',

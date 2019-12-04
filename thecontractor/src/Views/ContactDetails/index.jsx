@@ -5,6 +5,7 @@ import styles from './styles';
 import { impBlack, impWhite, impRed } from '../../styles/colors';
 import Contact from '../../components/Contact';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Entypo } from '@expo/vector-icons';
 
 class ContactDetails extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class ContactDetails extends React.Component {
         <Contact contact={contact} />
         <View style={styles.buttonBox}>
           <TouchableOpacity style={styles.buttonBox}>
-            <Text style={styles.updateButton}>Update Info</Text>
+            <Text style={styles.updateButton}><Entypo style={{fontSize: 25}} name="info-with-circle" />  Update Info</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Entypo } from '@expo/vector-icons';
 import { SearchBar } from 'react-native-elements';
 import SmallContact from '../../components/SmallContact';
 import data from '../../resources/contacts';
@@ -8,7 +9,7 @@ import { getContactsFromPhone } from '../../services/ContractService';
 import { getContacts } from '../../services/FileService';
 import Spinner from '../../components/Spinner';
 import styles from './styles';
-import { impBlack, impWhite, impRed } from '../../styles/colors';
+import { impBlack, impWhite, impRed, impOrange, impBlasterGreen, impLighterDark, impSaberBlue } from '../../styles/colors';
 
 
 class Main extends React.Component {
@@ -72,7 +73,11 @@ class Main extends React.Component {
     return (
       <View style={styles.container}>
         <SearchBar
-          searchIcon={{ size: 24 }} // Size of the search icon
+          containerStyle={{backgroundColor: impBlack, padding: 0, borderRadius: 10}}
+          inputContainerStyle={{backgroundColor: impBlack}}
+          placeholderTextColor={impLighterDark}
+          inputStyle={{color: impSaberBlue}}
+          searchIcon={{ size: 24, fontWeight: 'bold', color: impSaberBlue }} // Size of the search icon
           onChangeText={(text) => this.SearchFilterFunction(text)}
           // Filter the list using the keywords inserted in searchbar
           onClear={(text) => this.SearchFilterFunction('')}
@@ -91,7 +96,7 @@ class Main extends React.Component {
         </>
         }
         <TouchableOpacity style={styles.buttonBox}>
-            <Text style={styles.updateButton}>Add Contact</Text>
+            <Text style={styles.updateButton}><Entypo style={{fontSize: 25}} name="circle-with-plus" />  Add Contact</Text>
           </TouchableOpacity>
       </View>
     );

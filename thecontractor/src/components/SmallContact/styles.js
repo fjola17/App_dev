@@ -16,18 +16,20 @@ const imgSize = 60;
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 10,
     backgroundColor: impDark,
     backgroundColor: impBlack
   },
   touchBox: {
     flex: 1,
     flexDirection: "row",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    // paddingHorizontal: 20,
+    marginHorizontal: 20,
+    paddingVertical: 15,
     borderBottomWidth: 1,
     //   borderColor: impRed,
-    borderColor: impDark,
+    // borderColor: impDark,
+    borderColor: impSaberBlue,
   },
   image: {
     alignSelf: "center",
@@ -35,8 +37,8 @@ export default StyleSheet.create({
     height: imgSize,
     borderRadius: imgSize / 2,
     overflow: 'hidden',
-    borderWidth: 5,
-    borderColor: impBlasterGreen,
+    borderWidth: 2,
+    borderColor: impSaberBlue,
   },
   nameFormat: {
     paddingTop: 15,
