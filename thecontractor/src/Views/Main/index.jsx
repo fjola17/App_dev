@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text, Modal } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons';
 import { SearchBar } from 'react-native-elements';
@@ -54,8 +54,7 @@ class Main extends React.Component {
 
   async componentDidMount() {
     this.setState({ isLoading: true });
-    // Incase you get dublicates, or something isn't working correctly take the comment away from line below
-    // await cleanDirectory();
+    await cleanDirectory();
     await getContactsFromPhone();
     const contact = await getContacts();
     this.setState({ contacts: contact });
@@ -67,6 +66,10 @@ class Main extends React.Component {
     const { contacts } = this.state;
     const sorted = contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
     this.setState({ contacts: sorted });
+  }
+
+  sortResult(a, b, text) {
+    return a.name.toUpperCase().indexOf(text.toUpperCase()) - b.name.toUpperCase().indexOf(text.toUpperCase());
   }
 
   SearchFilterFunction(text) {
@@ -82,7 +85,7 @@ class Main extends React.Component {
     this.setState({
       // setting the filtered newData on datasource
       // After setting the data it will automatically re-render the view
-      result: newData,
+      result: text.length > 0 ? newData.sort((a, b) => this.sortResult(a, b, text)) : newData,
       search: text,
       isLoading: false,
     });
@@ -106,7 +109,7 @@ class Main extends React.Component {
           value={search}
         />
         {
-          isLoading ? <Spinner /> : (
+          isLoading ? <Modal animationType="fade"><Spinner /></Modal> : (
             <>
               <FlatList
                 data={result}
@@ -120,7 +123,7 @@ class Main extends React.Component {
         }
         <TouchableOpacity style={styles.buttonBox} onPress={() => navigation.navigate('EditContact', {contact})}>
           <Text style={styles.updateButton}>
-            <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />  Add new contact
+            <Entypo style={{ fontSize: 25 }} name="circle-with-plus" />Add new contact
           </Text>
         </TouchableOpacity>
       </View>
