@@ -30,12 +30,14 @@ class ContactForm extends Component {
 
   async addImage(imageLocation) {
     const newImage = await addImage(imageLocation);
-    const { image } = this.state;
+    // const { image } = this.state;
     this.setState({ image: newImage.file });
   }
 
   render() {
     const { image, name, phone } = this.state;
+    const val = { image, name, phone }
+    const { update } = this.props;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
@@ -51,9 +53,10 @@ class ContactForm extends Component {
           <Entypo style={styles.iconFormat} name="user" />
           <TextInput 
             style={styles.nameFormat}
-            placeholder={name}
+            placeholder="Evil name"
             placeholderTextColor={impLighterDark}
-            onChangeText={() => this.setState({ name })}
+            onChangeText={(nam) => this.setState({ name: nam })}
+            value={name}
           />
         </View>
         <View style={styles.textBoxAlign}>
@@ -61,16 +64,17 @@ class ContactForm extends Component {
             <Entypo style={styles.iconFormat} name="phone" />
             <TextInput
               style={styles.phoneFormat}
-              placeholder={phone}
+              placeholder="phone"
               placeholderTextColor={impLighterDark}
-              onChangeText={() => this.setState({ phone })}
+              onChangeText={(ph) => this.setState({ phone: ph })}
+              value={phone}
             />
           </TouchableOpacity>
         </View>
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}
-            onPress={console.log('Save was pressed')}
+            onPress={() => update(val)}
             // onPress={AddOrModifyContact(contact, this.state)}
           >
             <Text style={styles.updateButton}>

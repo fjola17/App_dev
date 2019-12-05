@@ -41,8 +41,8 @@ class Main extends React.Component {
     // Default contact
     const contact = {
       image: 'https://lumiere-a.akamaihd.net/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768',
-      name: 'Evil Name',
-      phone: '000-0000',
+      name: '',
+      phone: '',
     };
     this.state = {
       navigation,
