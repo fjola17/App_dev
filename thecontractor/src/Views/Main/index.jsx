@@ -168,7 +168,7 @@ class Main extends React.Component {
             onPress={() => navigation.navigate('EditContact', { contact })}
           >
             <Text style={styles.updateButton}>
-              <Entypo 
+              <Entypo
                 style={{ fontSize: 25 }}
                 name="circle-with-plus"
               />

@@ -52,7 +52,7 @@ class ContactForm extends Component {
         </Text>
         <View style={styles.textBoxAlign}>
           <Entypo style={styles.iconFormat} name="user" />
-          <TextInput 
+          <TextInput
             style={styles.nameFormat}
             placeholder="Evil name"
             placeholderTextColor={impLighterDark}
@@ -79,7 +79,7 @@ class ContactForm extends Component {
             // onPress={AddOrModifyContact(contact, this.state)}
           >
             <Text style={styles.updateButton}>
-              <Entypo 
+              <Entypo
                 style={{ fontSize: 25 }}
                 name="save"
               />
