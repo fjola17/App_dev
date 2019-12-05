@@ -26,6 +26,11 @@ class ContactDetails extends React.Component {
       headerTitleStyle: {
         fontWeight: 'bold',
         fontSize: 25,
+        textAlign: 'center',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
       },
     };
   }
@@ -44,7 +49,7 @@ class ContactDetails extends React.Component {
             <Text style={styles.updateButton}>
               <Entypo 
                 style={{ fontSize: 25 }}
-                name="info-with-circle"
+                name="arrow-with-circle-up"
               />
               {'  '}
               Update Info

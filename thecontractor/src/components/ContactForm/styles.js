@@ -41,6 +41,9 @@ export default StyleSheet.create({
     borderColor: impRed,
   },
   nameFormat: {
+    // flex: 1,
+    // flexShrink: 1,
+    // flexWrap: 'wrap',
     // fontFamily: '',
     fontSize: 25,
     fontWeight: 'bold',
@@ -61,6 +64,15 @@ export default StyleSheet.create({
   iconFormat: {
     // fontFamily: '',
     fontSize: 25,
+    fontWeight: 'bold',
+    color: impSaberBlue,
+  },
+  changePhoto: {
+    position: 'absolute',
+    top: 220,
+    left: 30,
+    // fontFamily: '',
+    fontSize: 70,
     fontWeight: 'bold',
     color: impSaberBlue,
   },

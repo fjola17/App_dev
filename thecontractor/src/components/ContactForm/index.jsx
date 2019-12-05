@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
 // import { PropTypes } from 'prop-types';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 // import { impWhite, impDark, impLighterDark, impRed } from '../../styles/colors';
 import { AddOrModifyContact } from '../../services/FileService';
 import { selectFromCameraRoll, addImage } from '../../services/ImageService';
+import { impLighterDark, impDark, impOrange } from '../../styles/colors';
 
 // Base contact form class component to update or add new contacts
 class ContactForm extends Component {
@@ -38,15 +39,21 @@ class ContactForm extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
-          <Text style={styles.iconFormat}>Change photo</Text>
           <Image style={styles.image} source={{ uri: image }} />
         </TouchableOpacity>
+        <Text style={styles.changePhoto}>
+          <Entypo
+            style={styles.changePhoto}
+            name="camera"
+          />
+        </Text>
         <View style={styles.textBoxAlign}>
           <Entypo style={styles.iconFormat} name="user" />
           <TextInput 
             style={styles.nameFormat}
             placeholder={name}
-            onChangeText={(name) => this.setState({ name })}
+            placeholderTextColor={impLighterDark}
+            onChangeText={() => this.setState({ name })}
           />
         </View>
         <View style={styles.textBoxAlign}>
@@ -55,14 +62,15 @@ class ContactForm extends Component {
             <TextInput
               style={styles.phoneFormat}
               placeholder={phone}
-              onChangeText={(phone) => this.setState({ phone })}
+              placeholderTextColor={impLighterDark}
+              onChangeText={() => this.setState({ phone })}
             />
           </TouchableOpacity>
         </View>
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}
-            onPress={() => navigation.navigate('Main', { name })}
+            onPress={console.log('Save was pressed')}
             // onPress={AddOrModifyContact(contact, this.state)}
           >
             <Text style={styles.updateButton}>

@@ -9,7 +9,7 @@ import {
   impBlasterRed,
   impOrange,
   impSaberBlue
-} from "../../styles/colors";
+} from '../../styles/colors';
 
 const { width: winWidth } = Dimensions.get('window');
 const imgSize = 60;
@@ -22,7 +22,7 @@ export default StyleSheet.create({
   },
   touchBox: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     // paddingHorizontal: 20,
     marginHorizontal: 20,
     paddingVertical: 15,
@@ -32,7 +32,7 @@ export default StyleSheet.create({
     borderColor: impSaberBlue,
   },
   image: {
-    alignSelf: "center",
+    alignSelf: 'center',
     width: imgSize,
     height: imgSize,
     borderRadius: imgSize / 2,
@@ -41,19 +41,21 @@ export default StyleSheet.create({
     borderColor: impSaberBlue,
   },
   nameFormat: {
+    // flexShrink: 1,
+    // flexWrap: 'wrap',
     paddingTop: 15,
     paddingLeft: 25,
     // fontFamily: '',
     fontSize: 20,
-    fontWeight: "bold",
-    color: impRed
+    fontWeight: 'bold',
+    color: impRed,
   },
   updateButton: {
     width: winWidth,
     height: 120,
-    alignItems: "center",
-    textAlign: "center",
-    fontWeight: "bold",
+    alignItems: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
     fontSize: 25,
     color: impBlack,
     backgroundColor: impRed,
