@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, KeyboardAvoidingView } from 'react-native';
 // import PropTypes from 'prop-types';
-// import { Entypo } from '@expo/vector-icons';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 import { impBlack, impRed } from '../../styles/colors';
 import ContactForm from '../../components/ContactForm';
@@ -10,7 +10,7 @@ import { AddOrModifyContact } from '../../services/FileService';
 class EditContact extends React.Component {
   static navigationOptions() {
     return {
-      title: 'Edit Information',
+      title: 'Edit Contact',
       headerStyle: {
         backgroundColor: impRed,
       },
@@ -24,6 +24,12 @@ class EditContact extends React.Component {
         marginLeft: 'auto',
         marginRight: 'auto',
       },
+      headerRight: () => (
+        <MaterialCommunityIcons
+          style={styles.iconHeader}
+          name="death-star"
+        />
+      ),
     };
   }
 

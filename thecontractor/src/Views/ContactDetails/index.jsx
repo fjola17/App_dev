@@ -1,24 +1,16 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
-import { impBlack, impWhite, impRed } from '../../styles/colors';
+import { impBlack, impRed } from '../../styles/colors';
 import Contact from '../../components/Contact';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class ContactDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    const { navigation } = this.props;
-    this.state = {
-      contact: navigation.getParam('contact'),
-    };
-  }
-
   static navigationOptions() {
     return {
-      title: 'Contact Information',
+      title: 'Contact Info',
       headerStyle: {
         backgroundColor: impRed,
       },
@@ -38,6 +30,14 @@ class ContactDetails extends React.Component {
           name="death-star"
         />
       ),
+    };
+  }
+  
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+    this.state = {
+      contact: navigation.getParam('contact'),
     };
   }
 

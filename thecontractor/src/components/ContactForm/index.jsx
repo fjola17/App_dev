@@ -56,6 +56,8 @@ class ContactForm extends Component {
             placeholder="Evil name"
             placeholderTextColor={impLighterDark}
             multiline
+            returnKeyType='next'
+            blurOnSubmit
             onChangeText={(nam) => this.setState({ name: nam })}
             value={name}
           />
@@ -69,7 +71,7 @@ class ContactForm extends Component {
               placeholderTextColor={impLighterDark}
               keyboardType="phone-pad"
               maxLength={10}
-              textContentType="telephoneNumber"
+              // textContentType="telephoneNumber"
               onChangeText={(ph) => this.setState({ phone: ph })}
               value={phone}
             />

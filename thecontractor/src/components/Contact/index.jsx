@@ -3,8 +3,8 @@ import { View, Image, Text, Linking } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import makeAPhoneCall from '../../services/CallService';
 import styles from './styles';
+import makeAPhoneCall from '../../services/CallService';
 import { getContact } from '../../services/FileService';
 
 class Contact extends React.Component {
