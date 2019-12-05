@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, KeyboardAvoidingView } from 'react-native';
 // import PropTypes from 'prop-types';
 // import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
@@ -45,7 +45,9 @@ class EditContact extends React.Component {
     const { contact } = this.state;
     return (
       <View style={styles.container}>
-        <ContactForm contact={contact} update={(val) => this.update(val)} />
+        <KeyboardAvoidingView behavior="position" enabled="true">
+          <ContactForm contact={contact} update={(val) => this.update(val)} />
+        </KeyboardAvoidingView>
       </View>
     );
   }
