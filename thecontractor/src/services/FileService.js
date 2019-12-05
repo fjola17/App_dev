@@ -65,8 +65,11 @@ export const AddOrModifyContact = async (curr, data) => {
   if (curr.name !== '' || !curr.name) {
     const newf = curr.name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
     const fileuri = `${contactDir}/${newf}.json`;
-    // const dir = await FileSystem.getInfoAsync(fileuri);
     await remove(fileuri);
   }
-  await createContact(data);
+  const file = `${contactDir}/${data}.json`;
+  const dir = await FileSystem.getInfoAsync(file);
+  if (!dir.exists) {
+    await createContact(data);
+  }
 };

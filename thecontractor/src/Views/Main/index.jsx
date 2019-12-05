@@ -85,16 +85,20 @@ class Main extends React.Component {
 
   updateProperties() {
     const { navigation } = this.props;
-    const prev = navigation.getParam('Current');
-    const newpr = navigation.getParam('Updated');
-    console.log(prev, newpr);
+    let prev = navigation.getParam('Current');
+    let newpr = navigation.getParam('Updated');
     const { contacts } = this.state;
-    console.log("I updated");
     if(!prev || !newpr) {
-      return this.state.contacts;
+      return contacts;
     }
     const filtered = contacts.filter((contact) => contact !== prev);
+    const exits = contacts.filter((contat) => contat === newpr);
+    if(exits[0]) {
+      return contacts;
+    }
     const newContacts = [...filtered, newpr];
+    prev = {};
+    newpr = {};
     return newContacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
 
   }
