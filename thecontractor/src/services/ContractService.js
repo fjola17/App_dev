@@ -15,7 +15,7 @@ const putContactAsValidJSObject = async (con) => {
   return con.map(async (contact) => {
     const name = contact.name;
     let phone = '0';
-    let image = 'http://www.digitaldownpour.com.au/wp-content/themes/arkahost/assets/images/default.png';
+    let image = 'https://bbts1.azureedge.net/images/p/full/2018/11/de3e32bb-b836-49a5-90a4-891c6e2d5473.jpg';
     if (contact.phoneNumbers) {
       phone = contact.phoneNumbers[0].number;
     }

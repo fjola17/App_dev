@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View } from 'react-native';
 // import PropTypes from 'prop-types';
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
+// import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
 import { impBlack, impRed } from '../../styles/colors';
 import ContactForm from '../../components/ContactForm';
+import { AddOrModifyContact } from '../../services/FileService';
 
 class EditContact extends React.Component {
   static navigationOptions() {
@@ -24,12 +24,6 @@ class EditContact extends React.Component {
         marginLeft: 'auto',
         marginRight: 'auto',
       },
-      headerRight: () => (
-        <MaterialCommunityIcons
-          style={styles.iconHeader}
-          name="death-star"
-        />
-      ),
     };
   }
 
@@ -41,14 +35,20 @@ class EditContact extends React.Component {
     };
   }
 
+  update(val1) {
+    const { contact } = this.state;
+    AddOrModifyContact(contact, val1);
+    this.props.navigation.navigate('Main', { Current: contact, Updated: val1 });
+  }
+
   render() {
-    const { contact, navigation } = this.state;
+    const { contact } = this.state;
     return (
       <View style={styles.container}>
-        <ContactForm contact={contact} />
+        <ContactForm contact={contact} update={(val) => this.update(val)} />
       </View>
     );
   }
-};
+}
 
 export default EditContact;
