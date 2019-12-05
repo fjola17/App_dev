@@ -5,6 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import makeAPhoneCall from '../../services/CallService';
 import styles from './styles';
+import { getContact } from '../../services/FileService';
 
 class Contact extends React.Component {
   constructor(props) {
@@ -13,6 +14,14 @@ class Contact extends React.Component {
     this.state = {
       contact,
     };
+  }
+
+  async componentDidMount() {
+    const { contact } = this.state;
+    const { name } = contact;
+    const parsed = name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
+    const currentContact = await getContact(`${parsed}.json`);
+    this.setState({ contact: currentContact });
   }
 
   render() {

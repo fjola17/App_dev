@@ -38,7 +38,7 @@ export const remove = async (name) => {
   return await onException(() => FileSystem.deleteAsync(name, { idempotent: true }));
 };
 
-const getContact = async (fileName) => {
+export const getContact = async (fileName) => {
   const dat = await onException(() => FileSystem.readAsStringAsync(`${contactDir}/${fileName}`), {
     encoding: FileSystem.EncodingType.UTF8,
   });
@@ -67,9 +67,7 @@ export const AddOrModifyContact = async (curr, data) => {
     const fileuri = `${contactDir}/${newf}.json`;
     await remove(fileuri);
   }
-  const file = `${contactDir}/${data}.json`;
-  const dir = await FileSystem.getInfoAsync(file);
-  if (!dir.exists) {
-    await createContact(data);
-  }
+  // const file = `${contactDir}/${data}.json`;
+  // const dir = await FileSystem.getInfoAsync(file);
+  await createContact(data);
 };

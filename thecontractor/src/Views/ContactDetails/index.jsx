@@ -50,7 +50,7 @@ class ContactDetails extends React.Component {
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}
-            onPress={() => navigation.navigate('EditContact', { contact })}
+            onPress={() => navigation.navigate('EditContact', { contact, Screen: '' })}
           >
             <Text style={styles.updateButton}>
               <Entypo 

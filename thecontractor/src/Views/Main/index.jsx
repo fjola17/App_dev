@@ -61,9 +61,8 @@ class Main extends React.Component {
 
 
   async componentDidMount() {
-    console.log("bla");
     this.setState({ isLoading: true });
-    await cleanDirectory();
+    // await cleanDirectory();
     await getContactsFromPhone();
     const contact = await getContacts();
     this.setState({ contacts: contact });
@@ -72,7 +71,7 @@ class Main extends React.Component {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener('didFocus', () => {
       this.setState({ isLoading: true });
-      this.updateProperties(navigation);
+      // this.updateProperties(navigation);
       const con = this.updateProperties();
       this.setState({ result: con, contacts: con, isLoading: false });
     });
@@ -85,22 +84,23 @@ class Main extends React.Component {
 
   updateProperties() {
     const { navigation } = this.props;
-    let prev = navigation.getParam('Current');
-    let newpr = navigation.getParam('Updated');
+    const prev = navigation.getParam('Current');
+    const newpr = navigation.getParam('Updated');
+    const route = navigation.getParam('Screen');
+    console.log(route);
+    if (route !== 'EditContact') {
+      console.log("Im not suppoed to be here");
+      return this.state.contacts;
+    }
     const { contacts } = this.state;
     if(!prev || !newpr) {
       return contacts;
     }
-    const filtered = contacts.filter((contact) => contact !== prev);
-    const exits = contacts.filter((contat) => contat === newpr);
-    if(exits[0]) {
-      return contacts;
-    }
+    console.log(newpr.phone, prev.phone);
+    const filter = contacts.filter((contac) => contac.name !== newpr.name);
+    const filtered = filter.filter((contact) => contact.name !== prev.name);
     const newContacts = [...filtered, newpr];
-    prev = {};
-    newpr = {};
     return newContacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
-
   }
 
   sortContacts() {
@@ -155,6 +155,7 @@ class Main extends React.Component {
             <>
               <FlatList
                 data={result}
+                extraData={this.state}
                 renderItem={({ item }) => (
                   <SmallContact
                     contact={item}
@@ -169,7 +170,7 @@ class Main extends React.Component {
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}
-            onPress={() => navigation.navigate('EditContact', { contact })}
+            onPress={() => navigation.navigate('EditContact', { contact, Update: {}, Current: {} })}
           >
             <Text style={styles.updateButton}>
               <Entypo

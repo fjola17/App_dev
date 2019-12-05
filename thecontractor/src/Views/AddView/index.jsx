@@ -37,12 +37,16 @@ class EditContact extends React.Component {
 
   update(val1) {
     const { contact } = this.state;
+    const { navigation } = this.props;
     AddOrModifyContact(contact, val1);
-    this.props.navigation.navigate('Main', { Current: contact, Updated: val1 });
+    const routeName = navigation.state.routeName;
+    console.log(routeName);
+    navigation.navigate('Main', { Current: contact, Updated: val1, Screen: routeName } );
   }
 
   render() {
     const { contact } = this.state;
+    console.log(this.props.navigation.state.routeName);
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="position" enabled="true">
