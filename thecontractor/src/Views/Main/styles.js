@@ -22,6 +22,14 @@ export default StyleSheet.create({
     color: impOrange,
     backgroundColor: impBlasterGreen,
   },
+  iconHeader: {
+    // fontFamily: '',
+    fontSize: 40,
+    fontWeight: 'bold',
+    paddingRight: 20,
+    paddingBottom: 3,
+    color: impBlack,
+  },
   //    buttonBox: {
   //     flex: 1,
   //     justifyContent: 'flex-start',

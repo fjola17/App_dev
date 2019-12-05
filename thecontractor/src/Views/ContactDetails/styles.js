@@ -36,6 +36,14 @@ export default StyleSheet.create({
     marginBottom: 20,
     // alignItems: 'flex-end',
   },
+  iconHeader: {
+    // fontFamily: '',
+    fontSize: 40,
+    fontWeight: 'bold',
+    paddingRight: 20,
+    paddingBottom: 3,
+    color: impBlack,
+  },
   updateButton: {
     width: winWidth * 0.9,
     // width: winWidth,

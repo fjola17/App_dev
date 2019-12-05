@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 // import PropTypes from 'prop-types';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 import { impBlack, impRed } from '../../styles/colors';
 import ContactForm from '../../components/ContactForm';
@@ -24,6 +24,12 @@ class EditContact extends React.Component {
         marginLeft: 'auto',
         marginRight: 'auto',
       },
+      headerRight: () => (
+        <MaterialCommunityIcons
+          style={styles.iconHeader}
+          name="death-star"
+        />
+      ),
     };
   }
 

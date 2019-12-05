@@ -35,6 +35,14 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         color: impBlasterGreen,
     },
+    iconHeader: {
+        // fontFamily: '',
+        fontSize: 40,
+        fontWeight: 'bold',
+        paddingRight: 20,
+        paddingBottom: 3,
+        color: impBlack,
+      },
     updateButton: {
         width: winWidth,
         height: 80,

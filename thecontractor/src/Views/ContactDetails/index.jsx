@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 import { impBlack, impWhite, impRed } from '../../styles/colors';
 import Contact from '../../components/Contact';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Entypo } from '@expo/vector-icons';
 
 class ContactDetails extends React.Component {
   constructor(props) {
@@ -32,6 +32,12 @@ class ContactDetails extends React.Component {
         marginLeft: 'auto',
         marginRight: 'auto',
       },
+      headerRight: () => (
+        <MaterialCommunityIcons
+          style={styles.iconHeader}
+          name="death-star"
+        />
+      ),
     };
   }
 

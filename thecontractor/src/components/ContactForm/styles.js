@@ -67,6 +67,12 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     color: impSaberBlue,
   },
+  iconHeader: {
+    // fontFamily: '',
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: impBlack,
+  },
   changePhoto: {
     position: 'absolute',
     top: 220,
