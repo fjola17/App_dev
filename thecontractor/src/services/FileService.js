@@ -38,7 +38,7 @@ export const remove = async (name) => {
   return await onException(() => FileSystem.deleteAsync(name, { idempotent: true }));
 };
 
-const getContact = async (fileName) => {
+export const getContact = async (fileName) => {
   const dat = await onException(() => FileSystem.readAsStringAsync(`${contactDir}/${fileName}`), {
     encoding: FileSystem.EncodingType.UTF8,
   });
@@ -65,8 +65,9 @@ export const AddOrModifyContact = async (curr, data) => {
   if (curr.name !== '' || !curr.name) {
     const newf = curr.name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
     const fileuri = `${contactDir}/${newf}.json`;
-    // const dir = await FileSystem.getInfoAsync(fileuri);
     await remove(fileuri);
   }
+  // const file = `${contactDir}/${data}.json`;
+  // const dir = await FileSystem.getInfoAsync(file);
   await createContact(data);
 };

@@ -61,7 +61,6 @@ class Main extends React.Component {
 
 
   async componentDidMount() {
-    console.log("bla");
     this.setState({ isLoading: true });
     // await cleanDirectory();
     await getContactsFromPhone();
@@ -70,10 +69,11 @@ class Main extends React.Component {
     this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
     const { navigation } = this.props;
-    this.focusListener = navigation.addListener('didFocus', () => {
+    this.focusListener = navigation.addListener('didFocus', async() => {
       this.setState({ isLoading: true });
-      this.updateProperties(navigation);
-      const con = this.updateProperties();
+      // this.updateProperties(navigation);
+      const cont = await getContacts(); //this.updateProperties();
+      const con = cont.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
       this.setState({ result: con, contacts: con, isLoading: false });
     });
     this.sortContacts();
@@ -81,22 +81,6 @@ class Main extends React.Component {
 
   componentWillUnmount() {
     this.focusListener.remove();
-  }
-
-  updateProperties() {
-    const { navigation } = this.props;
-    const prev = navigation.getParam('Current');
-    const newpr = navigation.getParam('Updated');
-    console.log(prev, newpr);
-    const { contacts } = this.state;
-    console.log("I updated");
-    if(!prev || !newpr) {
-      return this.state.contacts;
-    }
-    const filtered = contacts.filter((contact) => contact !== prev);
-    const newContacts = [...filtered, newpr];
-    return newContacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
-
   }
 
   sortContacts() {
@@ -151,6 +135,7 @@ class Main extends React.Component {
             <>
               <FlatList
                 data={result}
+                extraData={this.state}
                 renderItem={({ item }) => (
                   <SmallContact
                     contact={item}
@@ -165,7 +150,7 @@ class Main extends React.Component {
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}
-            onPress={() => navigation.navigate('EditContact', { contact })}
+            onPress={() => navigation.navigate('EditContact', { contact, Update: {}, Current: {} })}
           >
             <Text style={styles.updateButton}>
               <Entypo
