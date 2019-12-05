@@ -16,6 +16,11 @@ static navigationOptions() {
     headerTitleStyle: {
       fontWeight: 'bold',
       fontSize: 25,
+      textAlign: 'center',
+      alignSelf: 'center',
+      justifyContent: 'center',
+      marginLeft: 'auto',
+      marginRight: 'auto',
     },
   };
 }
