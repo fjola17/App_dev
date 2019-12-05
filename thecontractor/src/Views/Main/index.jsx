@@ -69,10 +69,11 @@ class Main extends React.Component {
     this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
     const { navigation } = this.props;
-    this.focusListener = navigation.addListener('didFocus', () => {
+    this.focusListener = navigation.addListener('didFocus', async() => {
       this.setState({ isLoading: true });
       // this.updateProperties(navigation);
-      const con = this.updateProperties();
+      const cont = await getContacts(); //this.updateProperties();
+      const con = cont.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
       this.setState({ result: con, contacts: con, isLoading: false });
     });
     this.sortContacts();
@@ -80,27 +81,6 @@ class Main extends React.Component {
 
   componentWillUnmount() {
     this.focusListener.remove();
-  }
-
-  updateProperties() {
-    const { navigation } = this.props;
-    const prev = navigation.getParam('Current');
-    const newpr = navigation.getParam('Updated');
-    const route = navigation.getParam('Screen');
-    console.log(route);
-    if (route !== 'EditContact') {
-      console.log("Im not suppoed to be here");
-      return this.state.contacts;
-    }
-    const { contacts } = this.state;
-    if(!prev || !newpr) {
-      return contacts;
-    }
-    console.log(newpr.phone, prev.phone);
-    const filter = contacts.filter((contac) => contac.name !== newpr.name);
-    const filtered = filter.filter((contact) => contact.name !== prev.name);
-    const newContacts = [...filtered, newpr];
-    return newContacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
   }
 
   sortContacts() {
