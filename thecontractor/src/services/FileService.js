@@ -33,8 +33,9 @@ export const cleanDirectory = async () => {
 
 // eslint-disable-next-line arrow-body-style
 export const remove = async (name) => {
+  console.log(name);
   // eslint-disable-next-line no-return-await
-  return await onException(() => FileSystem.deleteAsync(`${contactDir}/${name}`, { idempotent: true }));
+  return await onException(() => FileSystem.deleteAsync(name, { idempotent: true }));
 };
 
 const getContact = async (fileName) => {
@@ -56,22 +57,17 @@ export const createContact = async (data) => {
   await setupDirectory();
   const newf = data.name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
   const fileuri = `${contactDir}/${newf}.json`;
-  // const dir = await FileSystem.getInfoAsync(fileuri);
   const jsonstr = JSON.stringify(data);
   await onException(() => FileSystem.writeAsStringAsync(fileuri, jsonstr));
 };
 
 export const AddOrModifyContact = async (curr, data) => {
-  console.log(curr, data);
+  //console.log(curr, data);
   if (curr.name !== '') {
     const newf = curr.name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
     const fileuri = `${contactDir}/${newf}.json`;
-    const dir = await FileSystem.getInfoAsync(fileuri);
-    if (dir.exists) {
-      await remove(fileuri);
-    }
-    console.log("Removed");
+    // const dir = await FileSystem.getInfoAsync(fileuri);
+    await remove(fileuri);
   }
   await createContact(data);
-  console.log("Created");
 };

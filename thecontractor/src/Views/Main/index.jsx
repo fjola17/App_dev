@@ -40,7 +40,7 @@ class Main extends React.Component {
     const { contacts } = [];
     // Default contact
     const contact = {
-      image: 'https://lumiere-a.akamaihd.net/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=768',
+      image: 'https://bbts1.azureedge.net/images/p/full/2018/11/de3e32bb-b836-49a5-90a4-891c6e2d5473.jpg',
       name: '',
       phone: '',
     };
@@ -62,6 +62,16 @@ class Main extends React.Component {
     this.setState({ contacts: contact });
     this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
+  }
+
+  componentWillReceiveProps(newp) {
+    const {navigation} = newp;
+    const prev = navigation.getParam('Current');
+    const newpr = navigation.getParam('Updated');
+    const { contacts } = this.state;
+    const filtered = contacts.filter((contact) => contact !== prev);
+    const newContacts = [...filtered, newpr];
+    this.setState({ contacts: newContacts });
   }
 
   sortContacts() {
@@ -126,19 +136,6 @@ class Main extends React.Component {
             </>
           )
         }
-        {/* <TouchableOpacity
-          style={styles.buttonBox}
-          onPress={() => navigation.navigate('EditContact', { contact })}
-        >
-          <Text style={styles.updateButton}>
-            <Entypo
-              style={{ fontSize: 25 }}
-              name="circle-with-plus"
-            />
-            {'  '}
-            Add new contact
-          </Text>
-        </TouchableOpacity> */}
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}

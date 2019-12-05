@@ -38,6 +38,7 @@ class EditContact extends React.Component {
   update(val1) {
     const { contact } = this.state;
     AddOrModifyContact(contact, val1);
+    this.props.navigation.navigate('Main', { Current: contact, Updated: val1 });
   }
 
   render() {
