@@ -70,14 +70,11 @@ class Main extends React.Component {
     this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
     const { navigation } = this.props;
-    this.focusListener = navigation.addListener('didFocus', async () => {
+    this.focusListener = navigation.addListener('didFocus', () => {
       this.updateProperties(navigation);
-      console.log("I did stuff");
       const con = this.updateProperties();
-     // console.log(con);
-      // const contactb = await getContacts();
-       this.setState({ result: con });
-       this.sortContacts();
+      this.setState({ result: con, contacts: con });
+      // this.sortContacts();
     });
     this.sortContacts();
   }
