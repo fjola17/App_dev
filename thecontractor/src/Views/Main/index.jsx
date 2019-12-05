@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, FlatList, Text, Modal, ImageBackground } from 'react-native';
+import { View, FlatList, Text, Modal, Button } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import { SearchBar } from 'react-native-elements';
 import SmallContact from '../../components/SmallContact';
 import data from '../../resources/contacts';
@@ -27,7 +27,15 @@ class Main extends React.Component {
         textAlign: 'center',
         alignSelf: 'center',
         justifyContent: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
       },
+      headerRight: () => (
+        <MaterialCommunityIcons
+          style={styles.iconHeader}
+          name="death-star"
+        />
+      ),
     };
   }
 
@@ -54,7 +62,7 @@ class Main extends React.Component {
 
   async componentDidMount() {
     this.setState({ isLoading: true });
-    await cleanDirectory();
+    // await cleanDirectory();
     await getContactsFromPhone();
     const contact = await getContacts();
     this.setState({ contacts: contact });
@@ -124,7 +132,7 @@ class Main extends React.Component {
             </>
           )
         }
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.buttonBox}
           onPress={() => navigation.navigate('EditContact', { contact })}
         >
@@ -136,7 +144,22 @@ class Main extends React.Component {
             {'  '}
             Add new contact
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <View style={styles.boxContainer}>
+          <TouchableOpacity
+            style={styles.buttonBox}
+            onPress={() => navigation.navigate('EditContact', { contact })}
+          >
+            <Text style={styles.updateButton}>
+              <Entypo
+                style={{ fontSize: 25 }}
+                name="circle-with-plus"
+              />
+              {'  '}
+              Add New Contact
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

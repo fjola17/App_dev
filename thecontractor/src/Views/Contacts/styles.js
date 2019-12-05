@@ -27,4 +27,12 @@ export default StyleSheet.create({
   safeArea: {
       backgroundColor: impDark,
   },
+  iconHeader: {
+    // fontFamily: '',
+    fontSize: 40,
+    fontWeight: 'bold',
+    paddingRight: 20,
+    paddingBottom: 3,
+    color: impBlack,
+  },
 });
