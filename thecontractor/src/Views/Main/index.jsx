@@ -62,16 +62,33 @@ class Main extends React.Component {
     this.setState({ contacts: contact });
     this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener('didFocus', async () => {
+      this.updateProperties(navigation);
+      console.log("I did stuff");
+      const con = this.updateProperties();
+      console.log(con);
+      // const contactb = await getContacts();
+      this.setState({contact: con});
+    });
+    this.sortContacts();
   }
 
-  componentWillReceiveProps(newp) {
-    const {navigation} = newp;
+  componentWillUnmount() {
+    this.focusListener.remove();
+  }
+
+  updateProperties() {
+    const { navigation } = this.props;
     const prev = navigation.getParam('Current');
     const newpr = navigation.getParam('Updated');
+    console.log(prev, newpr);
     const { contacts } = this.state;
+    console.log("I updated");
     const filtered = contacts.filter((contact) => contact !== prev);
     const newContacts = [...filtered, newpr];
-    this.setState({ contacts: newContacts });
+    return newContacts;
+
   }
 
   sortContacts() {
