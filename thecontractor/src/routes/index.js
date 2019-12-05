@@ -12,6 +12,8 @@ const StackNavigatior = createStackNavigator({
   Main,
   ContactDetails,
   EditContact,
+}, {
+  headerLayoutPreset: 'center',
 });
 
 export default createAppContainer(StackNavigatior);
