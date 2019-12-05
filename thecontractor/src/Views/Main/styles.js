@@ -23,19 +23,12 @@ export default StyleSheet.create({
     backgroundColor: impBlasterGreen,
   },
   iconHeader: {
-    // fontFamily: '',
     fontSize: 40,
     fontWeight: 'bold',
     paddingRight: 20,
     paddingBottom: 3,
     color: impBlack,
   },
-  //    buttonBox: {
-  //     flex: 1,
-  //     justifyContent: 'flex-start',
-  //     alignItems: 'center',
-  //     marginBottom: 80,
-  // },
   mainText: {
     fontFamily: '',
     fontSize: 18,

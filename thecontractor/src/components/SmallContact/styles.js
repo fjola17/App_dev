@@ -18,8 +18,9 @@ const imgSize = 60;
 export default StyleSheet.create({
   container: {
     flex: 10,
+    marginHorizontal: 10,
     // backgroundColor: impDark,
-    backgroundColor: impBlack,
+    // backgroundColor: impBlack,
   },
   touchBox: {
     flex: 1,
@@ -44,8 +45,11 @@ export default StyleSheet.create({
   nameFormat: {
     // flexShrink: 1,
     // flexWrap: 'wrap',
+    // marginLeft: 20,
+    marginRight: 20,
+    paddingRight: 20,
     paddingTop: 15,
-    paddingLeft: 25,
+    paddingLeft: 20,
     // fontFamily: '',
     fontSize: 20,
     fontWeight: 'bold',
