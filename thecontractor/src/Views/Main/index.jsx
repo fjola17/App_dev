@@ -61,6 +61,7 @@ class Main extends React.Component {
 
 
   async componentDidMount() {
+    console.log("bla");
     this.setState({ isLoading: true });
     // await cleanDirectory();
     await getContactsFromPhone();
@@ -69,13 +70,11 @@ class Main extends React.Component {
     this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
     const { navigation } = this.props;
-    this.focusListener = navigation.addListener('didFocus', async () => {
+    this.focusListener = navigation.addListener('didFocus', () => {
+      this.setState({ isLoading: true });
       this.updateProperties(navigation);
-      console.log("I did stuff");
       const con = this.updateProperties();
-      console.log(con);
-      // const contactb = await getContacts();
-      this.setState({contact: con});
+      this.setState({ result: con, contacts: con, isLoading: false });
     });
     this.sortContacts();
   }
@@ -91,9 +90,12 @@ class Main extends React.Component {
     console.log(prev, newpr);
     const { contacts } = this.state;
     console.log("I updated");
+    if(!prev || !newpr) {
+      return this.state.contacts;
+    }
     const filtered = contacts.filter((contact) => contact !== prev);
     const newContacts = [...filtered, newpr];
-    return newContacts;
+    return newContacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
 
   }
 
@@ -129,6 +131,7 @@ class Main extends React.Component {
   render() {
     const { result, search, navigation, isLoading, contact } = this.state;
     // console.log(`main view: ${contact.image}`);
+    console.log("I rerendered");
     return (
       <View style={styles.container}>
         <SearchBar

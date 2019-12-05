@@ -36,7 +36,8 @@ class ContactForm extends Component {
 
   render() {
     const { image, name, phone } = this.state;
-    const val = { image, name, phone }
+    const val = { image, name, phone };
+    // console.log(image);
     const { update } = this.props;
     return (
       <View style={styles.container}>
