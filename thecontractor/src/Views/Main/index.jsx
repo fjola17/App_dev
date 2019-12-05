@@ -61,6 +61,7 @@ class Main extends React.Component {
 
 
   async componentDidMount() {
+    console.log("bla");
     this.setState({ isLoading: true });
     // await cleanDirectory();
     await getContactsFromPhone();
@@ -73,9 +74,10 @@ class Main extends React.Component {
       this.updateProperties(navigation);
       console.log("I did stuff");
       const con = this.updateProperties();
-      console.log(con);
+     // console.log(con);
       // const contactb = await getContacts();
-      this.setState({contact: con});
+       this.setState({ result: con });
+       this.sortContacts();
     });
     this.sortContacts();
   }
@@ -129,6 +131,7 @@ class Main extends React.Component {
   render() {
     const { result, search, navigation, isLoading, contact } = this.state;
     // console.log(`main view: ${contact.image}`);
+    console.log("I rerendered");
     return (
       <View style={styles.container}>
         <SearchBar

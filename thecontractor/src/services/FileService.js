@@ -62,8 +62,7 @@ export const createContact = async (data) => {
 };
 
 export const AddOrModifyContact = async (curr, data) => {
-  //console.log(curr, data);
-  if (curr.name !== '') {
+  if (curr.name !== '' || !curr.name) {
     const newf = curr.name.toLowerCase().replace(/[^a-z0-9_]/gi, '-');
     const fileuri = `${contactDir}/${newf}.json`;
     // const dir = await FileSystem.getInfoAsync(fileuri);
