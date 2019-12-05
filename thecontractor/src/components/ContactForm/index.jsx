@@ -14,13 +14,14 @@ class ContactForm extends Component {
     super(props);
     // check if props is populated
     const { image, name, phone } = this.props.contact;
-    const { contact } = this.props;
+    // const { contact } = this.props;
     this.state = {
       image,
       name,
       phone,
     };
-    // console.log(contact);
+    // const curr = this.state;
+    // console.log(`Curr in constructor is: ${curr.name}`);
   }
 
   async selectFromCameraRoll() {
@@ -35,6 +36,9 @@ class ContactForm extends Component {
   }
 
   render() {
+    // console.log(`Curr in constructor is: ${contact}`);
+    const curr = this.state;
+    console.log(`Curr in render is: ${curr.name}`);
     const { image, name, phone } = this.state;
     return (
       <View style={styles.container}>
@@ -70,7 +74,8 @@ class ContactForm extends Component {
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}
-            onPress={console.log('Save was pressed')}
+            onPress={console.log(`Save button curr: ${curr.name}, data: ${name}`)}
+            // onPress={console.log(`Save button curr: ${curr.name}`)}
             // onPress={AddOrModifyContact(contact, this.state)}
           >
             <Text style={styles.updateButton}>
