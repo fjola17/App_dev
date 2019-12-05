@@ -4,7 +4,7 @@ import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
 // import { impWhite, impDark, impLighterDark, impRed } from '../../styles/colors';
-
+import { AddOrModifyContact } from '../../services/FileService';
 import { selectFromCameraRoll, addImage } from '../../services/ImageService';
 
 // Base contact form class component to update or add new contacts
@@ -12,9 +12,12 @@ class ContactForm extends Component {
   constructor(props) {
     super(props);
     // check if props is populated
+    const { image, name, phone } = this.props.contact;
     const { contact } = this.props;
     this.state = {
-      contact,
+      image,
+      name,
+      phone,
     };
     // console.log(contact);
   }
@@ -26,12 +29,12 @@ class ContactForm extends Component {
 
   async addImage(imageLocation) {
     const newImage = await addImage(imageLocation);
-    const { image } = this.state.contact;
+    const { image } = this.state;
     this.setState({ image: newImage.file });
   }
 
   render() {
-    const { image, name, phone } = this.state.contact;
+    const { image, name, phone } = this.state;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
@@ -43,23 +46,24 @@ class ContactForm extends Component {
           <TextInput 
             style={styles.nameFormat}
             placeholder={name}
-            onChangeText={(name) => this.setState({name})}
+            onChangeText={(name) => this.setState({ name })}
           />
         </View>
         <View style={styles.textBoxAlign}>
           <TouchableOpacity style={styles.touchBox}>
             <Entypo style={styles.iconFormat} name="phone" />
-            <TextInput 
+            <TextInput
               style={styles.phoneFormat}
               placeholder={phone}
-              onChangeText={(phone) => this.setState({phone})}
+              onChangeText={(phone) => this.setState({ phone })}
             />
           </TouchableOpacity>
         </View>
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}
-            onPress={() => navigation.navigate('Main', { contact })}
+            onPress={() => navigation.navigate('Main', { name })}
+            // onPress={AddOrModifyContact(contact, this.state)}
           >
             <Text style={styles.updateButton}>
               <Entypo 

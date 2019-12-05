@@ -18,6 +18,11 @@ class EditContact extends React.Component {
       headerTitleStyle: {
         fontWeight: 'bold',
         fontSize: 25,
+        textAlign: 'center',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
       },
     };
   }
@@ -35,21 +40,6 @@ class EditContact extends React.Component {
     return (
       <View style={styles.container}>
         <ContactForm contact={contact} />
-        {/* <View style={styles.buttonBox}>
-          <TouchableOpacity
-            style={styles.buttonBox}
-            onPress={() => navigation.navigate('Main', { contact })}
-          >
-            <Text style={styles.updateButton}>
-              <Entypo 
-                style={{ fontSize: 25 }}
-                name="save"
-              />
-              {'  '}
-              Save Info
-            </Text>
-          </TouchableOpacity>
-        </View> */}
       </View>
     );
   }

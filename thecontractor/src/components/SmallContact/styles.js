@@ -17,8 +17,8 @@ const imgSize = 60;
 export default StyleSheet.create({
   container: {
     flex: 10,
-    backgroundColor: impDark,
-    backgroundColor: impBlack
+    // backgroundColor: impDark,
+    backgroundColor: impBlack,
   },
   touchBox: {
     flex: 1,

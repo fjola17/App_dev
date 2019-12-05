@@ -27,6 +27,8 @@ class Main extends React.Component {
         textAlign: 'center',
         alignSelf: 'center',
         justifyContent: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
       },
     };
   }

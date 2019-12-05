@@ -15,12 +15,12 @@ const { width: winWidth } = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: impBlack
+    backgroundColor: impBlack,
   },
   searchBar: {
     borderWidth: 1,
     color: impOrange,
-    backgroundColor: impBlasterGreen
+    backgroundColor: impBlasterGreen,
   },
   //    buttonBox: {
   //     flex: 1,
@@ -32,24 +32,23 @@ export default StyleSheet.create({
     fontFamily: '',
     fontSize: 18,
     fontWeight: 'normal',
-    color: impSaberBlue
+    color: impSaberBlue,
   },
   headerText: {
     fontFamily: '',
     fontSize: 22,
     fontWeight: 'bold',
-    color: impBlasterGreen
+    color: impBlasterGreen,
   },
   boxContainer: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: impBlack
   },
   buttonBox: {
-    // marginBottom: 20,
-    // alignItems: 'flex-end',
+    marginBottom: 20,
+    alignItems: 'flex-end',
   },
   updateButton: {
     width: winWidth * 0.9,
