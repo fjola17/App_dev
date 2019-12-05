@@ -2,6 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 import {
   impBlack,
   impDark,
+  impDarkTransparent,
   impLighterDark,
   impRed,
   impWhite,

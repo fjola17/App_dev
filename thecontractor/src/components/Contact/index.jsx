@@ -19,7 +19,12 @@ class Contact extends React.Component {
     const { contact } = this.state;
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={{ uri: contact.image }} />
+        <View style={styles.imageBoxStyle}>
+          <Image
+            style={styles.image}
+            source={{ uri: contact.image }} 
+          />
+        </View>
         <View style={styles.textBoxAlign}>
           <Entypo style={styles.iconFormat} name="user" />
           <Text style={styles.nameFormat}>{contact.name}</Text>

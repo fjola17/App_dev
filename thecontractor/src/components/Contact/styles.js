@@ -14,14 +14,14 @@ const { width: winWidth } = Dimensions.get('window');
 
 export default StyleSheet.create({
     container: {
-        flex: 10,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
+        flex: 1,
+        // flexDirection: 'column',
+        // justifyContent: 'flex-start',
         // alignItems: 'center',
         backgroundColor: impBlack,
     },
     textBoxAlign: {
-        justifyContent: 'flex-start',
+        // justifyContent: 'flex-start',
         flexDirection: 'row',
         paddingTop: 35,
         paddingBottom: 5,
@@ -37,25 +37,28 @@ export default StyleSheet.create({
     image: {
         width: winWidth,
         height: 300,
-        borderBottomWidth: 2,
-        borderColor: impRed,
-    },
-    nameFormat: {
-        // fontFamily: '',
-        fontSize: 30,
+        alignItems: 'center',
+      },
+      imageBoxStyle: {
+        borderBottomWidth: 1,
+        borderColor: impSaberBlue,
+      },
+      nameFormat: {
+        fontSize: 22,
         fontWeight: 'bold',
         textAlign: 'left',
-        paddingLeft: 20,
+        paddingHorizontal: 20,
         color: impRed,
-    },
-    phoneFormat: {
-        // fontFamily: '',
-        fontSize: 24,
+        justifyContent: 'space-around',
+      },
+      phoneFormat: {
+        fontSize: 22,
         fontWeight: 'bold',
         fontStyle: 'normal',
-        paddingLeft: 20,
+        paddingHorizontal: 20,
         color: impRed,
-    },
+        justifyContent: 'space-around',
+      },
     iconFormat: {
         // fontFamily: '',
         fontSize: 30,
