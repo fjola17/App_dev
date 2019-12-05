@@ -71,10 +71,10 @@ class Main extends React.Component {
     this.SearchFilterFunction(''); // To show full list on start
     const { navigation } = this.props;
     this.focusListener = navigation.addListener('didFocus', () => {
+      this.setState({ isLoading: true });
       this.updateProperties(navigation);
       const con = this.updateProperties();
-      this.setState({ result: con, contacts: con });
-      // this.sortContacts();
+      this.setState({ result: con, contacts: con, isLoading: false });
     });
     this.sortContacts();
   }
@@ -90,9 +90,12 @@ class Main extends React.Component {
     console.log(prev, newpr);
     const { contacts } = this.state;
     console.log("I updated");
+    if(!prev || !newpr) {
+      return this.state.contacts;
+    }
     const filtered = contacts.filter((contact) => contact !== prev);
     const newContacts = [...filtered, newpr];
-    return newContacts;
+    return newContacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
 
   }
 
