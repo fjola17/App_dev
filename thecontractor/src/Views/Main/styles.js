@@ -27,6 +27,7 @@ export default StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         marginBottom: 80,
+        backgroundColor: impRed,
     },
     mainText: {
         fontFamily: '',
@@ -42,8 +43,8 @@ export default StyleSheet.create({
     },
     updateButton: {
         width: winWidth,
-        height: 120,
-        // alignItems: 'center',
+        height: 80,
+        alignItems: 'center',
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 25,
@@ -52,7 +53,5 @@ export default StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 5,
         paddingHorizontal: 10,
-        // borderRadius: 10,
-        // overflow: 'hidden',
     },
 });
