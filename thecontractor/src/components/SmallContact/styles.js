@@ -2,6 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 import {
   impBlack,
   impDark,
+  impDarkTransparent,
   impLighterDark,
   impRed,
   impWhite,
@@ -17,8 +18,8 @@ const imgSize = 60;
 export default StyleSheet.create({
   container: {
     flex: 10,
-    backgroundColor: impDark,
-    backgroundColor: impBlack
+    // backgroundColor: impDark,
+    backgroundColor: impBlack,
   },
   touchBox: {
     flex: 1,

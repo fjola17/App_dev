@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Text, Modal } from 'react-native';
+import { View, FlatList, Text, Modal, ImageBackground } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons';
 import { SearchBar } from 'react-native-elements';
