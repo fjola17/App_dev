@@ -11,7 +11,8 @@ class ContactForm extends Component {
   constructor(props) {
     super(props);
     // check if props is populated
-    const { image, name, phone } = this.props.contact;
+    const { contact } = this.props;
+    const { image, name, phone } = contact;
     this.state = {
       image,
       name,
@@ -26,7 +27,6 @@ class ContactForm extends Component {
 
   async addImage(imageLocation) {
     const newImage = await addImage(imageLocation);
-    // const { image } = this.state;
     this.setState({ image: newImage.file });
   }
 

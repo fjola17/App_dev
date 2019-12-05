@@ -1,15 +1,15 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
-import { View, FlatList, Text, Modal, Button } from 'react-native';
+import { View, FlatList, Text, Modal } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import { SearchBar } from 'react-native-elements';
 import SmallContact from '../../components/SmallContact';
-import data from '../../resources/contacts';
 import { getContactsFromPhone } from '../../services/ContractService';
-import { getContacts, cleanDirectory } from '../../services/FileService';
+import { getContacts } from '../../services/FileService';
 import Spinner from '../../components/Spinner';
 import styles from './styles';
-import { impBlack, impWhite, impRed, impOrange, impBlasterGreen, impLighterDark, impSaberBlue } from '../../styles/colors';
+import { impBlack, impRed, impLighterDark, impSaberBlue } from '../../styles/colors';
 
 
 class Main extends React.Component {
@@ -69,22 +69,27 @@ class Main extends React.Component {
     this.sortContacts();
     this.SearchFilterFunction(''); // To show full list on start
     const { navigation } = this.props;
-    this.focusListener = navigation.addListener('didFocus', async() => {
+    // add navigation litsener to the function and do this every time the screen is being focused
+    this.focusListener = navigation.addListener('didFocus', async () => {
       this.setState({ isLoading: true });
-      // this.updateProperties(navigation);
-      const cont = await getContacts(); //this.updateProperties();
+      const cont = await getContacts();
+      // eslint-disable-next-line no-confusing-arrow
       const con = cont.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
       this.setState({ result: con, contacts: con, isLoading: false });
     });
     this.sortContacts();
+    this.setState({ isLoading: false });
   }
 
   componentWillUnmount() {
+    // Remove the litsener from the navigation
     this.focusListener.remove();
   }
 
   sortContacts() {
     const { contacts } = this.state;
+    // eslint-disable-next-line no-nested-ternary
+    // eslint-disable-next-line no-confusing-arrow
     const sorted = contacts.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
     this.setState({ contacts: sorted });
   }
@@ -114,8 +119,6 @@ class Main extends React.Component {
 
   render() {
     const { result, search, navigation, isLoading, contact } = this.state;
-    // console.log(`main view: ${contact.image}`);
-    console.log("I rerendered");
     return (
       <View style={styles.container}>
         <SearchBar
@@ -150,7 +153,7 @@ class Main extends React.Component {
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}
-            onPress={() => navigation.navigate('EditContact', { contact, Update: {}, Current: {} })}
+            onPress={() => navigation.navigate('EditContact', { contact })}
           >
             <Text style={styles.updateButton}>
               <Entypo
