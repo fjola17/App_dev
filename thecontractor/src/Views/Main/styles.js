@@ -33,7 +33,6 @@ export default StyleSheet.create({
     color: impBlasterGreen,
   },
   boxContainer: {
-    // flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'center',

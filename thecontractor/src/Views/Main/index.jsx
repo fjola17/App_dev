@@ -62,7 +62,6 @@ class Main extends React.Component {
 
   async componentDidMount() {
     this.setState({ isLoading: true });
-    // await cleanDirectory();
     await getContactsFromPhone();
     const contact = await getContacts();
     this.setState({ contacts: contact });
