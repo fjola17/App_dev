@@ -46,6 +46,7 @@ export const getContact = async (fileName) => {
 };
 
 export const getContacts = async () => {
+  console.log( 'getContacts: contactDir: ', contactDir );
   await setupDirectory();
   const result = await onException(() => FileSystem.readDirectoryAsync(contactDir));
   // eslint-disable-next-line arrow-body-style
