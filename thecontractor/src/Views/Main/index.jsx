@@ -11,7 +11,6 @@ import Spinner from '../../components/Spinner';
 import styles from './styles';
 import { impBlack, impRed, impLighterDark, impSaberBlue } from '../../styles/colors';
 
-
 class Main extends React.Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
@@ -59,7 +58,6 @@ class Main extends React.Component {
     };
   }
 
-
   async componentDidMount() {
     this.setState({ isLoading: true });
     await getContactsFromPhone();
@@ -71,6 +69,7 @@ class Main extends React.Component {
     // add navigation litsener to the function and do this every time the screen is being focused
     this.focusListener = navigation.addListener('didFocus', async () => {
       this.setState({ isLoading: true });
+      this.SearchFilterFunction('');
       const cont = await getContacts();
       // eslint-disable-next-line no-confusing-arrow
       const con = cont.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
