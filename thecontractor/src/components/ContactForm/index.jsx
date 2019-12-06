@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
-// import { PropTypes } from 'prop-types';
+import { PropTypes } from 'prop-types';
 import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
 import { selectFromCameraRoll, addImage } from '../../services/ImageService';
@@ -95,5 +95,14 @@ class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  update: PropTypes.func.isRequired,
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default ContactForm;

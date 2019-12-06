@@ -94,8 +94,10 @@ class Main extends React.Component {
     this.setState({ contacts: sorted });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   sortResult(a, b, text) {
-    return a.name.toUpperCase().indexOf(text.toUpperCase()) - b.name.toUpperCase().indexOf(text.toUpperCase());
+    const highname = text.toUpperCase();
+    return a.name.toUpperCase().indexOf(highname) - b.name.toUpperCase().indexOf(highname);
   }
 
   SearchFilterFunction(text) {

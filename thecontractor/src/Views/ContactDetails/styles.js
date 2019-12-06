@@ -1,14 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import {
-  impBlack,
-  impDark,
-  impLighterDark,
-  impRed,
-  impWhite,
-  impOrange,
-  impBlasterGreen,
-  impSaberBlue
-} from "../../styles/colors";
+import { impBlack, impRed, impBlasterGreen, impSaberBlue } from '../../styles/colors';
 
 const { width: winWidth } = Dimensions.get('window');
 

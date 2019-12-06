@@ -1,21 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
-import styles from './styles';
-import { impBlack, impWhite, impRed } from '../../styles/colors';
-import Contact from '../../components/Contact';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import styles from './styles';
+import { impBlack, impRed } from '../../styles/colors';
+import Contact from '../../components/Contact';
 
 class ContactDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    const { navigation } = this.props;
-    this.state = {
-      contact: navigation.getParam('contact'),
-    };
-  }
-
   static navigationOptions() {
     return {
       title: 'Contact Information',
@@ -41,6 +33,14 @@ class ContactDetails extends React.Component {
     };
   }
 
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+    this.state = {
+      contact: navigation.getParam('contact'),
+    };
+  }
+
   render() {
     const { contact } = this.state;
     const { navigation } = this.props;
@@ -53,7 +53,7 @@ class ContactDetails extends React.Component {
             onPress={() => navigation.navigate('EditContact', { contact, Screen: '' })}
           >
             <Text style={styles.updateButton}>
-              <Entypo 
+              <Entypo
                 style={{ fontSize: 25 }}
                 name="arrow-with-circle-up"
               />
@@ -66,12 +66,5 @@ class ContactDetails extends React.Component {
     );
   }
 }
-
-/*
-ContactDetails.propTypes = {
-  photo: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  phone: PropTypes.number.isRequired,
-}; */
 
 export default ContactDetails;
