@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text, Linking } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
@@ -31,7 +31,7 @@ class Contact extends React.Component {
         <View style={styles.imageBoxStyle}>
           <Image
             style={styles.image}
-            source={{ uri: contact.image }} 
+            source={{ uri: contact.image }}
           />
         </View>
         <View style={styles.textBoxAlign}>
@@ -48,11 +48,13 @@ class Contact extends React.Component {
     );
   }
 }
-/*
+
 Contact.propTypes = {
-  name: PropTypes.string.isRequired,
-  phone: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-}; */
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Contact;

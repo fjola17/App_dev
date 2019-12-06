@@ -7,7 +7,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     width: winWidth,
-    // justifyContent: 'flex-start',
     alignItems: 'center',
   },
   iconHeader: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, KeyboardAvoidingView } from 'react-native';
-// import PropTypes from 'prop-types';
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
+import { PropTypes } from 'prop-types';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 import { impBlack, impRed } from '../../styles/colors';
 import ContactForm from '../../components/ContactForm';
@@ -45,14 +45,11 @@ class EditContact extends React.Component {
     const { contact } = this.state;
     const { navigation } = this.props;
     AddOrModifyContact(contact, val1);
-    const routeName = navigation.state.routeName;
-    console.log(routeName);
-    navigation.navigate('Main', { Current: contact, Updated: val1, Screen: routeName } );
+    navigation.navigate('Main');
   }
 
   render() {
     const { contact } = this.state;
-    console.log(this.props.navigation.state.routeName);
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="position" enabled="true">
@@ -62,5 +59,13 @@ class EditContact extends React.Component {
     );
   }
 }
+
+EditContact.propTypes = {
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default EditContact;

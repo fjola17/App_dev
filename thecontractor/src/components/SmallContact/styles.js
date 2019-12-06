@@ -1,16 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import {
-  impBlack,
-  impDark,
-  impDarkTransparent,
-  impLighterDark,
-  impRed,
-  impWhite,
-  impBlasterGreen,
-  impBlasterRed,
-  impOrange,
-  impSaberBlue
-} from '../../styles/colors';
+import { impBlack, impRed, impSaberBlue } from '../../styles/colors';
 
 const { width: winWidth } = Dimensions.get('window');
 const imgSize = 60;
@@ -19,18 +8,13 @@ export default StyleSheet.create({
   container: {
     flex: 10,
     marginHorizontal: 10,
-    // backgroundColor: impDark,
-    // backgroundColor: impBlack,
   },
   touchBox: {
     flex: 1,
     flexDirection: 'row',
-    // paddingHorizontal: 20,
     marginHorizontal: 20,
     paddingVertical: 15,
     borderBottomWidth: 1,
-    //   borderColor: impRed,
-    // borderColor: impDark,
     borderColor: impSaberBlue,
   },
   image: {
@@ -43,14 +27,10 @@ export default StyleSheet.create({
     borderColor: impSaberBlue,
   },
   nameFormat: {
-    // flexShrink: 1,
-    // flexWrap: 'wrap',
-    // marginLeft: 20,
     marginRight: 20,
     paddingRight: 20,
     paddingTop: 15,
     paddingLeft: 20,
-    // fontFamily: '',
     fontSize: 20,
     fontWeight: 'bold',
     color: impRed,
@@ -66,6 +46,6 @@ export default StyleSheet.create({
     backgroundColor: impRed,
     paddingTop: 10,
     paddingBottom: 5,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
 });

@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
@@ -32,7 +31,7 @@ class ContactDetails extends React.Component {
       ),
     };
   }
-  
+
   constructor(props) {
     super(props);
     const { navigation } = this.props;
@@ -53,7 +52,7 @@ class ContactDetails extends React.Component {
             onPress={() => navigation.navigate('EditContact', { contact, Screen: '' })}
           >
             <Text style={styles.updateButton}>
-              <Entypo 
+              <Entypo
                 style={{ fontSize: 25 }}
                 name="arrow-with-circle-up"
               />
@@ -66,12 +65,5 @@ class ContactDetails extends React.Component {
     );
   }
 }
-
-/*
-ContactDetails.propTypes = {
-  photo: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  phone: PropTypes.number.isRequired,
-}; */
 
 export default ContactDetails;

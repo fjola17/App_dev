@@ -5,7 +5,8 @@ const makeAPhoneCall = (phone) => {
   try {
     Linking.openURL(phoneNumber);
   } catch (error) {
-    console.log('CallService: makeAPhoneCall(): Error: ', error);
+    // eslint-disable-next-line no-console
+    console.error('CallService: makeAPhoneCall(): Error: ', error);
   }
 };
 

@@ -1,27 +1,14 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import {
-  impBlack,
-  impDark,
-  impLighterDark,
-  impRed,
-  impWhite,
-  impOrange,
-  impBlasterGreen,
-  impSaberBlue
-} from "../../styles/colors";
+import { impBlack, impRed, impSaberBlue } from '../../styles/colors';
 
 const { width: winWidth } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'flex-start',
-    // // alignItems: 'center',
     backgroundColor: impBlack,
   },
   textBoxAlign: {
-    // justifyContent: 'flex-start',
     flexDirection: 'row',
     paddingTop: 35,
     paddingBottom: 5,
@@ -50,7 +37,6 @@ export default StyleSheet.create({
     textAlign: 'left',
     paddingLeft: 20,
     paddingRight: 10,
-    // marginRight: 20,
     color: impRed,
     justifyContent: 'space-around',
   },
@@ -64,13 +50,11 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   iconFormat: {
-    // fontFamily: '',
     fontSize: 25,
     fontWeight: 'bold',
     color: impSaberBlue,
   },
   iconHeader: {
-    // fontFamily: '',
     fontSize: 25,
     fontWeight: 'bold',
     color: impBlack,
@@ -79,7 +63,6 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 220,
     left: 30,
-    // fontFamily: '',
     fontSize: 70,
     fontWeight: 'bold',
     color: impSaberBlue,
@@ -93,13 +76,10 @@ export default StyleSheet.create({
   },
   buttonBox: {
     marginBottom: 20,
-    // alignItems: 'flex-end',
   },
   updateButton: {
     width: winWidth * 0.9,
-    // width: winWidth,
     height: 60,
-    // height: 80,
     alignItems: 'center',
     textAlign: 'center',
     fontWeight: 'bold',

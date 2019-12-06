@@ -27,13 +27,13 @@ export const cleanDirectory = async () => {
     await onException(() => FileSystem.deleteAsync(contactDir, { idempotent: true }));
     await setupDirectory();
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('cleanDirectory: Error: ', error);
   }
 };
 
 // eslint-disable-next-line arrow-body-style
 export const remove = async (name) => {
-  console.log(name);
   // eslint-disable-next-line no-return-await
   return await onException(() => FileSystem.deleteAsync(name, { idempotent: true }));
 };
@@ -67,7 +67,5 @@ export const AddOrModifyContact = async (curr, data) => {
     const fileuri = `${contactDir}/${newf}.json`;
     await remove(fileuri);
   }
-  // const file = `${contactDir}/${data}.json`;
-  // const dir = await FileSystem.getInfoAsync(file);
   await createContact(data);
 };

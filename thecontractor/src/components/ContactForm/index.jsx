@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native';
-// import { PropTypes } from 'prop-types';
+import { PropTypes } from 'prop-types';
 import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
-import { selectFromCameraRoll, addImage } from '../../services/ImageService';
 import { impLighterDark } from '../../styles/colors';
+import { selectFromCameraRoll, addImage } from '../../services/ImageService';
 
 // Base contact form class component to update or add new contacts
 class ContactForm extends Component {
   constructor(props) {
     super(props);
-    // check if props is populated
-    const { image, name, phone } = this.props.contact;
+    const { contact } = this.props;
+    const { image, name, phone } = contact;
     this.state = {
       image,
       name,
@@ -26,7 +26,6 @@ class ContactForm extends Component {
 
   async addImage(imageLocation) {
     const newImage = await addImage(imageLocation);
-    // const { image } = this.state;
     this.setState({ image: newImage.file });
   }
 
@@ -81,7 +80,6 @@ class ContactForm extends Component {
           <TouchableOpacity
             style={styles.buttonBox}
             onPress={() => update(val)}
-            // onPress={AddOrModifyContact(contact, this.state)}
           >
             <Text style={styles.updateButton}>
               <Entypo
@@ -97,5 +95,14 @@ class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  update: PropTypes.func.isRequired,
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default ContactForm;

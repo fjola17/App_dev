@@ -1,27 +1,14 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import {
-  impBlack,
-  impDark,
-  impLighterDark,
-  impRed,
-  impWhite,
-  impOrange,
-  impBlasterGreen,
-  impSaberBlue
-} from '../../styles/colors';
+import { impBlack, impRed, impSaberBlue } from '../../styles/colors';
 
 const { width: winWidth } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'flex-start',
-    // alignItems: 'center',
     backgroundColor: impBlack,
   },
   textBoxAlign: {
-    // justifyContent: 'flex-start',
     flexDirection: 'row',
     paddingTop: 35,
     paddingBottom: 5,
@@ -62,7 +49,6 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   iconFormat: {
-    // fontFamily: '',
     fontSize: 30,
     fontWeight: 'bold',
     color: impSaberBlue,

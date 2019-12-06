@@ -1,14 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import {
-  impBlack,
-  impDark,
-  impLighterDark,
-  impRed,
-  impWhite,
-  impOrange,
-  impBlasterGreen,
-  impSaberBlue
-} from '../../styles/colors';
+import { impBlack, impRed, impOrange, impBlasterGreen, impSaberBlue } from '../../styles/colors';
 
 const { width: winWidth } = Dimensions.get('window');
 
@@ -42,7 +33,6 @@ export default StyleSheet.create({
     color: impBlasterGreen,
   },
   boxContainer: {
-    // flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -53,9 +43,7 @@ export default StyleSheet.create({
   },
   updateButton: {
     width: winWidth * 0.9,
-    // width: winWidth,
     height: 60,
-    // height: 80,
     alignItems: 'center',
     textAlign: 'center',
     fontWeight: 'bold',
@@ -68,19 +56,4 @@ export default StyleSheet.create({
     borderRadius: 25,
     overflow: 'hidden',
   },
-  //  updateButton: {
-  //     width: winWidth,
-  //     height: 120,
-  //     // alignItems: 'center',
-  //     textAlign: 'center',
-  //     fontWeight: 'bold',
-  //     fontSize: 25,
-  //     color: impBlack,
-  //     backgroundColor: impRed,
-  //     paddingTop: 10,
-  //     paddingBottom: 5,
-  //     paddingHorizontal: 10,
-  //     // borderRadius: 10,
-  //     // overflow: 'hidden',
-  // },
 });
