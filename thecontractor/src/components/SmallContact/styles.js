@@ -1,16 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import {
-  impBlack,
-  impDark,
-  impDarkTransparent,
-  impLighterDark,
-  impRed,
-  impWhite,
-  impBlasterGreen,
-  impBlasterRed,
-  impOrange,
-  impSaberBlue
-} from '../../styles/colors';
+import { impBlack, impRed, impSaberBlue } from '../../styles/colors';
 
 const { width: winWidth } = Dimensions.get('window');
 const imgSize = 60;
@@ -66,6 +55,6 @@ export default StyleSheet.create({
     backgroundColor: impRed,
     paddingTop: 10,
     paddingBottom: 5,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
 });

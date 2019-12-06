@@ -26,10 +26,12 @@ class SmallContact extends React.Component {
   }
 }
 
-/*
+
 SmallContact.propTypes = {
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-}; */
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default SmallContact;
