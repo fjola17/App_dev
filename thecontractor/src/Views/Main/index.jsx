@@ -2,14 +2,14 @@
 import React from 'react';
 import { View, FlatList, Text, Modal } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import { SearchBar } from 'react-native-elements';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
+import styles from './styles';
+import { impBlack, impRed, impLighterDark, impSaberBlue } from '../../styles/colors';
 import SmallContact from '../../components/SmallContact';
 import { getContactsFromPhone } from '../../services/ContractService';
 import { getContacts } from '../../services/FileService';
 import Spinner from '../../components/Spinner';
-import styles from './styles';
-import { impBlack, impRed, impLighterDark, impSaberBlue } from '../../styles/colors';
 
 class Main extends React.Component {
   // Set Top navigation header/menu options

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 import { impBlack, impRed } from '../../styles/colors';
 import Contact from '../../components/Contact';
@@ -9,7 +9,7 @@ import Contact from '../../components/Contact';
 class ContactDetails extends React.Component {
   static navigationOptions() {
     return {
-      title: 'Contact Information',
+      title: 'Contact Info',
       headerStyle: {
         backgroundColor: impRed,
       },
