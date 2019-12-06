@@ -6,17 +6,12 @@ const { width: winWidth } = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'flex-start',
-    // // alignItems: 'center',
     backgroundColor: impBlack,
   },
   textBoxAlign: {
-    // justifyContent: 'flex-start',
     flexDirection: 'row',
     paddingTop: 35,
     paddingBottom: 5,
-    // paddingHorizontal: 20,
     marginHorizontal: 20,
     borderBottomWidth: 1,
     borderColor: impSaberBlue,
@@ -51,13 +46,11 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   iconFormat: {
-    // fontFamily: '',
     fontSize: 25,
     fontWeight: 'bold',
     color: impSaberBlue,
   },
   iconHeader: {
-    // fontFamily: '',
     fontSize: 25,
     fontWeight: 'bold',
     color: impBlack,
@@ -66,7 +59,6 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 220,
     left: 30,
-    // fontFamily: '',
     fontSize: 70,
     fontWeight: 'bold',
     color: impSaberBlue,
@@ -80,13 +72,10 @@ export default StyleSheet.create({
   },
   buttonBox: {
     marginBottom: 20,
-    // alignItems: 'flex-end',
   },
   updateButton: {
     width: winWidth * 0.9,
-    // width: winWidth,
     height: 60,
-    // height: 80,
     alignItems: 'center',
     textAlign: 'center',
     fontWeight: 'bold',

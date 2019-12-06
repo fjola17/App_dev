@@ -79,7 +79,6 @@ class ContactForm extends Component {
           <TouchableOpacity
             style={styles.buttonBox}
             onPress={() => update(val)}
-            // onPress={AddOrModifyContact(contact, this.state)}
           >
             <Text style={styles.updateButton}>
               <Entypo

@@ -6,17 +6,12 @@ const { width: winWidth } = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'flex-start',
-    // alignItems: 'center',
     backgroundColor: impBlack,
   },
   textBoxAlign: {
-    // justifyContent: 'flex-start',
     flexDirection: 'row',
     paddingTop: 35,
     paddingBottom: 5,
-    // paddingHorizontal: 20,
     marginHorizontal: 20,
     borderBottomWidth: 1,
     borderColor: impSaberBlue,
@@ -51,7 +46,6 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   iconFormat: {
-    // fontFamily: '',
     fontSize: 30,
     fontWeight: 'bold',
     color: impSaberBlue,

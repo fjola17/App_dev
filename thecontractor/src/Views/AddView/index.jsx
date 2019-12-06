@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, KeyboardAvoidingView } from 'react-native';
-// import PropTypes from 'prop-types';
-// import { Entypo } from '@expo/vector-icons';
 import styles from './styles';
 import { impBlack, impRed } from '../../styles/colors';
 import ContactForm from '../../components/ContactForm';

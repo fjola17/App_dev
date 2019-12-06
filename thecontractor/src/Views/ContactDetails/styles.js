@@ -25,10 +25,8 @@ export default StyleSheet.create({
   },
   buttonBox: {
     marginBottom: 20,
-    // alignItems: 'flex-end',
   },
   iconHeader: {
-    // fontFamily: '',
     fontSize: 40,
     fontWeight: 'bold',
     paddingRight: 20,
@@ -37,9 +35,7 @@ export default StyleSheet.create({
   },
   updateButton: {
     width: winWidth * 0.9,
-    // width: winWidth,
     height: 60,
-    // height: 80,
     alignItems: 'center',
     textAlign: 'center',
     fontWeight: 'bold',
@@ -52,20 +48,4 @@ export default StyleSheet.create({
     borderRadius: 25,
     overflow: 'hidden',
   },
-  // buttonBox: {
-  //   alignItems: 'flex-start',
-  // },
-  // updateButton: {
-  //   width: winWidth,
-  //   height: 80,
-  //   alignItems: 'center',
-  //   textAlign: 'center',
-  //   fontWeight: 'bold',
-  //   fontSize: 25,
-  //   color: impBlack,
-  //   backgroundColor: impRed,
-  //   paddingTop: 10,
-  //   paddingBottom: 5,
-  //   paddingHorizontal: 10,
-  // },
 });
