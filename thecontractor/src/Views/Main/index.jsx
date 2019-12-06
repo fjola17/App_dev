@@ -69,13 +69,13 @@ class Main extends React.Component {
     // add navigation litsener to the function and do this every time the screen is being focused
     this.focusListener = navigation.addListener('didFocus', async () => {
       this.setState({ isLoading: true });
-      this.SearchFilterFunction('');
+      const { search } = this.state;
       const cont = await getContacts();
       // eslint-disable-next-line no-confusing-arrow
       const con = cont.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0);
-      this.setState({ result: con, contacts: con, isLoading: false });
+      this.setState({ contacts: con, isLoading: false });
+      this.SearchFilterFunction(search); // to not lose the search from previous window
     });
-    this.sortContacts();
     this.setState({ isLoading: false });
   }
 
