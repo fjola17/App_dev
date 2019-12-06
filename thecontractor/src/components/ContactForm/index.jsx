@@ -29,10 +29,21 @@ class ContactForm extends Component {
     this.setState({ image: newImage.file });
   }
 
+  checkVal(val) {
+    // Check if values are entered for both name and phone
+    const { update } = this.props;
+    const { name, phone } = val;
+    if (name != '' && phone != '') {
+      // Updates only if both name and phone is added
+      update(val);
+    } else {
+      console.log('checkVal: Error: needs name AND phone input');
+    }
+  }
+
   render() {
     const { image, name, phone } = this.state;
     const val = { image, name, phone };
-    const { update } = this.props;
     return (
       <View style={styles.container}>
         <TouchableOpacity
@@ -55,8 +66,9 @@ class ContactForm extends Component {
             placeholder="Evil name"
             placeholderTextColor={impLighterDark}
             multiline
-            returnKeyType='next'
+            returnKeyType="next"
             blurOnSubmit
+            isRequired={true}
             onChangeText={(nam) => this.setState({ name: nam })}
             value={name}
           />
@@ -70,7 +82,7 @@ class ContactForm extends Component {
               placeholderTextColor={impLighterDark}
               keyboardType="phone-pad"
               maxLength={10}
-              // textContentType="telephoneNumber"
+              isRequired={true}
               onChangeText={(ph) => this.setState({ phone: ph })}
               value={phone}
             />
@@ -79,7 +91,8 @@ class ContactForm extends Component {
         <View style={styles.boxContainer}>
           <TouchableOpacity
             style={styles.buttonBox}
-            onPress={() => update(val)}
+            // onPress={() => update(val)}
+            onPress={() => this.checkVal(val)}
           >
             <Text style={styles.updateButton}>
               <Entypo
