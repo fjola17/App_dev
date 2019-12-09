@@ -4,8 +4,8 @@ import thunk from 'redux-thunk';
 import { Provider, connect } from 'react-redux';
 import Routes from './src/routes';
 import reducers from './src/reducers';
-import { getAllCinemas } from './src/actions/cinemaActions';
-import { getAllMovies } from './src/actions/movieActions';
+import { getAllCinemas } from './src/actions/cinemasActions';
+import { getAllMovies } from './src/actions/moviesActions';
 
 class SubApp extends React.Component {
   componentDidMount() {
