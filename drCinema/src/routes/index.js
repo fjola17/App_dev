@@ -14,12 +14,12 @@ import Cinemas from '../views/Cinemas';
 // import UpcomingMovies from '../views/UpcomingMovies';
 
 const StackNavigator = createStackNavigator({
-    Cinemas,
+  Cinemas,
     // CinemaDetails,
     // MovieScreen,
     // UpcomingMovies,
 }, {
-    headerLayoutPreset: 'center',
+  headerLayoutPreset: 'center',
     // headerStyle: { backgroundColor: 'red' },
     // headerTitleStyle: { color: 'green' },
 });
