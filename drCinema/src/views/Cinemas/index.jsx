@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
 import { cinBlack, cinWhite } from '../../styles/colors';
@@ -24,12 +25,12 @@ class Cinemas extends Component {
         marginLeft: 'auto',
         marginRight: 'auto',
       },
-      // headerRight: () => (
-      //   <MaterialCommunityIcons
-      //     style={styles.iconHeader}
-      //     name="death-star"
-      //   />
-      // ),
+      headerRight: () => (
+        <MaterialCommunityIcons
+          style={styles.iconHeader}
+          name="death-star"
+        />
+      ),
     };
   }
 
@@ -37,7 +38,7 @@ class Cinemas extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.toolBarText}>
-          Cinemas screen!
+          Cinemas screen!!!
         </Text>
         <Text style={styles.toolBarText}>
           Here be a header and list of cinemas in a flatlist
