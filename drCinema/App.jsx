@@ -5,11 +5,13 @@ import { Provider, connect } from 'react-redux';
 import Routes from './src/routes';
 import reducers from './src/reducers';
 import { getAllCinemas } from './src/actions/cinemaActions';
+import { getAllMovies } from './src/actions/movieActions';
 
 class SubApp extends React.Component {
   componentDidMount() {
     console.log('SubApp: componentDidMount(): start');
     this.props.getAllCinemas();
+    this.props.getAllMovies();
     console.log('SubApp: componentDidMount(): end');
   }
 
@@ -20,7 +22,7 @@ class SubApp extends React.Component {
   }
 }
 
-const ConnectedSubApp = connect(null, { getAllCinemas })(SubApp);
+const ConnectedSubApp = connect(null, { getAllCinemas, getAllMovies })(SubApp);
 
 export default function App() {
   return (
