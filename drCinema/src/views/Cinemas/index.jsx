@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import baseStyles from '../../styles/baseStyles';
+// import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
 import { cinBlack, cinWhite } from '../../styles/colors';
 
@@ -11,7 +11,7 @@ class Cinemas extends Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
     return {
-      title: 'Home',
+      title: 'Cinemas',
       headerStyle: {
         backgroundColor: cinBlack,
       },

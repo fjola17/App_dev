@@ -5,23 +5,21 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Cinemas from '../views/Cinemas';
 
 // // cinema view
-// import CinemaDetails from '../views/CinemaDetails';
+import CinemaDetails from '../views/CinemaDetails';
 
 // // cinema view
-// import MovieScreen from '../views/MovieScreen';
+import MovieScreen from '../views/MovieScreen';
 
 // // cinema view
-// import UpcomingMovies from '../views/UpcomingMovies';
+import UpcomingMovies from '../views/UpcomingMovies';
 
 const StackNavigator = createStackNavigator({
   Cinemas,
-  // CinemaDetails,
-  // MovieScreen,
-  // UpcomingMovies,
+  CinemaDetails,
+  MovieScreen,
+  UpcomingMovies,
 }, {
   headerLayoutPreset: 'center',
-  // headerStyle: { backgroundColor: 'red' },
-  // headerTitleStyle: { color: 'green' },
 });
 
 export default createAppContainer(StackNavigator);
