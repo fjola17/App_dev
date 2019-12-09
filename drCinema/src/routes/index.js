@@ -15,13 +15,13 @@ import Cinemas from '../views/Cinemas';
 
 const StackNavigator = createStackNavigator({
   Cinemas,
-    // CinemaDetails,
-    // MovieScreen,
-    // UpcomingMovies,
+  // CinemaDetails,
+  // MovieScreen,
+  // UpcomingMovies,
 }, {
   headerLayoutPreset: 'center',
-    // headerStyle: { backgroundColor: 'red' },
-    // headerTitleStyle: { color: 'green' },
+  // headerStyle: { backgroundColor: 'red' },
+  // headerTitleStyle: { color: 'green' },
 });
 
 export default createAppContainer(StackNavigator);
