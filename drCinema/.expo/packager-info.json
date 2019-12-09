@@ -1,9 +1,9 @@
 {
-  "expoServerPort": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://4e-y3b.anonymous.drcinema.exp.direct",
+  "packagerNgrokUrl": "https://packager.4e-y3b.anonymous.drcinema.exp.direct",
+  "ngrokPid": 8232,
   "devToolsPort": 19002,
-  "packagerPort": null,
-  "packagerPid": null
+  "packagerPort": 19001,
+  "packagerPid": 3152
 }
