@@ -4,10 +4,12 @@ import thunk from 'redux-thunk';
 import { Provider, connect } from 'react-redux';
 import Routes from './src/routes';
 import reducers from './src/reducers';
+import { getAllCinemas } from './src/actions/cinemaactions';
 
 class SubApp extends React.Component {
   componentDidMount() {
-
+    this.props.getAllCinemas();
+    // console.log(getAllCinemas);
   }
 
   render(){
@@ -17,7 +19,7 @@ class SubApp extends React.Component {
   }
 }
 
-const ConnectedSubApp = connect(null, {})(SubApp);
+const ConnectedSubApp = connect(null, { getAllCinemas })(SubApp);
 
 export default function App() {
   return (

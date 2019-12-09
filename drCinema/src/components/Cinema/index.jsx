@@ -1,10 +1,12 @@
 import React from 'react';
 import { Text } from 'react-native';
+import { connect } from 'react-redux';
+// import {getAllCinemas} from '../../actions/cinemaactions';
 
 class Cinema extends React.Component {
   constructor(props) {
     super(props);
-    console.log("hey");
+    console.log(props);
   }
 
   render() {
@@ -13,5 +15,5 @@ class Cinema extends React.Component {
     );
   }
 }
-
-export default Cinema;
+const mapStateToProps = ({ theaters }) => ({ theaters });
+export default connect(mapStateToProps)(Cinema);
