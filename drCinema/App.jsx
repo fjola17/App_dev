@@ -4,15 +4,16 @@ import thunk from 'redux-thunk';
 import { Provider, connect } from 'react-redux';
 import Routes from './src/routes';
 import reducers from './src/reducers';
-import { getAllCinemas } from './src/actions/cinemaactions';
+import { getAllCinemas } from './src/actions/cinemaActions';
 
 class SubApp extends React.Component {
   componentDidMount() {
+    console.log('SubApp: componentDidMount(): start');
     this.props.getAllCinemas();
-    // console.log(getAllCinemas);
+    console.log('SubApp: componentDidMount(): end');
   }
 
-  render(){
+  render() {
     return (
       <Routes />
     );
