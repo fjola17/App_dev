@@ -2,7 +2,14 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { cinRed, cinSaberBlue, cinOrange, cinBlack, cinDark, cinWhite } from '../styles/colors';
+import {
+  // cinRed,
+  cinSaberBlue,
+  // cinOrange,
+  // cinBlack,
+  cinDark,
+  // cinWhite
+} from '../styles/colors';
 import styles from './styles';
 
 // Views

@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { cinDark, cinWhite } from '../styles/colors';
+import {
+  cinDark,
+  cinWhite,
+} from '../styles/colors';
 
 export default StyleSheet.create({
   container: {
