@@ -10,17 +10,16 @@ class CinemaDetails extends Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
     return {
-      title: 'Movies info',
+      title: 'Cinema details',
     };
   }
 
   render() {
     const { navigation } = this.props;
-    // console.log(navigation);
     const theater = navigation.getParam('theater');
     const { item } = theater;
-    const { address, city, description, name, phone } = item;
-    console.log(address);
+    const { city, description, name, phone } = item;
+    const address = item["address\t"];
     return (
       <View style={styles.container}>
         <Text style={styles.toolBarText}>

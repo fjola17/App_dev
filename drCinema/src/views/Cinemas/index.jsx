@@ -38,6 +38,6 @@ class Cinemas extends Component {
 // Cinemas.propTypes = {
 
 // };
-const mapStateToProps = ({ theaters }) => ({ theaters });
+const mapStateToProps = ({ theaters }) => ({ theaters: theaters.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0) });
 
 export default connect(mapStateToProps)(Cinemas);
