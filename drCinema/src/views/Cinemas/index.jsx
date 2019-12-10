@@ -4,7 +4,7 @@ import { Text, View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
-import { cinBlack, cinWhite } from '../../styles/colors';
+// import { cinBlack, cinWhite } from '../../styles/colors';
 import Cinema from '../../components/Cinema';
 
 class Cinemas extends Component {
