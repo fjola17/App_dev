@@ -33,10 +33,11 @@ class ContactForm extends Component {
     // Check if values are entered for both name and phone
     const { update } = this.props;
     const { name, phone } = val;
-    if (name != '' && phone != '') {
+    if (name !== '' && phone !== '') {
       // Updates only if both name and phone is added
       update(val);
     } else {
+      // eslint-disable-next-line no-console
       console.log('checkVal: Error: needs name AND phone input');
     }
   }
@@ -68,7 +69,7 @@ class ContactForm extends Component {
             multiline
             returnKeyType="next"
             blurOnSubmit
-            isRequired={true}
+            isRequired
             onChangeText={(nam) => this.setState({ name: nam })}
             value={name}
           />
@@ -82,7 +83,7 @@ class ContactForm extends Component {
               placeholderTextColor={impLighterDark}
               keyboardType="phone-pad"
               maxLength={10}
-              isRequired={true}
+              isRequired
               onChangeText={(ph) => this.setState({ phone: ph })}
               value={phone}
             />

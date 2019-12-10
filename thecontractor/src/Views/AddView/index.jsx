@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, KeyboardAvoidingView } from 'react-native';
-import { PropTypes } from 'prop-types';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 import { impBlack, impRed } from '../../styles/colors';
@@ -59,13 +58,5 @@ class EditContact extends React.Component {
     );
   }
 }
-
-EditContact.propTypes = {
-  contact: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default EditContact;

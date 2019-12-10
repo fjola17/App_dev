@@ -1,9 +1,9 @@
 import * as constants from '../constants';
 import MovieService from '../services/movieService';
 
-const getCurrentMoviesSucess = (movie) => ({
+const getCurrentMoviesSucess = (movies) => ({
   type: constants.FETCH_MOVIES,
-  payload: movie,
+  payload: movies,
 });
 
 const getCurrentMoviesFail = (error) => ({
@@ -15,8 +15,9 @@ const getCurrentMoviesFail = (error) => ({
 export const getAllMovies = () => {
   return async (dispatch) => {
     try {
+      console.log("ENtered movies")
       const movies = await MovieService.getMovies();
-      // console.log("SUCESS movies: ", movies);
+      console.log("SUCESS movies: ", movies);
       dispatch(getCurrentMoviesSucess(movies));
     } catch (err) {
       // console.log("I got an error ", err);
