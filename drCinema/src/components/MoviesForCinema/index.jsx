@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const MoviesForCinema = props => {
+const MoviesForCinema = (props) => {
   const {movie, navigation} = props;
   const {item} = movie;
-  const {title, year, poster} = item;
+  const {title, year, poster, showtimes} = item;
+  // console.log(showtimes[0].cinema.name);
 
   return (
   <View>
@@ -19,6 +20,6 @@ const MoviesForCinema = props => {
   </View>
 );
 }
-const mapStateToProps = ({ movies }, movie) => ({ movies: movies.filter((theat) => theat.id === movie.id) } )
+const mapStateToProps = ({ movies }, movie) => ({ movies: movies.filter((theat) => theat.id === movie.id) });
 export default connect(mapStateToProps)(withNavigation(MoviesForCinema));
 

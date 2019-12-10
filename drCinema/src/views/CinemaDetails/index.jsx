@@ -46,6 +46,11 @@ class CinemaDetails extends Component {
 
 // };
 
-const mapStateToProps = ({ theaters, movies }) => ({theaters, movies });
+const mapStateToProps = ({ movies }, { navigation }) => {
+  const theater = navigation.getParam('theater');
+  //console.log(theater.item.name)
+  const name = theater.item.name;
+  return { movies: movies.filter((it) => it.showtimes[0].cinema.name === name)};
+};
 
 export default connect(mapStateToProps)(CinemaDetails);
