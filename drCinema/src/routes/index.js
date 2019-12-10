@@ -27,6 +27,13 @@ import CinemaDetails from '../views/CinemaDetails';
 import MovieScreen from '../views/MovieScreen';
 import UpcomingMovies from '../views/UpcomingMovies';
 
+const StackNavigatior = createStackNavigator({
+  Cinemas,
+  CinemaDetails,
+  MovieScreen,
+  UpcomingMovies,
+});
+
 const TabNavigator = createMaterialBottomTabNavigator(
   {
     Cinemas: {
@@ -70,4 +77,5 @@ const TabNavigator = createMaterialBottomTabNavigator(
   },
 );
 
-export default createAppContainer(TabNavigator);
+// export default createAppContainer(TabNStackavigator);
+export default createAppContainer(StackNavigatior);
