@@ -21,10 +21,10 @@ class Cinemas extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.toolBarText}>
-          Cinemas screen!!!
+          Movie screen!!!
         </Text>
         <Text style={styles.toolBarText}>
-          Here be a header and list of cinemas in a flatlist
+          Here be a header and details about a Movie!!
         </Text>
       </View>
     );

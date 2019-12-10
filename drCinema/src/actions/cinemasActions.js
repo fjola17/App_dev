@@ -9,10 +9,21 @@ export const getAllCinemas = () => {
     try {
       console.log( 'cinemaAction: getAllCinemas: Try: enter');
       const theaters = await cinemaService.getAllCinemas();
-      console.log( 'cinemaAction: getAllCinemas: Try: theaters: ', theaters);
+     // console.log( 'cinemaAction: getAllCinemas: Try: theaters: ', theaters);
+      dispatch(fetchCinemaSucess(theaters));
     } catch (error) {
-      console.log( 'cinemaAction: catch: Error: ', error );
+      // console.log( 'cinemaAction: catch: Error: ', error );
+      dispatch(fetchCinemaError(error));
     }
   }
-  console.log('cinemaAction: getAllCinemas: end');
 }
+
+const fetchCinemaSucess = (theaters) => ({
+  type: constants.FETCH_CINEMAS,
+  payload: theaters,
+});
+
+const fetchCinemaError = (error) => ({
+  type: constants.FETCH_CINEMAS_FAIL,
+  error,
+})
