@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './styles';
-// import {getAllCinemas} from '../../actions/cinemaactions';
+import { withNavigation } from 'react-navigation';
 
 class Cinema extends React.Component {
   constructor(props) {
@@ -11,12 +11,17 @@ class Cinema extends React.Component {
   }
 
   render() {
+    // console.log("Cinema", this.props.theater)
+    const { theater } = this.props;
+    const { item } = theater;
+    const { name, website } = item;
     return (
       <View style={styles.container}>
-        <Text style={styles.toolBarText}>I am the Cinema Component</Text>
+        <Text style={styles.toolBarText}>{name}</Text>
+        <Text>{website}</Text>
       </View>
     );
   }
 }
-const mapStateToProps = ({ theaters }) => ({ theaters });
+const mapStateToProps = ({ theaters }, theater) => ({ theaters: theaters.filter((theat) => theat.id === theater.id) });
 export default connect(mapStateToProps)(Cinema);

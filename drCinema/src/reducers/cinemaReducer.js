@@ -1,11 +1,8 @@
 import * as constants from "../constants";
 
 // displays the movie theater
-const init = {
-    theaters: [],
-}
 
-export default function (state = init, action) {
+export default function (state = [], action) {
   switch (action.type){
     case constants.FETCH_CINEMAS: 
     console.log(action.payload);
