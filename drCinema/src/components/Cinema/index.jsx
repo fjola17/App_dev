@@ -28,5 +28,6 @@ class Cinema extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ theaters }, theater) => ({ theaters: theaters.filter((theat) => theat.id === theater.id) });
-export default connect(mapStateToProps)(withNavigation(Cinema));
+// const mapStateToProps = ({ theaters }, theater) => ({ theaters: theaters.filter((theat) => theat.id === theater.id) });
+// export default connect(mapStateToProps)(withNavigation(Cinema));
+export default withNavigation(Cinema);
