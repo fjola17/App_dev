@@ -1,16 +1,21 @@
+import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import {
+  // cinRed,
+  cinSaberBlue,
+  // cinOrange,
+  // cinBlack,
+  cinDark,
+  // cinWhite
+} from '../styles/colors';
+import styles from './styles';
 
-// cinema view
+// Views
 import Cinemas from '../views/Cinemas';
-
-// // cinema view
 import CinemaDetails from '../views/CinemaDetails';
-
-// // cinema view
 import MovieScreen from '../views/MovieScreen';
-
-// // cinema view
 import UpcomingMovies from '../views/UpcomingMovies';
 
 const StackNavigator = createStackNavigator({
@@ -20,6 +25,22 @@ const StackNavigator = createStackNavigator({
   UpcomingMovies,
 }, {
   headerLayoutPreset: 'center',
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: cinSaberBlue,
+    },
+    headerTintColor: cinDark,
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: 22,
+    },
+    headerRight: () => (
+      <MaterialCommunityIcons
+        style={styles.iconHeader}
+        name="movie-roll"
+      />
+    ),
+  },
 });
 
 export default createAppContainer(StackNavigator);

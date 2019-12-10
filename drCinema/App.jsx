@@ -6,12 +6,14 @@ import Routes from './src/routes';
 import reducers from './src/reducers';
 import { getAllCinemas } from './src/actions/cinemasActions';
 import { getAllMovies } from './src/actions/moviesActions';
+import { getAllUpcoming } from './src/actions/upcomingActions';
 
 class SubApp extends React.Component {
   componentDidMount() {
     console.log('SubApp: componentDidMount(): start');
     this.props.getAllCinemas();
     this.props.getAllMovies();
+    this.props.getAllUpcoming();
     console.log('SubApp: componentDidMount(): end');
   }
 
@@ -22,7 +24,7 @@ class SubApp extends React.Component {
   }
 }
 
-const ConnectedSubApp = connect(null, { getAllCinemas, getAllMovies })(SubApp);
+const ConnectedSubApp = connect(null, { getAllCinemas, getAllMovies, getAllUpcoming })(SubApp);
 
 export default function App() {
   return (

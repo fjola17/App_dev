@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Text, View, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
-import { cinBlack, cinWhite } from '../../styles/colors';
+// import { cinBlack, cinWhite } from '../../styles/colors';
 import Cinema from '../../components/Cinema';
 
 class Cinemas extends Component {
@@ -12,38 +12,24 @@ class Cinemas extends Component {
   static navigationOptions() {
     return {
       title: 'Cinemas',
-      headerStyle: {
-        backgroundColor: cinBlack,
-      },
-      headerTintColor: cinWhite,
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        fontSize: 25,
-        textAlign: 'center',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-      headerRight: () => (
-        <MaterialCommunityIcons
-          style={styles.iconHeader}
-          name="death-star"
-        />
-      ),
     };
   }
 
   render() {
+    // alert(this.props.theaters.length);
+    const { theaters } = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.toolBarText}>
           Cinemas screen!!!
         </Text>
-        <Text style={styles.toolBarText}>
-          Here be a header and list of cinemas in a flatlist
-        </Text>
-        <Cinema />
+        <FlatList
+          data={theaters}
+          renderItem={(item) => (
+            <Cinema theater={item} />
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        />
       </View>
     );
   }
@@ -52,6 +38,6 @@ class Cinemas extends Component {
 // Cinemas.propTypes = {
 
 // };
+const mapStateToProps = ({ theaters }) => ({ theaters: theaters.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0) });
 
-
-export default Cinemas;
+export default connect(mapStateToProps)(Cinemas);
