@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
 import { cinBlack, cinWhite } from '../../styles/colors';
+import MoviesForCinema from '../../components/MoviesForCinema';
 
 
 class CinemaDetails extends Component {
@@ -15,11 +17,12 @@ class CinemaDetails extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, movies } = this.props;
     const theater = navigation.getParam('theater');
     const { item } = theater;
     const { city, description, name, phone } = item;
     const address = item["address\t"];
+    // console.log(this.props.movies[0], this.props.theaters[0]);
     return (
       <View style={styles.container}>
         <Text style={styles.toolBarText}>
@@ -30,9 +33,13 @@ class CinemaDetails extends Component {
         <Text style={styles.toolBarText}>{city}</Text>
         <Text style={styles.toolBarText}>{phone}</Text>
         <Text>{description}</Text>
-        <Text style={styles.toolBarText}>
-          Here be a header and list of Movies in a flatlist
-        </Text>
+        <FlatList
+          data={movies}
+          renderItem={(it) => (
+            <MoviesForCinema movie={it} />
+          )}
+          keyExtractor={(it) => it.id.toString()}
+        />
       </View>
     );
   }
@@ -42,5 +49,6 @@ class CinemaDetails extends Component {
 
 // };
 
+const mapStateToProps = ({ theaters, movies }) => ({theaters, movies });
 
-export default CinemaDetails;
+export default connect(mapStateToProps)(CinemaDetails);

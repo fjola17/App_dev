@@ -1,7 +1,7 @@
 import * as constant from '../constants';
 
 const API_TOKEN = constant.API_TOKEN;
-const ENDPOINT = constant.ENDPOINT_THEATERS;
+const ENDPOINT = constant.ENDPOINT_MOVIES;
 
 const requestHeader = {
   method: 'get',
@@ -11,12 +11,8 @@ const requestHeader = {
 };
 
 const movieService = () => {
-  console.log("aabb");
   return {
     getMovies: () => fetch(ENDPOINT, requestHeader).then((movie) => movie.json()),
-    getMovieDetails: () => {
-      console.log("Hello");
-    }
   };
 };
 
