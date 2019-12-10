@@ -12,11 +12,11 @@ const getCurrentMoviesFail = (error) => ({
 });
 
 // eslint-disable-next-line import/prefer-default-export
-export const getAllMovies = () =>{
+export const getAllMovies = () => {
   return async (dispatch) => {
     try {
       const movies = await MovieService.getMovies();
-     // console.log("SUCESS movies: ", movies);
+      // console.log("SUCESS movies: ", movies);
       dispatch(getCurrentMoviesSucess(movies));
     } catch (err) {
       // console.log("I got an error ", err);
