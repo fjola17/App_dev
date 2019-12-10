@@ -14,6 +14,8 @@ class Cinema extends React.Component {
 
   render() {
     const { theater, navigation } = this.props;
+    // navigation.name
+    console.log(`Navigator: $(navigation.name)`);
     const { item } = theater;
     const { name, website } = item;
     return (

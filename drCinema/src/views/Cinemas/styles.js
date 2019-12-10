@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 // import { cinDark, cinWhite } from "../../styles/colors";
 import * as color from '../../styles/colors';
 
