@@ -25,9 +25,6 @@ class CinemaDetails extends Component {
     // console.log(this.props.movies[0], this.props.theaters[0]);
     return (
       <View style={styles.container}>
-        <Text style={styles.toolBarText}>
-          CinemaDetails!!!
-        </Text>
         <Text style={styles.toolBarText}>{name}</Text>
         <Text style={styles.toolBarText}>{address}</Text>
         <Text style={styles.toolBarText}>{city}</Text>

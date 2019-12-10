@@ -11,7 +11,7 @@ const MoviesForCinema = props => {
 
   return (
   <View>
-    <TouchableOpacity onPress={() => navigation.navigate('MovieScreen')}>
+    <TouchableOpacity onPress={() => navigation.navigate('MovieScreen', {movie})}>
       <Text style={{ alignItems: 'center' }}>{title}</Text>
       <Text>{year}</Text>
       <Text>{poster}</Text>
