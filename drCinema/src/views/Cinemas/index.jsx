@@ -20,9 +20,6 @@ class Cinemas extends Component {
     const { theaters } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.toolBarText}>
-          Cinemas screen!!!
-        </Text>
         <FlatList
           data={theaters}
           renderItem={(item) => (

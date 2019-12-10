@@ -3,22 +3,9 @@ import { View, Text } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {
-  // cinRed,
-  cinSaberBlue,
-  // cinOrange,
-  // cinBlack,
-  cinDark,
-  cinBlasterGreen,
-  cinOrange,
-  cinWhite,
-  cinBlack,
-  cinLighterDark,
-  // cinWhite
-} from '../styles/colors';
+// import Icon from 'react-native-vector-icons/Ionicons';
+import * as color from '../styles/colors';
 import styles from './styles';
 
 // Views
@@ -26,13 +13,6 @@ import Cinemas from '../views/Cinemas';
 import CinemaDetails from '../views/CinemaDetails';
 import MovieScreen from '../views/MovieScreen';
 import UpcomingMovies from '../views/UpcomingMovies';
-
-const StackNavigatior = createStackNavigator({
-  Cinemas,
-  CinemaDetails,
-  MovieScreen,
-  UpcomingMovies,
-});
 
 const TabNavigator = createMaterialBottomTabNavigator(
   {
@@ -69,13 +49,49 @@ const TabNavigator = createMaterialBottomTabNavigator(
   },
   {
     initialRouteName: 'Cinemas',
-    activeColor: cinSaberBlue,
-    inactiveColor: cinLighterDark,
+    order: ['Cinemas', 'UpcomingMovies'],
+    sceneAnimationEnabled: true,
+    activeColor: color.cinSaberBlue,
+    inactiveColor: color.cinLighterDark,
     barStyle: {
-      backgroundColor: cinDark,
+      backgroundColor: color.cinBlack,
+    },
+  },
+  {
+    navigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index];
+      return {
+        headerTitle: routeName,
+      };
     },
   },
 );
 
-// export default createAppContainer(TabNStackavigator);
+const StackNavigatior = createStackNavigator({
+  DashTabNavigator: TabNavigator,
+  Cinemas: { screen: Cinemas },
+  CinemaDetails,
+  MovieScreen,
+  UpcomingMovies,
+}, {
+  headerLayoutPreset: 'center',
+  // initialRouteName: 'Cinemas',
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: color.cinSaberBlue,
+    },
+    headerTintColor: color.cinDark,
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: 22,
+    },
+    headerRight: () => (
+      <MaterialCommunityIcons
+        style={styles.iconHeader}
+        name="movie-roll"
+      />
+    ),
+  },
+});
+
 export default createAppContainer(StackNavigatior);

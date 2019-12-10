@@ -8,7 +8,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     // backgroundColor: cinDark,
-    backgroundColor: color.cinSaberBlue,
+    backgroundColor: color.cinDark,
   },
   toolBarText: {
     fontSize: 22,
