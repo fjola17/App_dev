@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import styles from './styles';
 // import {getAllCinemas} from '../../actions/cinemaactions';
 
 class Cinema extends React.Component {
@@ -11,7 +12,9 @@ class Cinema extends React.Component {
 
   render() {
     return (
-      <Text>Hello there</Text>
+      <View style={styles.container}>
+        <Text style={styles.toolBarText}>I am the Cinema Component</Text>
+      </View>
     );
   }
 }

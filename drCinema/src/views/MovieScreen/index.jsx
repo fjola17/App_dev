@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
 import { cinBlack, cinWhite } from '../../styles/colors';
@@ -12,25 +11,6 @@ class Cinemas extends Component {
   static navigationOptions() {
     return {
       title: 'Movie view',
-      headerStyle: {
-        backgroundColor: cinBlack,
-      },
-      headerTintColor: cinWhite,
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        fontSize: 25,
-        textAlign: 'center',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-      headerRight: () => (
-        <MaterialCommunityIcons
-          style={styles.iconHeader}
-          name="death-star"
-        />
-      ),
     };
   }
 
