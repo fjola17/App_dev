@@ -24,9 +24,6 @@ class Cinemas extends Component {
         <Text style={styles.toolBarText}>
           Cinemas screen!!!
         </Text>
-        <Text style={styles.toolBarText}>
-          Here be a header and list of cinemas in a flatlist
-        </Text>
         <FlatList
           data={theaters}
           renderItem={(item) => (
