@@ -19,7 +19,8 @@ class MovieScreen extends Component {
     const { movies } = this.props;
     const movie = movies[0];
     const { title, poster, year, plot, genres, durationMinutes, showtimes } = movie;
-    const { schedule } = showtimes[0];
+    const sk = showtimes[0];
+    const { schedule } = sk;
 
     return (
       <View style={styles.container}>
@@ -36,15 +37,7 @@ class MovieScreen extends Component {
         <Text style={styles.infoText}>
           {year}
         </Text>
-        <FlatList
-          data={genres}
-          horizontal
-          renderItem={(itm) => (
-            <Text>{itm.item.Name}</Text>
-          )}
-          keyExtractor={(itm) => itm.ID.toString()}
-        />
-        <Text>
+        <Text style={styles.infoText}>
           {durationMinutes}
           minutes
         </Text>
@@ -61,6 +54,16 @@ class MovieScreen extends Component {
         <Text style={styles.description}>
           {plot}
         </Text>
+        <View style={styles.listBox}>
+          <FlatList
+            numColumns={3}
+            data={genres}
+            renderItem={(itm) => (
+              <Text style={styles.genreText}>{itm.item.Name}</Text>
+            )}
+            keyExtractor={(itm) => itm.ID.toString()}
+          />
+        </View>
       </View>
     );
   }
@@ -70,8 +73,13 @@ const mapStateToProps = ({ movies }, { navigation }) => {
   const mov = navigation.getParam('movie');
   const th = navigation.getParam('theaterId');
   const { item } = mov;
-  const showtime = item.showtimes.filter(sh => sh.cinema.id === th);
-  item.showtimes = showtime;
+  if (item.showtimes) {
+    const showtime = item.showtimes.filter(sh => sh.cinema.id === th);
+    item.showtimes = showtime;
+  }
+  else {
+    item.showtimes = [{ schedule: [] }];
+  }
   movies = [item];
   return { movies };
 }

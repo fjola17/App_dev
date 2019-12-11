@@ -27,8 +27,9 @@ const MoviesForCinema = (props) => {
           <Text style={styles.titleText}>{title}</Text>
           <Text style={styles.infoText}>{year}</Text>
           <FlatList
-            style={styles.padBox}
+            numColumns={2}
             data={genres}
+            style={styles.padBox}
             renderItem={(itm) => (
               <Text style={styles.genreText}>{itm.item.Name}</Text>
             )}
