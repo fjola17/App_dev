@@ -16,6 +16,14 @@ class UpcomingMovies extends Component {
     };
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  sortByDescendingReleaseDate(a, b) {
+    const intA = parseInt(a['release-dateIS'].replace(/[-]/g, ''), 10);
+    const intB = parseInt(b['release-dateIS'].replace(/[-]/g, ''), 10);
+
+    return intB - intA;
+  }
+
   render() {
     const { upcoming, navigation } = this.props;
     return (
@@ -24,7 +32,7 @@ class UpcomingMovies extends Component {
           Upcoming Movies
         </Text>
         <FlatList
-          data={upcoming}
+          data={upcoming.sort((a, b) => this.sortByDescendingReleaseDate(a, b))}
           renderItem={(item) => (
             <MovieForUpcoming movie={item} navigation={navigation} />
           )}
