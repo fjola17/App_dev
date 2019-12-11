@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import React from 'react';
 import { Text, View, Image, FlatList } from 'react-native';
 import { connect } from 'react-redux';
@@ -6,19 +7,21 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './styles';
 
 const MoviesForCinema = (props) => {
-  const {movie, navigation} = props;
-  const {item} = movie;
-  const {title, year, poster, genres} = item;
+  const { movie, navigation, theaterId } = props;
+  const { item } = movie;
+  const { title, year, poster, genres } = item;
+  const { navigate } = navigation;
 
   return (
     <View>
       <TouchableOpacity
         style={styles.container}
-        onPress={() => navigation.navigate('MovieScreen', { movie })}>
+        onPress={() => navigate('MovieScreen', { movie, theaterId })}
+      >
         <Image
           style={styles.image}
           source={{ uri: poster }}
-          resizeMode='contain'
+          resizeMode="contain"
         />
         <View style={styles.boxRight}>
           <Text style={styles.titleText}>{title}</Text>
@@ -32,12 +35,15 @@ const MoviesForCinema = (props) => {
             )}
             keyExtractor={(itm) => itm.ID.toString()}
           />
-      </View>
+        </View>
       </TouchableOpacity>
     </View>
   );
 };
 
-const mapStateToProps = ({ movies }, movie) => ({ movies: movies.filter((theat) => theat.id === movie.id) } )
+// eslint-disable-next-line arrow-body-style
+const mapStateToProps = ({ theaters, movies }, movie) => {
+  return { theaters, movies: movies.filter((theat) => theat.id === movie.id) };
+};
 
 export default connect(mapStateToProps)(withNavigation(MoviesForCinema));

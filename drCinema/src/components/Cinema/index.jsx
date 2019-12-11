@@ -14,9 +14,8 @@ class Cinema extends React.Component {
   }
 
   render() {
-    const { theater, navigation } = this.props;
-    const { item } = theater;
-    const { name, website } = item;
+    const { theaters, navigation, theater } = this.props;
+    const { name, website } = theaters[0];
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.navigate('CinemaDetails', { theater })}>
@@ -27,8 +26,9 @@ class Cinema extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ theaters }, theater) => (
-  { theaters: theaters.filter((theat) => theat.id === theater.id) }
-);
+const mapStateToProps = ({ theaters }, theater) => {
+  const { id } = theater.theater.item;
+  return { theaters: theaters.filter((theat) => theat.id === id) };
+};
 
 export default connect(mapStateToProps)(withNavigation(Cinema));

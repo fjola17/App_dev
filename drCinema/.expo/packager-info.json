@@ -1,9 +1,1 @@
-{
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://si-32f.anonymous.drcinema.exp.direct",
-  "packagerNgrokUrl": "https://packager.si-32f.anonymous.drcinema.exp.direct",
-  "ngrokPid": 27703,
-  "devToolsPort": 19002,
-  "packagerPort": 19005,
-  "packagerPid": 27685
-}
+{}

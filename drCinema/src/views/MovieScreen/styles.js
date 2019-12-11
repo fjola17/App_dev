@@ -40,7 +40,7 @@ export default StyleSheet.create({
   description: {
     fontSize: 14,
     fontWeight: 'normal',
-    paddingTop: 5,
+    paddingTop: 10,
     paddingBottom: 10,
     lineHeight: 16,
     justifyContent: 'space-around',
@@ -64,6 +64,23 @@ export default StyleSheet.create({
   listBox: {
     paddingTop: 15,
     alignItems: 'center',
+  },
+  ticketText: {
+    flex: 1,
+    width: winWidth * 0.9,
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 24,
+    textAlign: 'center',
+    alignItems: 'center',
+    padding: 2,
+    margin: 2,
+    borderWidth: 1,
+    borderRadius: 5,
+    overflow: 'hidden',
+    borderColor: color.cinOrange,
+    color: color.cinOrange,
+    backgroundColor: color.cinBlack,
   },
   genreText: {
     // flex: 0.5,

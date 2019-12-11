@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Text, View, Image, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
 import { cinBlack, cinWhite } from '../../styles/colors';
 
 
-class Cinemas extends Component {
+class MovieScreen extends Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
     return {
@@ -15,10 +16,12 @@ class Cinemas extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
-    const movie = navigation.getParam('movie');
-    const { item } = movie;
-    const { title, poster, year, plot, genres, durationMinutes } = item;
+    const { movies } = this.props;
+    const movie = movies[0];
+    console.log(movie);
+    const { title, poster, year, plot, genres, durationMinutes, showtimes } = movie;
+    const sk = showtimes[0];
+    const { schedule } = sk;
 
     return (
       <View style={styles.container}>
@@ -39,12 +42,28 @@ class Cinemas extends Component {
               {year}
             </Text>
             <Text style={styles.infoText}>
-              {durationMinutes} minutes
+              {durationMinutes}
+              minutes
             </Text>
           </View>
           <Text style={styles.description}>
             {plot}
           </Text>
+          <View style={styles.listBox}>
+            <FlatList
+              data={schedule}
+              renderItem={(ite) => (
+                <Text style={styles.ticketText}>
+                  Kl.
+                  {' '}
+                  {ite.item.time}
+                  {' '}
+                  buy tickets now!
+                </Text>
+              )}
+              keyExtractor={(itm) => itm.time}
+            />
+          </View>
           <View style={styles.listBox}>
             <FlatList
               numColumns={3}
@@ -61,9 +80,19 @@ class Cinemas extends Component {
   }
 }
 
-// Cinemas.propTypes = {
+const mapStateToProps = ({ movies }, { navigation }) => {
+  const mov = navigation.getParam('movie');
+  const th = navigation.getParam('theaterId');
+  const { item } = mov;
+  if (item.showtimes) {
+    const showtime = item.showtimes.filter(sh => sh.cinema.id === th);
+    item.showtimes = showtime;
+  }
+  else {
+    item.showtimes = [{ schedule: [] }];
+  }
+  movies = [item];
+  return { movies };
+}
 
-// };
-
-
-export default Cinemas;
+export default connect(mapStateToProps)(MovieScreen);
