@@ -53,7 +53,7 @@ class CinemaDetails extends Component {
 
 // };
 
-const mapStateToProps = ({ movies }, { navigation }) => {
+const mapStateToProps = ({ theaters, movies }, { navigation }) => {
   const theater = navigation.getParam('theater');
   const name = theater.item.name;
   const moviefilter = movies.filter((it) => {
@@ -63,7 +63,7 @@ const mapStateToProps = ({ movies }, { navigation }) => {
       }
     }
   });
-  return { movies: moviefilter };
+  return { theaters, movies: moviefilter };
 };
 
 export default connect(mapStateToProps)(CinemaDetails);

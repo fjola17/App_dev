@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Text, View, Image, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
 import { cinBlack, cinWhite } from '../../styles/colors';
 
 
-class Cinemas extends Component {
+class MovieScreen extends Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
     return {
@@ -52,9 +53,15 @@ class Cinemas extends Component {
   }
 }
 
-// Cinemas.propTypes = {
+const mapStateToProps = ({theaters, movies }, { navigation }) => {
+  const mov = navigation.getParam('movie');
+  const { item } = mov;
 
-// };
+  const showtime = item.showtimes[0];
+  item['showtimes'] = showtime;
+  movies = [item];
+  console.log(movies);
+  return { theaters, movies };
+}
 
-
-export default Cinemas;
+export default connect(mapStateToProps)(MovieScreen);

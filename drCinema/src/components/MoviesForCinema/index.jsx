@@ -37,6 +37,6 @@ const MoviesForCinema = (props) => {
   );
 };
 
-const mapStateToProps = ({ movies }, movie) => ({ movies: movies.filter((theat) => theat.id === movie.id) } )
+const mapStateToProps = ({ theaters, movies }, movie) => ({ theaters, movies: movies.filter((theat) => theat.id === movie.id) } )
 
 export default connect(mapStateToProps)(withNavigation(MoviesForCinema));
