@@ -12,7 +12,7 @@ class CinemaDetails extends Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
     return {
-      title: 'Cinema details',
+      title: 'Screening now',
     };
   }
 
@@ -46,6 +46,6 @@ class CinemaDetails extends Component {
 
 // };
 
-const mapStateToProps = ({ theaters, movies }) => ({theaters, movies });
+const mapStateToProps = ({ theaters, movies }) => ({ theaters, movies });
 
 export default connect(mapStateToProps)(CinemaDetails);

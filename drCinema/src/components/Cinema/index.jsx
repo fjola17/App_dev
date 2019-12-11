@@ -5,6 +5,7 @@ import { withNavigation } from 'react-navigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import styles from './styles';
+import { Title } from 'react-native-paper';
 
 class Cinema extends React.Component {
   constructor(props) {
@@ -14,19 +15,20 @@ class Cinema extends React.Component {
 
   render() {
     const { theater, navigation } = this.props;
-    // navigation.name
-    // console.log(navigation.navigate('CinemaDetails'));
     const { item } = theater;
     const { name, website } = item;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.navigate('CinemaDetails', { theater })}>
-          <Text style={styles.toolBarText}>{name}</Text>
-          <Text>{website}</Text>
+          <Text style={styles.titleText}>{name}</Text>
+          <Text style={styles.webAddress}>{website}</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
-const mapStateToProps = ({ theaters }, theater) => ({ theaters: theaters.filter((theat) => theat.id === theater.id) });
+const mapStateToProps = ({ theaters }, theater) => (
+  { theaters: theaters.filter((theat) => theat.id === theater.id) }
+);
+
 export default connect(mapStateToProps)(withNavigation(Cinema));
