@@ -57,7 +57,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 500,
-    height: 500,
+    width: 400,
+    height: 400,
   },
 });

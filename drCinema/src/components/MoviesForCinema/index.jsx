@@ -9,7 +9,6 @@ const MoviesForCinema = (props) => {
   const {movie, navigation} = props;
   const {item} = movie;
   const {title, year, poster, genres} = item;
-  console.log(genres)
 
   return (
     <View>
@@ -18,11 +17,11 @@ const MoviesForCinema = (props) => {
         <Text style={{ alignItems: 'center' }}>{title}</Text>
         <Text>{year}</Text>
         <FlatList
-        data={genres}
-        renderItem={(itm) => (
-          <Text>{itm.item.Name}</Text>
-        )}
-        keyExtractor={(itm) => itm.ID.toString()}
+          data={genres}
+          renderItem={(itm) => (
+            <Text>{itm.item.Name}</Text>
+          )}
+          keyExtractor={(itm) => itm.ID.toString()}
         />
       </TouchableOpacity>
     </View>
