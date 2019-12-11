@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 13756,
-  "expoServerNgrokUrl": "https://2p-bau.anonymous.drcinema.exp.direct",
-  "packagerNgrokUrl": "https://packager.2p-bau.anonymous.drcinema.exp.direct",
-  "ngrokPid": 5488
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

@@ -22,6 +22,16 @@ class MovieScreen extends Component {
     const sk = showtimes[0];
     const { schedule } = sk;
 
+    let renderDuration = null;
+    if (typeof durationMinutes !== 'undefined') {
+      renderDuration = (
+        <Text style={styles.infoText}>
+          {durationMinutes}
+          &nbsp;minutes
+        </Text>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>
@@ -37,10 +47,7 @@ class MovieScreen extends Component {
         <Text style={styles.infoText}>
           {year}
         </Text>
-        <Text style={styles.infoText}>
-          {durationMinutes}
-          minutes
-        </Text>
+        {renderDuration}
         <FlatList
           data={schedule}
           renderItem={(ite) => (
