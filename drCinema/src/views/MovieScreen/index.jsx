@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, FlatList } from 'react-native';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
 import { cinBlack, cinWhite } from '../../styles/colors';
@@ -15,10 +15,10 @@ class Cinemas extends Component {
   }
 
   render() {
-    const { navigation } = this.props
+    const { navigation } = this.props;
     const movie = navigation.getParam('movie');
     const { item } = movie;
-    const { title, poster, year, plot } = item;
+    const { title, poster, year, plot, genres, durationMinutes } = item;
 
     return (
       <View style={styles.container}>
@@ -35,6 +35,15 @@ class Cinemas extends Component {
         <Text style={styles.infoText}>
           {year}
         </Text>
+        <FlatList
+          data={genres}
+          horizontal
+          renderItem={(itm) => (
+            <Text>{itm.item.Name}</Text>
+          )}
+          keyExtractor={(itm) => itm.ID.toString()}
+        />
+        <Text>{durationMinutes} minutes</Text>
         <Text style={styles.description}>
           {plot}
         </Text>

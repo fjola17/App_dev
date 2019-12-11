@@ -9,7 +9,6 @@ const MoviesForCinema = (props) => {
   const {movie, navigation} = props;
   const {item} = movie;
   const {title, year, poster, genres} = item;
-  console.log(genres)
 
   return (
     <View>
