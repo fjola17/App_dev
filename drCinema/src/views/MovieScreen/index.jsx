@@ -10,7 +10,7 @@ class Cinemas extends Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
     return {
-      title: 'Movie Details',
+      title: 'Movie Info',
     };
   }
 
@@ -26,32 +26,35 @@ class Cinemas extends Component {
           <Image
             style={styles.image}
             source={{ uri: poster }}
-            resizeMode="contain"
+            resizeMode="cover"
+            resizeMethod='resize'
           />
         </View>
-        <Text style={styles.titleText}>
-          {title}
-        </Text>
-        <View style={styles.boxRight}>
-          <Text style={styles.infoText}>
-            {year}
+        <View style={styles.padBox}>
+          <Text style={styles.titleText}>
+            {title}
           </Text>
-          <Text style={styles.infoText}>
-            {durationMinutes} minutes
+          <View style={styles.boxRight}>
+            <Text style={styles.infoText}>
+              {year}
+            </Text>
+            <Text style={styles.infoText}>
+              {durationMinutes} minutes
+            </Text>
+          </View>
+          <Text style={styles.description}>
+            {plot}
           </Text>
-        </View>
-        <Text style={styles.description}>
-          {plot}
-        </Text>
-        <View style={styles.listBox}>
-          <FlatList
-            numColumns={3}
-            data={genres}
-            renderItem={(itm) => (
-              <Text style={styles.genreText}>{itm.item.Name}</Text>
-            )}
-            keyExtractor={(itm) => itm.ID.toString()}
-          />
+          <View style={styles.listBox}>
+            <FlatList
+              numColumns={3}
+              data={genres}
+              renderItem={(itm) => (
+                <Text style={styles.genreText}>{itm.item.Name}</Text>
+              )}
+              keyExtractor={(itm) => itm.ID.toString()}
+            />
+          </View>
         </View>
       </View>
     );

@@ -8,9 +8,9 @@ export default StyleSheet.create({
     flex: 1,
     width: winWidth,
     backgroundColor: color.cinDark,
-    paddingRight: 10,
-    paddingLeft: 10,
-    paddingTop: 10,
+    // paddingRight: 10,
+    // paddingLeft: 10,
+    // paddingTop: 10,
   },
   border: {
     paddingTop: 10,
@@ -58,7 +58,8 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   padBox: {
-    paddingTop: 15,
+    paddingTop: 10,
+    paddingHorizontal: 10,
   },
   listBox: {
     paddingTop: 15,
@@ -82,15 +83,23 @@ export default StyleSheet.create({
     overflow: 'hidden',
   },
   imageContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: winWidth,
+    height: 400,
+    // position: 'absolute',
+    top: 0,
   },
   image: {
-    width: 250,
-    height: 350,
-    // borderWidth: 1,
-    // borderColor: color.cinBlack,
-    borderRadius: 15,
-    overflow: 'hidden',
+    width: winWidth,
+    height: 400,
   },
+  // imageContainer: {
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  // image: {
+  //   width: 250,
+  //   height: 350,
+  //   borderRadius: 15,
+  //   overflow: 'hidden',
+  // },
 });

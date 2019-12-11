@@ -34,7 +34,6 @@ const TabNavigator = createMaterialBottomTabNavigator(
     UpcomingMovies: {
       screen: UpcomingMovies,
       navigationOptions: {
-        headerTitle: 'blah',
         tabBarLabel: <Text style={styles.tabBarText}>Upcoming</Text>,
         tabBarIcon: ({ tintColor }) => (
           <View>
@@ -49,6 +48,12 @@ const TabNavigator = createMaterialBottomTabNavigator(
     },
   },
   {
+    navigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index];
+      return {
+        headerTitle: routeName,
+      };
+    },
     initialRouteName: 'Cinemas',
     order: ['Cinemas', 'UpcomingMovies'],
     sceneAnimationEnabled: true,
@@ -57,16 +62,6 @@ const TabNavigator = createMaterialBottomTabNavigator(
     barStyle: {
       backgroundColor: color.cinBlack,
     },
-  },
-  {
-    // initialRouteName: 'Home',
-    // navigationOptions: ({ navigation }) => {
-    //   const { routeName } = navigation.state.routes[navigation.state.index];
-    //   console.log(`routename: $(routeName)`);
-    //   return {
-    //     headerTitle: routeName,
-    //   };
-    // },
   },
 );
 

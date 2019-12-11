@@ -9,13 +9,6 @@ import { cinBlack, cinWhite } from '../../styles/colors';
 
 
 class UpcomingMovies extends Component {
-  // Set Top navigation header/menu options
-  static navigationOptions() {
-    return {
-      title: 'Upcoming movies',
-    };
-  }
-
   // eslint-disable-next-line class-methods-use-this
   sortByDescendingReleaseDate(a, b) {
     const intA = parseInt(a['release-dateIS'].replace(/[-]/g, ''), 10);
@@ -28,9 +21,6 @@ class UpcomingMovies extends Component {
     const { upcoming, navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.toolBarText}>
-          Upcoming Movies
-        </Text>
         <FlatList
           data={upcoming.sort((a, b) => this.sortByDescendingReleaseDate(a, b))}
           renderItem={(item) => (
