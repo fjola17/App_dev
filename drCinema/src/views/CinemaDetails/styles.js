@@ -16,7 +16,7 @@ export default StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 5,
     borderBottomWidth: 1,
-    borderColor: color.cinSaberBlue,
+    borderColor: color.cinBlack,
   },
   titleText: {
     fontSize: 20,

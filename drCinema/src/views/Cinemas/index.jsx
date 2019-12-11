@@ -11,7 +11,8 @@ class Cinemas extends Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
     return {
-      title: 'Cinemas',
+      // title: 'Cinemas',
+      headerTitle: 'Home',
     };
   }
 

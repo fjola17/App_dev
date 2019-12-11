@@ -20,7 +20,7 @@ export default StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 8,
     borderBottomWidth: 1,
-    borderColor: color.cinSaberBlue,
+    borderColor: color.cinBlack,
   },
   boxLeft: {
   },

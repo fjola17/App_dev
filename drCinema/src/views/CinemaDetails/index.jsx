@@ -12,7 +12,7 @@ class CinemaDetails extends Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
     return {
-      title: 'Screening now',
+      title: 'Screening Now',
     };
   }
 

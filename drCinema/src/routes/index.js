@@ -34,6 +34,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     UpcomingMovies: {
       screen: UpcomingMovies,
       navigationOptions: {
+        headerTitle: 'blah',
         tabBarLabel: <Text style={styles.tabBarText}>Upcoming</Text>,
         tabBarIcon: ({ tintColor }) => (
           <View>
@@ -59,40 +60,65 @@ const TabNavigator = createMaterialBottomTabNavigator(
   },
   {
     // initialRouteName: 'Home',
-    navigationOptions: ({ navigation }) => {
-      const { routeName } = navigation.state.routes[navigation.state.index];
-      return {
-        headerTitle: routeName,
-      };
-    },
+    // navigationOptions: ({ navigation }) => {
+    //   const { routeName } = navigation.state.routes[navigation.state.index];
+    //   console.log(`routename: $(routeName)`);
+    //   return {
+    //     headerTitle: routeName,
+    //   };
+    // },
   },
 );
 
 const StackNavigatior = createStackNavigator({
-  DashTabNavigator: TabNavigator,
-  Cinemas: { screen: Cinemas },
+  TabNavigator,
+  Cinemas,
   CinemaDetails,
   MovieScreen,
   UpcomingMovies,
 }, {
   headerLayoutPreset: 'center',
   // initialRouteName: 'Cinemas',
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: color.cinSaberBlue,
-    },
-    headerTintColor: color.cinDark,
-    headerTitleStyle: {
-      fontWeight: 'bold',
-      fontSize: 22,
-    },
-    headerRight: () => (
-      <MaterialCommunityIcons
-        style={styles.iconHeader}
-        name="movie-roll"
-      />
-    ),
+  // defaultNavigationOptions: ({ navigation }) => {
+
+  // }
+  defaultNavigationOptions: ({ navigation }) => {
+    return {
+      headerStyle: {
+        backgroundColor: color.cinBlack,
+      },
+      headerTintColor: color.cinSaberBlue,
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 20,
+      },
+      headerRight: () => (
+        <MaterialCommunityIcons
+          style={styles.iconHeader}
+          name="home"
+          onPress={() => navigation.navigate('Cinemas')}
+        />
+      ),
+    };
   },
+
+  // defaultNavigationOptions: {
+  //   headerStyle: {
+  //     backgroundColor: color.cinRed,
+  //   },
+  //   headerTintColor: color.cinSaberBlue,
+  //   headerTitleStyle: {
+  //     fontWeight: 'bold',
+  //     fontSize: 20,
+  //   },
+  //   headerRight: () => (
+  //     <MaterialCommunityIcons
+  //       style={styles.iconHeader}
+  //       name="movie-roll"
+  //       // onPress={() => ('Cinema')}
+  //     />
+  //   ),
+  // },
 });
 
 export default createAppContainer(StackNavigatior);
