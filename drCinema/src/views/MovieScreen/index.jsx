@@ -32,21 +32,27 @@ class Cinemas extends Component {
         <Text style={styles.titleText}>
           {title}
         </Text>
-        <Text style={styles.infoText}>
-          {year}
-        </Text>
-        <FlatList
-          data={genres}
-          horizontal
-          renderItem={(itm) => (
-            <Text>{itm.item.Name}</Text>
-          )}
-          keyExtractor={(itm) => itm.ID.toString()}
-        />
-        <Text>{durationMinutes} minutes</Text>
+        <View style={styles.boxRight}>
+          <Text style={styles.infoText}>
+            {year}
+          </Text>
+          <Text style={styles.infoText}>
+            {durationMinutes} minutes
+          </Text>
+        </View>
         <Text style={styles.description}>
           {plot}
         </Text>
+        <View style={styles.listBox}>
+          <FlatList
+            numColumns={3}
+            data={genres}
+            renderItem={(itm) => (
+              <Text style={styles.genreText}>{itm.item.Name}</Text>
+            )}
+            keyExtractor={(itm) => itm.ID.toString()}
+          />
+        </View>
       </View>
     );
   }

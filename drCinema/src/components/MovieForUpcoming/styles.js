@@ -38,7 +38,7 @@ export default StyleSheet.create({
     textAlign: 'left',
   },
   infoText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     lineHeight: 24,
     color: color.cinWhite,
@@ -46,11 +46,12 @@ export default StyleSheet.create({
   },
   genreText: {
     // flex: 0.5,
-    width: winWidth * 0.3,
-    fontSize: 14,
-    fontWeight: 'normal',
+    width: winWidth * 0.27,
+    fontSize: 12,
+    fontWeight: 'bold',
     lineHeight: 20,
     color: color.cinWhite,
+    backgroundColor: color.cinBlack,
     textAlign: 'center',
     justifyContent: 'flex-end',
     padding: 1,
@@ -58,6 +59,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: color.cinSaberBlue,
     borderRadius: 12,
+    overflow: 'hidden',
   },
   image: {
     width: 100,
