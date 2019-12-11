@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Text, View, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
@@ -35,6 +35,11 @@ class Cinemas extends Component {
 // Cinemas.propTypes = {
 
 // };
-const mapStateToProps = ({ theaters }) => ({ theaters: theaters.sort((a, b) => a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0) });
+
+const mapStateToProps = ({ theaters }) => {
+  // eslint-disable-next-line no-nested-ternary
+  const sorted = theaters.sort((a, b) => (a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0));
+  return { theaters: sorted };
+};
 
 export default connect(mapStateToProps)(Cinemas);

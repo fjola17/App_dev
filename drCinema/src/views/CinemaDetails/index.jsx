@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Text, View, FlatList } from 'react-native';
@@ -17,12 +18,10 @@ class CinemaDetails extends Component {
   }
 
   render() {
-    const { navigation, movies } = this.props;
-    const theater = navigation.getParam('theater');
-    const { item } = theater;
-    const { city, description, name, phone, website } = item;
+    const { movies, theaters } = this.props;
+    const item = theaters[0];
+    const { id, city, description, name, phone, website } = item;
     const address = item["address\t"];
-    // console.log(this.props.movies[0], this.props.theaters[0]);
     return (
       <View style={styles.container}>
         {/* Bio upplysingar */}
@@ -40,7 +39,7 @@ class CinemaDetails extends Component {
         <FlatList
           data={movies}
           renderItem={(it) => (
-            <MoviesForCinema movie={it} />
+            <MoviesForCinema movie={it} theaterId={id} />
           )}
           keyExtractor={(it) => it.id.toString()}
         />
@@ -55,14 +54,17 @@ class CinemaDetails extends Component {
 
 const mapStateToProps = ({ theaters, movies }, { navigation }) => {
   const theater = navigation.getParam('theater');
-  const name = theater.item.name;
+  const { name } = theater.item;
   const moviefilter = movies.filter((it) => {
     for (let i = 0; i < it.showtimes.length; i += 1) {
       if (it.showtimes[i].cinema.name === name) {
         return it;
       }
     }
+    return '';
   });
+  theaters = [theater.item];
+  console.log(theaters);
   return { theaters, movies: moviefilter };
 };
 

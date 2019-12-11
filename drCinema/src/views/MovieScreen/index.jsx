@@ -16,10 +16,10 @@ class MovieScreen extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
-    const movie = navigation.getParam('movie');
-    const { item } = movie;
-    const { title, poster, year, plot, genres, durationMinutes } = item;
+    const { movies } = this.props;
+    const movie = movies[0];
+    const { title, poster, year, plot, genres, durationMinutes, showtimes } = movie;
+    const { schedule } = showtimes[0];
 
     return (
       <View style={styles.container}>
@@ -44,7 +44,20 @@ class MovieScreen extends Component {
           )}
           keyExtractor={(itm) => itm.ID.toString()}
         />
-        <Text>{durationMinutes} minutes</Text>
+        <Text>
+          {durationMinutes}
+          minutes
+        </Text>
+        <FlatList
+          data={schedule}
+          renderItem={(ite) => (
+            <Text>
+              {ite.item.time}
+              buy tickets
+            </Text>
+          )}
+          keyExtractor={(itm) => itm.time}
+        />
         <Text style={styles.description}>
           {plot}
         </Text>
@@ -53,15 +66,14 @@ class MovieScreen extends Component {
   }
 }
 
-const mapStateToProps = ({theaters, movies }, { navigation }) => {
+const mapStateToProps = ({ movies }, { navigation }) => {
   const mov = navigation.getParam('movie');
+  const th = navigation.getParam('theaterId');
   const { item } = mov;
-
-  const showtime = item.showtimes[0];
-  item['showtimes'] = showtime;
+  const showtime = item.showtimes.filter(sh => sh.cinema.id === th);
+  item.showtimes = showtime;
   movies = [item];
-  console.log(movies);
-  return { theaters, movies };
+  return { movies };
 }
 
 export default connect(mapStateToProps)(MovieScreen);
