@@ -8,9 +8,9 @@ export default StyleSheet.create({
     flex: 1,
     width: winWidth,
     backgroundColor: color.cinDark,
-    paddingRight: 20,
-    paddingLeft: 20,
-    paddingTop: 20,
+    paddingRight: 10,
+    paddingLeft: 10,
+    paddingTop: 10,
   },
   border: {
     paddingTop: 10,
@@ -90,7 +90,7 @@ export default StyleSheet.create({
     height: 350,
     // borderWidth: 1,
     // borderColor: color.cinBlack,
-    borderRadius: 20,
+    borderRadius: 15,
     overflow: 'hidden',
   },
 });

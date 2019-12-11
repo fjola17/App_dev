@@ -58,6 +58,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     },
   },
   {
+    // initialRouteName: 'Home',
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {

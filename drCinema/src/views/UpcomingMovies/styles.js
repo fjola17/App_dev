@@ -8,9 +8,9 @@ export default StyleSheet.create({
     flex: 1,
     width: winWidth,
     backgroundColor: color.cinDark,
-    paddingRight: 20,
-    paddingLeft: 20,
-    paddingTop: 20,
+    paddingRight: 10,
+    paddingLeft: 10,
+    paddingTop: 10,
   },
   toolBarText: {
     fontSize: 22,

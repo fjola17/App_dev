@@ -7,11 +7,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    // justifyContent: 'flex-end',
-    width: winWidth * 0.9,
-    // flexGrow: 0.9,
-    // alignItems: 'center',
-    // backgroundColor: cinLighterDark,
+    width: winWidth * 0.95,
     paddingRight: 20,
     paddingLeft: 5,
     paddingTop: 10,

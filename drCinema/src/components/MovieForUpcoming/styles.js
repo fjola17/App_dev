@@ -15,7 +15,7 @@ export default StyleSheet.create({
   innerContainer: {
     flex: 1,
     flexDirection: 'row',
-    width: winWidth * 0.95,
+    // width: winWidth * 0.95,
     // marginHorizontal: 20,
     paddingTop: 8,
     paddingBottom: 8,

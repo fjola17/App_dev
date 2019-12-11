@@ -1,6 +1,6 @@
 // Empire Colors
 export const cinBlack = '#1e1e1e';
-export const cinDark = '#2d2d2d';
+export const cinDark = '#2b2b2b';
 export const cinLighterDark = '#929292';
 export const cinRed = '#ed424d';
 export const cinBlasterRed = '#f23207';
