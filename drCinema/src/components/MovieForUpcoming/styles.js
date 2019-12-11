@@ -46,8 +46,8 @@ export default StyleSheet.create({
   },
   genreText: {
     // flex: 0.5,
-    width: winWidth * 0.27,
-    fontSize: 12,
+    width: winWidth * 0.28,
+    fontSize: 10,
     fontWeight: 'bold',
     lineHeight: 20,
     color: color.cinWhite,
