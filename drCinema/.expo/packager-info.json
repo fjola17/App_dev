@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://uu-c28.anonymous.drcinema.exp.direct",
-  "packagerNgrokUrl": "https://packager.uu-c28.anonymous.drcinema.exp.direct",
-  "ngrokPid": 23259,
+  "expoServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "devToolsPort": 19002,
-  "packagerPort": 19005,
-  "packagerPid": 23234
+  "packagerPort": null,
+  "packagerPid": null
 }
