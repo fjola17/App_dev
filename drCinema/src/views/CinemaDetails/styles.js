@@ -45,4 +45,15 @@ export default StyleSheet.create({
     lineHeight: 20,
     color: color.cinWhite,
   },
+  infoText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 24,
+    color: color.cinWhite,
+    textAlign: 'left',
+  },
+  image: {
+    width: 50,
+    height: 80,
+  },
 });
