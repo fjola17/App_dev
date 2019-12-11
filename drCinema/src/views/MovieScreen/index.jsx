@@ -24,7 +24,7 @@ class MovieScreen extends Component {
     const { schedule } = sk;
     const regexTags = /(<([^>]+)>)/ig;
     const regexStrip = /[\r\n]+/gm;
-    const plot_strip = plot.replace(regexTags, '').replace(regexStrip, '');
+    const plotStrip = plot.replace(regexTags, '').replace(regexStrip, '');
 
     let renderDuration = null;
     if (typeof durationMinutes !== 'undefined') {
@@ -59,7 +59,7 @@ class MovieScreen extends Component {
               {renderDuration}
             </View>
             <Text style={styles.description}>
-              {plot_strip}
+              {plotStrip}
             </Text>
             <View style={styles.listBox}>
               <FlatList
