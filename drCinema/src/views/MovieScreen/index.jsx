@@ -24,10 +24,10 @@ class Cinemas extends Component {
     const { title, poster, year, plot } = item;
     return (
       <View style={styles.container}>
-        <Text style={styles.toolBarText}>
+        <Text style={styles.titleText}>
           {title}
         </Text>
-        <Text style={styles.toolBarText}>
+        <Text style={styles.description}>
           {plot}
         </Text>
       </View>
