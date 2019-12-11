@@ -23,6 +23,16 @@ class MovieScreen extends Component {
     const sk = showtimes[0];
     const { schedule } = sk;
 
+    let renderDuration = null;
+    if (typeof durationMinutes !== 'undefined') {
+      renderDuration = (
+        <Text style={styles.infoText}>
+          {durationMinutes}
+          &nbsp;minutes
+        </Text>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>
@@ -33,13 +43,19 @@ class MovieScreen extends Component {
             resizeMethod='resize'
           />
         </View>
-        <View style={styles.padBox}>
-          <Text style={styles.titleText}>
-            {title}
-          </Text>
-          <View style={styles.boxRight}>
-            <Text style={styles.infoText}>
-              {year}
+        <Text style={styles.titleText}>
+          {title}
+        </Text>
+        <Text style={styles.infoText}>
+          {year}
+        </Text>
+        {renderDuration}
+        <FlatList
+          data={schedule}
+          renderItem={(ite) => (
+            <Text>
+              {ite.item.time}
+              buy tickets
             </Text>
             <Text style={styles.infoText}>
               {durationMinutes}
