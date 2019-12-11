@@ -3,6 +3,7 @@ import { Text, View, Image, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import styles from './styles';
 
 const MoviesForCinema = (props) => {
   const {movie, navigation} = props;
@@ -27,6 +28,7 @@ const MoviesForCinema = (props) => {
     </View>
   );
 };
-// const mapStateToProps = ({ movies }) =>({ movies: movies.filter((theat) => theat.id === movie.id) });
-// export default connect(mapStateToProps)(withNavigation(MoviesForCinema));
-export default withNavigation(MoviesForCinema);
+
+const mapStateToProps = ({ movies }, movie) => ({ movies: movies.filter((theat) => theat.id === movie.id) } )
+
+export default connect(mapStateToProps)(withNavigation(MoviesForCinema));

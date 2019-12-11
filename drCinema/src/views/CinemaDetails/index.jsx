@@ -12,7 +12,7 @@ class CinemaDetails extends Component {
   // Set Top navigation header/menu options
   static navigationOptions() {
     return {
-      title: 'Cinema details',
+      title: 'Screening now',
     };
   }
 
@@ -20,16 +20,23 @@ class CinemaDetails extends Component {
     const { navigation, movies } = this.props;
     const theater = navigation.getParam('theater');
     const { item } = theater;
-    const { city, description, name, phone } = item;
+    const { city, description, name, phone, website } = item;
     const address = item["address\t"];
     // console.log(this.props.movies[0], this.props.theaters[0]);
     return (
       <View style={styles.container}>
-        <Text style={styles.toolBarText}>{name}</Text>
-        <Text style={styles.toolBarText}>{address}</Text>
-        <Text style={styles.toolBarText}>{city}</Text>
-        <Text style={styles.toolBarText}>{phone}</Text>
-        <Text>{description}</Text>
+        {/* Bio upplysingar */}
+        <Text style={styles.titleText}>{name}</Text>
+        <Text style={styles.address}>{address}</Text>
+        <Text style={styles.address}>{city}</Text>
+        <Text style={styles.address}>{phone}</Text>
+        <View style={styles.border}>
+          <Text style={styles.webAddress}>{website}</Text>
+        </View>
+        <View style={styles.border}>
+          <Text style={styles.description}>{description}</Text>
+        </View>
+
         <FlatList
           data={movies}
           renderItem={(it) => (
