@@ -38,11 +38,12 @@ export default StyleSheet.create({
     color: color.cinWhite,
   },
   description: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'normal',
     paddingTop: 5,
     paddingBottom: 10,
-    lineHeight: 20,
+    lineHeight: 16,
+    justifyContent: 'space-around',
     color: color.cinWhite,
   },
   infoText: {
@@ -57,7 +58,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 500,
-    height: 500,
+    width: 250,
+    height: 350,
+    // borderWidth: 1,
+    // borderColor: color.cinBlack,
+    borderRadius: 20,
+    overflow: 'hidden',
   },
 });

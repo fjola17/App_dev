@@ -13,17 +13,26 @@ const MoviesForCinema = (props) => {
 
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate('MovieScreen', {movie})}>
-        <Image style={{ width: 50, height: 50 }} source={{ uri: poster }} />
-        <Text style={{ alignItems: 'center' }}>{title}</Text>
-        <Text>{year}</Text>
-        <FlatList
-        data={genres}
-        renderItem={(itm) => (
-          <Text>{itm.item.Name}</Text>
-        )}
-        keyExtractor={(itm) => itm.ID.toString()}
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() => navigation.navigate('MovieScreen', { movie })}>
+        <Image
+          style={styles.image}
+          source={{ uri: poster }}
+          resizeMode='contain'
         />
+        <View style={styles.boxRight}>
+          <Text style={styles.titleText}>{title}</Text>
+          <Text style={styles.infoText}>{year}</Text>
+          <FlatList
+            style={styles.padBox}
+            data={genres}
+            renderItem={(itm) => (
+              <Text style={styles.genreText}>{itm.item.Name}</Text>
+            )}
+            keyExtractor={(itm) => itm.ID.toString()}
+          />
+      </View>
       </TouchableOpacity>
     </View>
   );

@@ -6,7 +6,17 @@ const { width: winWidth } = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     flex: 1,
+    width: winWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: cinDark,
+    backgroundColor: color.cinDark,
+  },
+  innerContainer: {
+    flex: 1,
     flexDirection: 'row',
+    width: winWidth * 0.95,
+    // marginHorizontal: 20,
     paddingTop: 8,
     paddingBottom: 8,
     borderBottomWidth: 1,
@@ -54,7 +64,7 @@ export default StyleSheet.create({
     height: 140,
     // borderWidth: 1,
     // borderColor: color.cinBlack,
-    borderRadius: 15,
+    borderRadius: 10,
     overflow: 'hidden',
   },
 });

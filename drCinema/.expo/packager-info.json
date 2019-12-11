@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 15452,
-  "expoServerNgrokUrl": "https://5t-mua.anonymous.drcinema.exp.direct",
-  "packagerNgrokUrl": "https://packager.5t-mua.anonymous.drcinema.exp.direct",
-  "ngrokPid": 7132
+  "packagerPort": 19004,
+  "packagerPid": 21172,
+  "expoServerNgrokUrl": "https://pw-su3.anonymous.drcinema.exp.direct",
+  "packagerNgrokUrl": "https://packager.pw-su3.anonymous.drcinema.exp.direct",
+  "ngrokPid": 21199
 }

@@ -1,17 +1,21 @@
-import { StyleSheet } from "react-native";
-import { cinDark, cinWhite } from "../../styles/colors";
+import { StyleSheet, Dimensions } from "react-native";
+import * as color from '../../styles/colors';
+
+const { width: winWidth } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    // justifyContent: 'center',
-    backgroundColor: cinDark,
+    width: winWidth,
+    backgroundColor: color.cinDark,
+    paddingRight: 20,
+    paddingLeft: 20,
+    paddingTop: 20,
   },
   toolBarText: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: cinWhite,
+    color: color.cinWhite,
     alignItems: 'center',
   },
   iconHeader: {
@@ -19,6 +23,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     paddingRight: 20,
     paddingBottom: 3,
-    color: cinDark,
+    color: color.cinDark,
   },
 });

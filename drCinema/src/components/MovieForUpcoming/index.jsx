@@ -3,6 +3,7 @@ import { Text, View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import styles from './styles';
 
 const MovieForUpcoming = (props) => {
   const { movie, navigation } = props;
@@ -12,12 +13,17 @@ const MovieForUpcoming = (props) => {
 
   return (
     <View>
-      <Image
-        style={{ width: 40, height: 40 }}
-        source={{ uri: poster }}
-      />
-      <Text>{title}</Text>
-      <Text>{releaseDate}</Text>
+      <View style={styles.innerContainer}>
+        <Image
+            style={styles.image}
+            source={{ uri: poster }}
+            resizeMode='contain'
+          />
+        <View style={styles.boxRight}>
+          <Text style={styles.titleText}>{title}</Text>
+          <Text style={styles.infoText}>{releaseDate}</Text>
+        </View>
+      </View>
     </View>
   );
 };

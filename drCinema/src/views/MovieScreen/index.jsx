@@ -26,7 +26,7 @@ class Cinemas extends Component {
           <Image
             style={styles.image}
             source={{ uri: poster }}
-            resizeMode='contain'
+            resizeMode="contain"
           />
         </View>
         <Text style={styles.titleText}>

@@ -52,6 +52,13 @@ export default StyleSheet.create({
     color: color.cinWhite,
     textAlign: 'left',
   },
+  genreText: {
+    fontSize: 14,
+    fontWeight: 'normal',
+    lineHeight: 24,
+    color: color.cinWhite,
+    textAlign: 'left',
+  },
   image: {
     width: 50,
     height: 80,
