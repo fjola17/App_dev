@@ -12,8 +12,11 @@ export default StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 20,
   },
+  scrollView: {
+    backgroundColor: color.cinDark,
+  },
   border: {
-    paddingTop: 10,
+    paddingTop: 5,
     paddingBottom: 5,
     borderBottomWidth: 1,
     borderColor: color.cinBlack,
@@ -38,7 +41,7 @@ export default StyleSheet.create({
     color: color.cinWhite,
   },
   description: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'normal',
     paddingTop: 5,
     paddingBottom: 10,

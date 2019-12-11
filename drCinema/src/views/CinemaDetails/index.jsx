@@ -1,7 +1,7 @@
 /* eslint-disable object-curly-newline */
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
@@ -22,28 +22,34 @@ class CinemaDetails extends Component {
     const item = theaters[0];
     const { id, city, description, name, phone, website } = item;
     const address = item["address\t"];
-    return (
-      <View style={styles.container}>
-        {/* Bio upplysingar */}
-        <Text style={styles.titleText}>{name}</Text>
-        <Text style={styles.address}>{address}</Text>
-        <Text style={styles.address}>{city}</Text>
-        <Text style={styles.address}>{phone}</Text>
-        <View style={styles.border}>
-          <Text style={styles.webAddress}>{website}</Text>
-        </View>
-        <View style={styles.border}>
-          <Text style={styles.description}>{description}</Text>
-        </View>
+    const regexTags = /(<([^>]+)>)/ig;
+    const regexStrip = /[\r\n]+/gm;
+    const info_stp = description.replace(regexTags, '').replace(regexStrip, '');
 
-        <FlatList
-          data={movies}
-          renderItem={(it) => (
-            <MoviesForCinema movie={it} theaterId={id} />
-          )}
-          keyExtractor={(it) => it.id.toString()}
-        />
-      </View>
+    return (
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+          {/* Bio upplysingar */}
+          <Text style={styles.titleText}>{name}</Text>
+          <Text style={styles.address}>{address}</Text>
+          <Text style={styles.address}>{city}</Text>
+          <Text style={styles.address}>{phone}</Text>
+          <View style={styles.border}>
+            <Text style={styles.webAddress}>{website}</Text>
+          </View>
+          <View style={styles.border}>
+            <Text style={styles.description}>{info_stp}</Text>
+          </View>
+
+          <FlatList
+            data={movies}
+            renderItem={(it) => (
+              <MoviesForCinema movie={it} theaterId={id} />
+            )}
+            keyExtractor={(it) => it.id.toString()}
+          />
+        </View>
+      </ScrollView>
     );
   }
 }

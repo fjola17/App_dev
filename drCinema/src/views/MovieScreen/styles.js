@@ -12,6 +12,9 @@ export default StyleSheet.create({
     // paddingLeft: 10,
     // paddingTop: 10,
   },
+  scrollView: {
+    backgroundColor: color.cinDark,
+  },
   border: {
     paddingTop: 10,
     paddingBottom: 5,
