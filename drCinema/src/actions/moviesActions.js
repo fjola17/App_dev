@@ -17,7 +17,7 @@ export const getAllMovies = () => {
     try {
       console.log("ENtered movies")
       const movies = await MovieService.getMovies();
-      console.log("SUCESS movies: ", movies);
+      console.log("SUCESS movies: ");
       dispatch(getCurrentMoviesSucess(movies));
     } catch (err) {
       // console.log("I got an error ", err);

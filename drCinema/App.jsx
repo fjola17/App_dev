@@ -15,6 +15,7 @@ class SubApp extends React.Component {
     this.props.getAllMovies();
     this.props.getAllUpcoming();
     console.log('SubApp: componentDidMount(): end');
+    console.log('SubApp: this.props: ', this.props);
   }
 
   render() {
