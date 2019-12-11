@@ -13,17 +13,22 @@ const MovieForUpcoming = (props) => {
 
   return (
     <View>
-      <View style={styles.innerContainer}>
-        <Image
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() => navigation.navigate('MovieScreen', { movie })}
+      >
+        <View style={styles.innerContainer}>
+          <Image
             style={styles.image}
             source={{ uri: poster }}
-            resizeMode='contain'
+            resizeMode="contain"
           />
-        <View style={styles.boxRight}>
-          <Text style={styles.titleText}>{title}</Text>
-          <Text style={styles.infoText}>{releaseDate}</Text>
+          <View style={styles.boxRight}>
+            <Text style={styles.titleText}>{title}</Text>
+            <Text style={styles.infoText}>{releaseDate}</Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
