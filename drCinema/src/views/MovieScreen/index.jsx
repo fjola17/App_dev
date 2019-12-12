@@ -20,9 +20,14 @@ class MovieScreen extends Component {
   render() {
     const { movies } = this.props;
     const movie = movies[0];
-    const { title, poster, year, plot, genres, durationMinutes, showtimes, trailers } = movie;
+    const { title, poster, year, plot, durationMinutes, showtimes, trailers } = movie;
     const sk = showtimes[0];
+    let { genres } = movie;
     const { schedule } = sk;
+    if (typeof genres[0] !== 'object') {
+      const val = [{ ID: '', Name: '' }];
+      genres = val;
+    }
     // Setja conditionals a replace
     let plotStrip = '';
     const regexTags = /(<([^>]+)>)/ig;
