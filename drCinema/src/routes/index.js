@@ -80,9 +80,9 @@ const StackNavigatior = createStackNavigator({
   defaultNavigationOptions: ({ navigation }) => {
     return {
       headerStyle: {
-        backgroundColor: color.cinBlack,
+        backgroundColor: color.cinSaberBlue,
       },
-      headerTintColor: color.cinSaberBlue,
+      headerTintColor: color.cinDark,
       headerTitleStyle: {
         fontWeight: 'bold',
         fontSize: 20,

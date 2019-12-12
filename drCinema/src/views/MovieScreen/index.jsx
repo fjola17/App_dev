@@ -22,6 +22,7 @@ class MovieScreen extends Component {
     const { title, poster, year, plot, genres, durationMinutes, showtimes } = movie;
     const sk = showtimes[0];
     const { schedule } = sk;
+    // Setja conditionals a replace
     const regexTags = /(<([^>]+)>)/ig;
     const regexStrip = /[\r\n]+/gm;
     const plotStrip = plot.replace(regexTags, '').replace(regexStrip, '');
@@ -42,7 +43,7 @@ class MovieScreen extends Component {
           <Image
             style={styles.image}
             source={{ uri: poster }}
-            resizeMode="cover"
+            // resizeMode="contain"
           />
         </View>
         <ScrollView style={styles.scrollView}>
