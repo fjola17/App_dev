@@ -8,9 +8,6 @@ export default StyleSheet.create({
     flex: 1,
     width: winWidth,
     backgroundColor: color.cinDark,
-    // paddingRight: 10,
-    // paddingLeft: 10,
-    // paddingTop: 10,
   },
   scrollView: {
     backgroundColor: color.cinDark,
@@ -86,7 +83,6 @@ export default StyleSheet.create({
     backgroundColor: color.cinBlack,
   },
   genreText: {
-    // flex: 0.5,
     width: winWidth * 0.28,
     fontSize: 10,
     fontWeight: 'bold',
@@ -102,27 +98,15 @@ export default StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
   },
-  // imageContainer: {
-  //   width: winWidth,
-  //   height: 400,
-  //   // position: 'absolute',
-  //   top: 0,
-  // },
-  // image: {
-  //   width: winWidth,
-  //   height: 400,
-  // },
   imageContainer: {
     width: winWidth,
     paddingTop: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: color.cinRed,
   },
   image: {
     width: winWidth * 0.6,
     height: winWidth,
-    // height: 350,
     borderRadius: 15,
     overflow: 'hidden',
   },

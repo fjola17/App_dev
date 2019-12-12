@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Text, View, Image, FlatList, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-// import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
 import Showtimes from '../../components/Showtimes';
 import Trailers from '../../components/Trailers';

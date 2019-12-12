@@ -9,14 +9,11 @@ export default StyleSheet.create({
     width: winWidth,
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: cinDark,
     backgroundColor: color.cinDark,
   },
   innerContainer: {
     flex: 1,
     flexDirection: 'row',
-    // width: winWidth * 0.95,
-    // marginHorizontal: 20,
     paddingTop: 8,
     paddingBottom: 8,
     borderBottomWidth: 1,
@@ -45,7 +42,6 @@ export default StyleSheet.create({
     textAlign: 'left',
   },
   genreText: {
-    // flex: 0.5,
     width: winWidth * 0.28,
     fontSize: 10,
     fontWeight: 'bold',
@@ -64,8 +60,6 @@ export default StyleSheet.create({
   image: {
     width: 100,
     height: 140,
-    // borderWidth: 1,
-    // borderColor: color.cinBlack,
     borderRadius: 10,
     overflow: 'hidden',
   },

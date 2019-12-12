@@ -4,7 +4,6 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-// import Icon from 'react-native-vector-icons/Ionicons';
 import * as color from '../styles/colors';
 import styles from './styles';
 

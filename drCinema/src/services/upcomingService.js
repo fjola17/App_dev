@@ -1,13 +1,12 @@
-import * as constant from "../constants";
+import * as constant from '../constants';
 
-const API_TOKEN = constant.API_TOKEN;
-const ENDPOINT = constant.ENDPOINT_UPCOMING;
+const { API_TOKEN, ENDPOINT } = constant;
 
 const requestHeader = {
-  method: "get",
+  method: 'get',
   headers: {
-    "x-access-token": API_TOKEN
-  }
+    'x-access-token': API_TOKEN,
+  },
 };
 
 const upcomingService = () => {

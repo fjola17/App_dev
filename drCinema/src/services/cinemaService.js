@@ -1,7 +1,6 @@
 import * as constant from '../constants';
 
-const API_TOKEN = constant.API_TOKEN;
-const ENDPOINT = constant.ENDPOINT_THEATERS;
+const { API_TOKEN, ENDPOINT } = constant;
 
 const requestHeader = {
   method: 'get',
