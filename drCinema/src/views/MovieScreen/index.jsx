@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
 import { cinBlack, cinWhite } from '../../styles/colors';
+import Showtimes from '../../components/Showtimes';
+import Trailers from '../../components/Trailers';
 
 
 class MovieScreen extends Component {
@@ -51,13 +53,10 @@ class MovieScreen extends Component {
           <FlatList
             data={schedule}
             renderItem={(ite) => (
-              <Text style={styles.ticketText}>
-                Kl.
-                {' '}
-                {ite.item.time}
-                {' '}
-                buy tickets now!
-              </Text>
+              <Showtimes
+                time={ite.item.time}
+                tickets={ite.item.purchase_url}
+              />
             )}
             keyExtractor={(itm) => itm.time}
           />
@@ -69,17 +68,7 @@ class MovieScreen extends Component {
     let renderTrailers = null;
     if (results.length > 0) {
       renderTrailers = (
-        <FlatList
-          data={results}
-          renderItem={(itm) => (
-            <WebView
-              style={{width: 300, height: 300}}
-              javaScriptEnabled
-              source={{uri: itm.item.url}}
-            />
-          )}
-          keyExtractor={(itm) => itm.id.toString()}
-        />
+        <Trailers results={results} />
       );
     }
     return (

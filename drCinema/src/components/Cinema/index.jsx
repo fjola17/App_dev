@@ -16,9 +16,10 @@ class Cinema extends React.Component {
   render() {
     const { theaters, navigation, theater } = this.props;
     const { name, website } = theaters[0];
+    const { navigate } = navigation;
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.navigate('CinemaDetails', { theater })}>
+        <TouchableOpacity onPress={() => navigate('CinemaDetails', { theater })}>
           <Text style={styles.titleText}>{name}</Text>
           <Text style={styles.webAddress}>{website}</Text>
         </TouchableOpacity>

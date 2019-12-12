@@ -96,24 +96,6 @@ const StackNavigatior = createStackNavigator({
       ),
     };
   },
-
-  // defaultNavigationOptions: {
-  //   headerStyle: {
-  //     backgroundColor: color.cinRed,
-  //   },
-  //   headerTintColor: color.cinSaberBlue,
-  //   headerTitleStyle: {
-  //     fontWeight: 'bold',
-  //     fontSize: 20,
-  //   },
-  //   headerRight: () => (
-  //     <MaterialCommunityIcons
-  //       style={styles.iconHeader}
-  //       name="movie-roll"
-  //       // onPress={() => ('Cinema')}
-  //     />
-  //   ),
-  // },
 });
 
 export default createAppContainer(StackNavigatior);

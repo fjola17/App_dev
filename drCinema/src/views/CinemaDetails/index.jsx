@@ -22,7 +22,6 @@ class CinemaDetails extends Component {
     const item = theaters[0];
     const { id, city, description, name, phone, website } = item;
     const address = item["address\t"];
-    console.log(description)
     // const regexTags = /(<([^>]+)>)/ig;
     // const regexStrip = /[\r\n]+/gm;
     // const infoStrip = description.replace(regexTags, '').replace(regexStrip, '');
@@ -33,7 +32,7 @@ class CinemaDetails extends Component {
       const regexStrip = /[\r\n]+/gm;
       infoStrip = (
           <Text style={styles.description}>
-            {description.replace(regexTags, '').replace(regexStrip, '')}
+            {description.replace(regexTags, ' ').replace(regexStrip, '')}
           </Text>
       );
     }
@@ -86,9 +85,9 @@ const mapStateToProps = ({ theaters, movies }, { navigation }) => {
     }
     return '';
   });
-  theaters = [theater.item];
-  console.log(theaters);
-  return { theaters, movies: moviefilter };
+  let th = theaters;
+  th = [theater.item];
+  return { theaters: th, movies: moviefilter };
 };
 
 export default connect(mapStateToProps)(CinemaDetails);

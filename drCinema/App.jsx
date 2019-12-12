@@ -10,12 +10,10 @@ import { getAllUpcoming } from './src/actions/upcomingActions';
 
 class SubApp extends React.Component {
   componentDidMount() {
-    console.log('SubApp: componentDidMount(): start');
-    this.props.getAllCinemas();
-    this.props.getAllMovies();
-    this.props.getAllUpcoming();
-    console.log('SubApp: componentDidMount(): end');
-    console.log('SubApp: this.props: ', this.props);
+    const { getAllCinemas, getAllMovies, getAllUpcoming } = this.props;
+    getAllCinemas();
+    getAllMovies();
+    getAllUpcoming();
   }
 
   render() {
