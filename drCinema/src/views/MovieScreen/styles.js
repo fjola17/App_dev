@@ -117,12 +117,10 @@ export default StyleSheet.create({
     paddingTop: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: color.cinRed,
   },
   image: {
     width: winWidth * 0.6,
     height: winWidth,
-    // height: 350,
     borderRadius: 15,
     overflow: 'hidden',
   },

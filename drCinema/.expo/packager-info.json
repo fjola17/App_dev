@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://qt-6dn.anonymous.drcinema.exp.direct",
-  "packagerNgrokUrl": "https://packager.qt-6dn.anonymous.drcinema.exp.direct",
-  "ngrokPid": 36449,
+  "expoServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "devToolsPort": 19002,
-  "packagerPort": 19007,
-  "packagerPid": 36424
+  "packagerPort": null,
+  "packagerPid": null
 }
