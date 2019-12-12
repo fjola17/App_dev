@@ -1,17 +1,20 @@
 import React from 'react';
 import { View, WebView, FlatList } from 'react-native';
 import { connect } from 'react-redux';
+import styles from './styles';
 
 const Trailers = ({ results }) => (
-  <View>
+  <View style={styles.container}>
     <FlatList
       data={results}
       renderItem={(itm) => (
-        <WebView
-          style={{ width: 350, height: 250 }}
-          javaScriptEnabled
-          source={{ uri: itm.item.url }}
-        />
+        <View style={styles.padBox}>
+          <WebView
+            style={styles.video}
+            javaScriptEnabled
+            source={{ uri: itm.item.url }}
+          />
+        </View>
       )}
       keyExtractor={(itm) => itm.id.toString()}
     />

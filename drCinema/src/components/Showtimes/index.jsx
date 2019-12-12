@@ -7,8 +7,12 @@ import styles from './styles';
 const openUrl = (url) => Linking.openURL(url).catch((err) => console.log('An error occurred', err));
 
 const Showtimes = ({ time, tickets }) => (
-  <View>
-    <Text>{time}</Text>
+  <View style={styles.container}>
+    <Text style={styles.infoText}>
+      Sýning kl. 
+      {' '}
+      {time}
+    </Text>
     <TouchableOpacity onPress={() => openUrl(tickets)}>
       <Text style={styles.ticketText}>Buy tickets!</Text>
     </TouchableOpacity>

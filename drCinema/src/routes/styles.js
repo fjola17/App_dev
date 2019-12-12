@@ -8,9 +8,10 @@ export default StyleSheet.create({
   },
   iconHeader: {
     fontSize: 40,
-    fontWeight: 'bold',
-    paddingRight: 10,
-    paddingBottom: 3,
-    color: color.cinDark,
+    fontWeight: 'normal',
+    paddingRight: 15,
+    // paddingBottom: 3,
+    alignItems: 'center',
+    color: color.salmonRed,
   },
 });

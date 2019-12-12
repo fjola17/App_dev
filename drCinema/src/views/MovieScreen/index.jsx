@@ -79,16 +79,16 @@ class MovieScreen extends Component {
       );
     }
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.imageContainer}>
-            <Image
-              style={styles.image}
-              source={{ uri: poster }}
-              resizeMode="cover"
-            />
-          </View>
-          <View style={styles.scrollView}>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={{ uri: poster }}
+            resizeMode="cover"
+          />
+        </View>
+        <ScrollView style={styles.scrollView}>
+          <View style={styles.infoContainer}>
             <View style={styles.padBox}>
               <Text style={styles.titleText}>
                 {title}
@@ -101,10 +101,6 @@ class MovieScreen extends Component {
                 </Text>
                 {renderDuration}
               </View>
-              <Text style={styles.description}>
-                {plotStrip}
-              </Text>
-              {renderSchedule}
               <View style={styles.listBox}>
                 <FlatList
                   numColumns={3}
@@ -115,11 +111,15 @@ class MovieScreen extends Component {
                   keyExtractor={(itm) => itm.ID.toString()}
                 />
               </View>
+              <Text style={styles.description}>
+                {plotStrip}
+              </Text>
+              {renderSchedule}
               {renderTrailers}
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }

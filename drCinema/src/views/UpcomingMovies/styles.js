@@ -7,7 +7,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     width: winWidth,
-    backgroundColor: color.cinDark,
+    backgroundColor: color.darkBlue,
     paddingRight: 10,
     paddingLeft: 10,
     paddingTop: 10,
@@ -15,7 +15,7 @@ export default StyleSheet.create({
   toolBarText: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: color.cinWhite,
+    color: color.fadeWhite,
     alignItems: 'center',
   },
   iconHeader: {
@@ -23,6 +23,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     paddingRight: 20,
     paddingBottom: 3,
-    color: color.cinDark,
+    color: color.darkBlue,
   },
 });

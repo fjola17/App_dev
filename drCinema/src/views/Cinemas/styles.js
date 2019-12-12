@@ -8,12 +8,12 @@ export default StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     // backgroundColor: cinDark,
-    backgroundColor: color.cinDark,
+    backgroundColor: color.dimBlue,
   },
   toolBarText: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: color.cinWhite,
+    color: color.fadeWhite,
     alignItems: 'center',
   },
   iconHeader: {
@@ -21,6 +21,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     paddingRight: 20,
     paddingBottom: 3,
-    color: color.cinDark,
+    color: color.fadeYellow,
   },
 });
