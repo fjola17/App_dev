@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import * as constants from '../constants';
 import MovieService from '../services/movieService';
 
@@ -11,16 +12,14 @@ const getCurrentMoviesFail = (error) => ({
   error,
 });
 
+// get all the movies from movie service and dispatch actions if sucessful
 // eslint-disable-next-line import/prefer-default-export
 export const getAllMovies = () => {
   return async (dispatch) => {
     try {
-      console.log("ENtered movies")
       const movies = await MovieService.getMovies();
-      console.log("SUCESS movies: ");
       dispatch(getCurrentMoviesSucess(movies));
     } catch (err) {
-      // console.log("I got an error ", err);
       dispatch(getCurrentMoviesFail(err));
     }
   };

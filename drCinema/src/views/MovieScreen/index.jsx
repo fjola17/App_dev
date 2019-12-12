@@ -1,31 +1,45 @@
+/* eslint-disable object-curly-newline */
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Text, View, Image, FlatList, ScrollView, WebView } from 'react-native';
+import { Text, View, Image, FlatList, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
-import { cinBlack, cinWhite } from '../../styles/colors';
+import Showtimes from '../../components/Showtimes';
+import Trailers from '../../components/Trailers';
 
 
 class MovieScreen extends Component {
   // Set Top navigation header/menu options
-  static navigationOptions() {
+  static navigationOptions({ navigation }) {
     return {
-      title: 'Movie',
+      title: navigation.getParam('title'),
     };
   }
 
   render() {
     const { movies } = this.props;
     const movie = movies[0];
-    const { title, poster, year, plot, genres, durationMinutes, showtimes, trailers } = movie;
+    const { title, poster, year, plot, durationMinutes, showtimes, trailers } = movie;
     const sk = showtimes[0];
+    let { genres } = movie;
     const { schedule } = sk;
+    if (typeof genres[0] !== 'object') {
+      const val = [{ ID: '', Name: '' }];
+      genres = val;
+    }
     // Setja conditionals a replace
+    let plotStrip = '';
     const regexTags = /(<([^>]+)>)/ig;
-    const regexStrip = /[\r\n]+/gm;
-    const plot_strip = plot.replace(regexTags, '').replace(regexStrip, '');
-    const { results } = trailers[0];
+    if (plot) {
+      const regexStrip = /[\r\n]+/gm;
+      plotStrip = plot.replace(regexTags, '').replace(regexStrip, '');
+    }
+    // BugFix: Case trailers is empty
+    let results = [];
+    if (trailers.length > 0) {
+      results = trailers[0].results;
+    }
 
     // Conditional rednering of Movie Dureation
     let renderDuration = null;
@@ -46,13 +60,10 @@ class MovieScreen extends Component {
           <FlatList
             data={schedule}
             renderItem={(ite) => (
-              <Text style={styles.ticketText}>
-                Kl.
-                {' '}
-                {ite.item.time}
-                {' '}
-                buy tickets now!
-              </Text>
+              <Showtimes
+                time={ite.item.time}
+                tickets={ite.item.purchase_url}
+              />
             )}
             keyExtractor={(itm) => itm.time}
           />
@@ -64,17 +75,7 @@ class MovieScreen extends Component {
     let renderTrailers = null;
     if (results.length > 0) {
       renderTrailers = (
-        <FlatList
-          data={results}
-          renderItem={(itm) => (
-            <WebView
-              style={{width: 300, height: 300}}
-              javaScriptEnabled
-              source={{uri: itm.item.url}}
-            />
-          )}
-          keyExtractor={(itm) => itm.id.toString()}
-        />
+        <Trailers results={results} />
       );
     }
     return (
@@ -101,7 +102,7 @@ class MovieScreen extends Component {
                 {renderDuration}
               </View>
               <Text style={styles.description}>
-                {plot_strip}
+                {plotStrip}
               </Text>
               {renderSchedule}
               <View style={styles.listBox}>
@@ -127,15 +128,15 @@ const mapStateToProps = ({ movies }, { navigation }) => {
   const mov = navigation.getParam('movie');
   const th = navigation.getParam('theaterId');
   const { item } = mov;
-  if (item.showtimes) {
-    const showtime = item.showtimes.filter(sh => sh.cinema.id === th);
+  if ((typeof th !== 'undefined') && (typeof item.showtimes !== 'undefined')) {
+    const showtime = item.showtimes.filter((sh) => sh.cinema.id === th);
     item.showtimes = showtime;
-  }
-  else {
+  } else {
     item.showtimes = [{ schedule: [] }];
   }
-  movies = [item];
-  return { movies };
-}
+  let move = movies;
+  move = [item];
+  return { movies: move };
+};
 
 export default connect(mapStateToProps)(MovieScreen);

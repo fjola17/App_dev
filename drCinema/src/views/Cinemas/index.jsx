@@ -33,10 +33,6 @@ class Cinemas extends Component {
   }
 }
 
-// Cinemas.propTypes = {
-
-// };
-
 const mapStateToProps = ({ theaters }) => {
   // eslint-disable-next-line no-nested-ternary
   const sorted = theaters.sort((a, b) => (a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0));
