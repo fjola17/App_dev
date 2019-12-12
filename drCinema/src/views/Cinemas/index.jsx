@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import styles from './styles';
 // import { cinBlack, cinWhite } from '../../styles/colors';
 import Cinema from '../../components/Cinema';
+import sortIcelandicAlphabeticOrder from '../../services/sortIcelandicAlphabetService';
 
 class Cinemas extends Component {
   // Set Top navigation header/menu options
@@ -15,6 +16,8 @@ class Cinemas extends Component {
       headerTitle: 'Home',
     };
   }
+
+
 
   render() {
     // alert(this.props.theaters.length);
@@ -35,7 +38,7 @@ class Cinemas extends Component {
 
 const mapStateToProps = ({ theaters }) => {
   // eslint-disable-next-line no-nested-ternary
-  const sorted = theaters.sort((a, b) => (a.name !== b.name ? (a.name < b.name ? -1 : 1) : 0));
+  const sorted = theaters.sort((a, b) => sortIcelandicAlphabeticOrder(a.name, b.name));
   return { theaters: sorted };
 };
 
