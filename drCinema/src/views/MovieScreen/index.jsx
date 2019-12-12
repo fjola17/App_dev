@@ -25,7 +25,12 @@ class MovieScreen extends Component {
     const regexTags = /(<([^>]+)>)/ig;
     const regexStrip = /[\r\n]+/gm;
     const plot_strip = plot.replace(regexTags, '').replace(regexStrip, '');
-    const { results } = trailers[0];
+
+    // BugFix: Case trailers is empty
+    let results = [];
+    if (trailers.length > 0) {
+      results = trailers[0].results;
+    }
 
     // Conditional rednering of Movie Dureation
     let renderDuration = null;
