@@ -10,7 +10,6 @@ export default StyleSheet.create({
     backgroundColor: color.darkBlue,
   },
   scrollView: {
-    // backgroundColor: color.cinDark,
   },
   infoContainer: {
     paddingTop: 25,
@@ -53,7 +52,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     lineHeight: 24,
     color: color.fadeWhite,
-    // textAlign: 'left',
   },
   boxRight: {
     flexDirection: 'row',

@@ -10,7 +10,6 @@ export default StyleSheet.create({
     fontSize: 30,
     fontWeight: 'normal',
     paddingRight: 15,
-    // paddingBottom: 3,
     alignItems: 'center',
     color: color.salmonRed,
   },
