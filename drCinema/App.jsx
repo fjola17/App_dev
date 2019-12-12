@@ -10,6 +10,7 @@ import { getAllUpcoming } from './src/actions/upcomingActions';
 
 class SubApp extends React.Component {
   componentDidMount() {
+    // eslint-disable-next-line no-shadow
     const { getAllCinemas, getAllMovies, getAllUpcoming } = this.props;
     getAllCinemas();
     getAllMovies();

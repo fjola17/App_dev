@@ -7,6 +7,7 @@ import styles from './styles';
 
 const MovieForUpcoming = (props) => {
   const { movie, navigation } = props;
+  const { navigate } = navigation;
   const { item } = movie;
   const { poster, title } = item;
   const releaseDate = item['release-dateIS'];
@@ -15,7 +16,7 @@ const MovieForUpcoming = (props) => {
     <View>
       <TouchableOpacity
         style={styles.container}
-        onPress={() => navigation.navigate('MovieScreen', { movie, title })}
+        onPress={() => navigate('MovieScreen', { movie, title })}
       >
         <View style={styles.innerContainer}>
           <Image
@@ -33,4 +34,6 @@ const MovieForUpcoming = (props) => {
   );
 };
 
-export default MovieForUpcoming;
+const mapStateToProps = ({ upcoming }) => ({ upcoming });
+
+export default connect(mapStateToProps)(MovieForUpcoming);

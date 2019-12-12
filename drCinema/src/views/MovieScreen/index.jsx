@@ -1,11 +1,10 @@
 /* eslint-disable object-curly-newline */
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Text, View, Image, FlatList, ScrollView, WebView } from 'react-native';
+import { Text, View, Image, FlatList, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
-import { cinBlack, cinWhite } from '../../styles/colors';
 import Showtimes from '../../components/Showtimes';
 import Trailers from '../../components/Trailers';
 
@@ -25,10 +24,12 @@ class MovieScreen extends Component {
     const sk = showtimes[0];
     const { schedule } = sk;
     // Setja conditionals a replace
+    let plotStrip = '';
     const regexTags = /(<([^>]+)>)/ig;
-    const regexStrip = /[\r\n]+/gm;
-    const plotStrip = plot.replace(regexTags, '').replace(regexStrip, '');
-
+    if (plot) {
+      const regexStrip = /[\r\n]+/gm;
+      plotStrip = plot.replace(regexTags, '').replace(regexStrip, '');
+    }
     // BugFix: Case trailers is empty
     let results = [];
     if (trailers.length > 0) {
