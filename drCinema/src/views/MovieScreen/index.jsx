@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Text, View, Image, FlatList, ScrollView } from 'react-native';
+import { Text, View, Image, FlatList, ScrollView, WebView } from 'react-native';
 import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
@@ -18,15 +18,16 @@ class MovieScreen extends Component {
   render() {
     const { movies } = this.props;
     const movie = movies[0];
-    // console.log(movie);
-    const { title, poster, year, plot, genres, durationMinutes, showtimes } = movie;
+    const { title, poster, year, plot, genres, durationMinutes, showtimes, trailers } = movie;
     const sk = showtimes[0];
     const { schedule } = sk;
     // Setja conditionals a replace
     const regexTags = /(<([^>]+)>)/ig;
     const regexStrip = /[\r\n]+/gm;
-    const plotStrip = plot.replace(regexTags, '').replace(regexStrip, '');
+    const plot_strip = plot.replace(regexTags, '').replace(regexStrip, '');
+    const { results } = trailers[0];
 
+    // Conditional rednering of Movie Dureation
     let renderDuration = null;
     if (typeof durationMinutes !== 'undefined') {
       renderDuration = (
@@ -37,59 +38,87 @@ class MovieScreen extends Component {
       );
     }
 
-    return (
-      <View style={styles.container}>
-        <View style={styles.imageContainer}>
-          <Image
-            style={styles.image}
-            source={{ uri: poster }}
-            // resizeMode="contain"
+    // Conditional rendering of schedule
+    let renderSchedule = null;
+    if (schedule.length > 0) {
+      renderSchedule = (
+        <View style={styles.listBox}>
+          <FlatList
+            data={schedule}
+            renderItem={(ite) => (
+              <Text style={styles.ticketText}>
+                Kl.
+                {' '}
+                {ite.item.time}
+                {' '}
+                buy tickets now!
+              </Text>
+            )}
+            keyExtractor={(itm) => itm.time}
           />
         </View>
-        <ScrollView style={styles.scrollView}>
-          <View style={styles.padBox}>
-            <Text style={styles.titleText}>
-              {title}
-            </Text>
-            <View style={styles.boxRight}>
-              <Text style={styles.infoText}>
-                Release year
-                {' '}
-                {year}
+      );
+    }
+
+    // Conditional rendering of Trailers
+    let renderTrailers = null;
+    if (results.length > 0) {
+      renderTrailers = (
+        <FlatList
+          data={results}
+          renderItem={(itm) => (
+            <WebView
+              style={{width: 300, height: 300}}
+              javaScriptEnabled
+              source={{uri: itm.item.url}}
+            />
+          )}
+          keyExtractor={(itm) => itm.id.toString()}
+        />
+      );
+    }
+    return (
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.imageContainer}>
+            <Image
+              style={styles.image}
+              source={{ uri: poster }}
+              resizeMode="cover"
+            />
+          </View>
+          <View style={styles.scrollView}>
+            <View style={styles.padBox}>
+              <Text style={styles.titleText}>
+                {title}
               </Text>
-              {renderDuration}
-            </View>
-            <Text style={styles.description}>
-              {plotStrip}
-            </Text>
-            <View style={styles.listBox}>
-              <FlatList
-                data={schedule}
-                renderItem={(ite) => (
-                  <Text style={styles.ticketText}>
-                    Kl.
-                    {' '}
-                    {ite.item.time}
-                    {' '}
-                    buy tickets now!
-                  </Text>
-                )}
-                keyExtractor={(itm) => itm.time}
-              />
-            </View>
-            <View style={styles.listBox}>
-              <FlatList
-                numColumns={3}
-                data={genres}
-                renderItem={(itm) => (
-                  <Text style={styles.genreText}>{itm.item.Name}</Text>
-                )}
-                keyExtractor={(itm) => itm.ID.toString()}
-              />
+              <View style={styles.boxRight}>
+                <Text style={styles.infoText}>
+                  Release year
+                  {' '}
+                  {year}
+                </Text>
+                {renderDuration}
+              </View>
+              <Text style={styles.description}>
+                {plot_strip}
+              </Text>
+              {renderSchedule}
+              <View style={styles.listBox}>
+                <FlatList
+                  numColumns={3}
+                  data={genres}
+                  renderItem={(itm) => (
+                    <Text style={styles.genreText}>{itm.item.Name}</Text>
+                  )}
+                  keyExtractor={(itm) => itm.ID.toString()}
+                />
+              </View>
+              {renderTrailers}
             </View>
           </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
