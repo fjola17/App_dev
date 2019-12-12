@@ -10,9 +10,10 @@ const requestHeader = {
   },
 };
 
+// eslint-disable-next-line arrow-body-style
 const upcomingService = () => {
   return {
-    getUpcoming: () => fetch(ENDPOINT, requestHeader).then((d) => (d).json()),
+    getUpcoming: () => this.fetch(ENDPOINT, requestHeader).then((d) => (d).json()),
   };
 };
 

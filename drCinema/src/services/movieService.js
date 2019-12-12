@@ -10,9 +10,10 @@ const requestHeader = {
   },
 };
 
+// eslint-disable-next-line arrow-body-style
 const movieService = () => {
   return {
-    getMovies: () => fetch(ENDPOINT, requestHeader).then((movie) => movie.json()),
+    getMovies: () => this.fetch(ENDPOINT, requestHeader).then((movie) => movie.json()),
   };
 };
 

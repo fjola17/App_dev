@@ -11,9 +11,10 @@ const requestHeader = {
   },
 };
 
+// eslint-disable-next-line arrow-body-style
 const cinemaService = () => {
   return {
-    getAllCinemas: () => fetch(ENDPOINT, requestHeader).then((d) => d.json()),
+    getAllCinemas: () => this.fetch(ENDPOINT, requestHeader).then((d) => d.json()),
   };
 };
 
