@@ -22,9 +22,21 @@ class CinemaDetails extends Component {
     const item = theaters[0];
     const { id, city, description, name, phone, website } = item;
     const address = item["address\t"];
-    const regexTags = /(<([^>]+)>)/ig;
-    const regexStrip = /[\r\n]+/gm;
-    const info_stp = description.replace(regexTags, '').replace(regexStrip, '');
+    console.log(description)
+    // const regexTags = /(<([^>]+)>)/ig;
+    // const regexStrip = /[\r\n]+/gm;
+    // const infoStrip = description.replace(regexTags, '').replace(regexStrip, '');
+
+    let infoStrip = 'Engar upplýsingar til staðar...';
+    if (description !== null) {
+      const regexTags = /(<([^>]+)>)/ig;
+      const regexStrip = /[\r\n]+/gm;
+      infoStrip = (
+          <Text style={styles.description}>
+            {description.replace(regexTags, '').replace(regexStrip, '')}
+          </Text>
+      );
+    }
 
     return (
       <ScrollView style={styles.scrollView}>
@@ -38,7 +50,12 @@ class CinemaDetails extends Component {
             <Text style={styles.webAddress}>{website}</Text>
           </View>
           <View style={styles.border}>
-            <Text style={styles.description}>{info_stp}</Text>
+            <Text
+              style={styles.description}
+              // numberOfLines={5}
+            >
+              {infoStrip}
+            </Text>
           </View>
 
           <FlatList
