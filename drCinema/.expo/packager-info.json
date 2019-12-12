@@ -1,20 +1,9 @@
 {
-<<<<<<< HEAD
-  "expoServerPort": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
   "devToolsPort": 19002,
+  "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "webpackServerPort": null
-=======
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://3n-tyx.anonymous.drcinema.exp.direct",
-  "packagerNgrokUrl": "https://packager.3n-tyx.anonymous.drcinema.exp.direct",
-  "ngrokPid": 14036,
-  "devToolsPort": 19002,
-  "packagerPort": 19001,
-  "packagerPid": 16972
->>>>>>> 6f812b77820e9ea1d1a7c948f77eb5330f7ff777
+  "expoServerNgrokUrl": "https://fs-dfg.anonymous.drcinema.exp.direct",
+  "packagerNgrokUrl": "https://packager.fs-dfg.anonymous.drcinema.exp.direct",
+  "ngrokPid": 21245
 }

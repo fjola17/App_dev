@@ -7,7 +7,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     width: winWidth,
-    backgroundColor: color.darkBlue,
+    backgroundColor: color.dimBlue,
     paddingRight: 10,
     paddingLeft: 10,
     paddingTop: 10,

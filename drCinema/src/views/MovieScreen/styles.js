@@ -113,6 +113,6 @@ export default StyleSheet.create({
   image: {
     width: winWidth,
     height: winHeight,
-    opacity: 0.2,
+    opacity: 0.3,
   },
 });

@@ -9,7 +9,6 @@ export default StyleSheet.create({
     width: winWidth,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: color.darkBlue,
   },
   innerContainer: {
     flex: 1,

@@ -7,7 +7,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   iconHeader: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'normal',
     paddingRight: 15,
     // paddingBottom: 3,
