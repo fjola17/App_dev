@@ -21,6 +21,7 @@ class MovieScreen extends Component {
     const { title, poster, year, plot, genres, durationMinutes, showtimes, trailers } = movie;
     const sk = showtimes[0];
     const { schedule } = sk;
+    // Setja conditionals a replace
     const regexTags = /(<([^>]+)>)/ig;
     const regexStrip = /[\r\n]+/gm;
     const plot_strip = plot.replace(regexTags, '').replace(regexStrip, '');

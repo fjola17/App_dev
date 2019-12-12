@@ -11,6 +11,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     paddingRight: 10,
     paddingBottom: 3,
-    color: color.cinSaberBlue,
+    color: color.cinDark,
   },
 });
