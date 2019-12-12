@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Text, View, FlatList, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-// import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
-// import { cinBlack, cinWhite } from '../../styles/colors';
 import MoviesForCinema from '../../components/MoviesForCinema';
 
 

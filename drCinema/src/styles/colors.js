@@ -10,17 +10,6 @@ export const cinSaberBlue = '#50b2c0';
 export const cinBlasterGreen = '#50bf78';
 
 // Ramen Bowl
-// export const darkBlue = '#17233a';
-// export const dimBlue = '#17233a';
-// export const deepBlue = '#0b1830';
-// export const greyBlue = '#60879b';
-// export const lightBlue = '#58a3c4';
-// export const deepRed = '#d13c4b';
-// export const salmonRed = '#ed616f';
-// export const fadeYellow = '#ffe899';
-// export const fadeWhite = '#fffcf4';
-
-// Ramen Bowl
 export const darkBlue = '#0F2535';
 export const dimBlue = '#112B3D';
 export const deepBlue = '#0b1830';

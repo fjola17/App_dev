@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Text, View, FlatList } from 'react-native';
-// import baseStyles from '../../styles/baseStyles';
+import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './styles';
 import MovieForUpcoming from '../../components/MovieForUpcoming';
-import { cinBlack, cinWhite } from '../../styles/colors';
-
 
 class UpcomingMovies extends Component {
   // eslint-disable-next-line class-methods-use-this
@@ -33,9 +30,6 @@ class UpcomingMovies extends Component {
   }
 }
 
-// UpcomingMovies.propTypes = {
-
-// };
 const mapStateToProps = ({ upcoming }) => ({ upcoming });
 
 export default connect(mapStateToProps)(UpcomingMovies);

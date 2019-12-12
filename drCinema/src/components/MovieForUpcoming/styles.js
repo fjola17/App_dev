@@ -42,7 +42,6 @@ export default StyleSheet.create({
     textAlign: 'left',
   },
   genreText: {
-    // flex: 0.5,
     width: winWidth * 0.28,
     fontSize: 10,
     fontWeight: 'bold',

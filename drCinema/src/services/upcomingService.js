@@ -1,18 +1,19 @@
-import * as constant from "../constants";
+import * as constant from '../constants';
 
-const API_TOKEN = constant.API_TOKEN;
-const ENDPOINT = constant.ENDPOINT_UPCOMING;
+const { API_TOKEN, ENDPOINT_UPCOMING } = constant;
+const ENDPOINT = ENDPOINT_UPCOMING;
 
 const requestHeader = {
-  method: "get",
+  method: 'get',
   headers: {
-    "x-access-token": API_TOKEN
-  }
+    'x-access-token': API_TOKEN,
+  },
 };
 
+// eslint-disable-next-line arrow-body-style
 const upcomingService = () => {
   return {
-    getUpcoming: () => fetch(ENDPOINT, requestHeader).then((d) => (d).json()),
+    getUpcoming: () => this.fetch(ENDPOINT, requestHeader).then((d) => (d).json()),
   };
 };
 

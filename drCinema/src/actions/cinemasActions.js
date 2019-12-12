@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-// TODO: put something here
 import cinemaService from '../services/cinemaService';
 import * as constants from '../constants';
 

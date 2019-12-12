@@ -56,10 +56,10 @@ const TabNavigator = createMaterialBottomTabNavigator(
     initialRouteName: 'Cinemas',
     order: ['Cinemas', 'UpcomingMovies'],
     sceneAnimationEnabled: true,
-    activeColor: color.salmonRed,
-    inactiveColor: color.greyBlue,
+    activeColor: color.cinSaberBlue,
+    inactiveColor: color.cinLighterDark,
     barStyle: {
-      backgroundColor: color.darkBlue,
+      backgroundColor: color.cinBlack,
     },
   },
 );
@@ -72,23 +72,20 @@ const StackNavigatior = createStackNavigator({
   UpcomingMovies,
 }, {
   headerLayoutPreset: 'center',
-
-  // eslint-disable-next-line arrow-body-style
   defaultNavigationOptions: ({ navigation }) => {
     return {
       headerStyle: {
-        backgroundColor: color.darkBlue,
+        backgroundColor: color.cinSaberBlue,
       },
-      headerTintColor: color.salmonRed,
+      headerTintColor: color.cinDark,
       headerTitleStyle: {
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         fontSize: 20,
       },
       headerRight: () => (
         <MaterialCommunityIcons
           style={styles.iconHeader}
-          name="space-invaders"
-          // name="lighthouse-on"
+          name="home"
           onPress={() => navigation.navigate('Cinemas')}
         />
       ),

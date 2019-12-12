@@ -1,7 +1,7 @@
 import * as constant from '../constants';
 
-const API_TOKEN = constant.API_TOKEN;
-const ENDPOINT = constant.ENDPOINT_MOVIES;
+const { API_TOKEN, ENDPOINT_MOVIES } = constant;
+const ENDPOINT = ENDPOINT_MOVIES;
 
 const requestHeader = {
   method: 'get',
@@ -10,9 +10,10 @@ const requestHeader = {
   },
 };
 
+// eslint-disable-next-line arrow-body-style
 const movieService = () => {
   return {
-    getMovies: () => fetch(ENDPOINT, requestHeader).then((movie) => movie.json()),
+    getMovies: () => this.fetch(ENDPOINT, requestHeader).then((movie) => movie.json()),
   };
 };
 

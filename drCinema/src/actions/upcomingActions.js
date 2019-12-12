@@ -17,7 +17,6 @@ export const getAllUpcoming = () => {
   return async (dispatch) => {
     try {
       const upcoming = await upcomingService.getUpcoming();
-      // console.log("Success: Upcoming: ", upcoming);
       dispatch(getUpcomingSuccess(upcoming));
     } catch (err) {
       dispatch(getUpcomingFail(err));
