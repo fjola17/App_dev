@@ -126,7 +126,7 @@ const mapStateToProps = ({ movies }, { navigation }) => {
   const mov = navigation.getParam('movie');
   const th = navigation.getParam('theaterId');
   const { item } = mov;
-  if (item.showtimes) {
+  if ((typeof th !== 'undefined') && (typeof item.showtimes !== 'undefined')) {
     const showtime = item.showtimes.filter(sh => sh.cinema.id === th);
     item.showtimes = showtime;
   }
