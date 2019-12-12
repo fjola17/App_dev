@@ -16,7 +16,7 @@ const MoviesForCinema = (props) => {
     <View>
       <TouchableOpacity
         style={styles.container}
-        onPress={() => navigate('MovieScreen', { movie, theaterId })}
+        onPress={() => navigate('MovieScreen', { movie, theaterId, title })}
       >
         <Image
           style={styles.image}

@@ -1,5 +1,7 @@
 import React from 'react';
+// eslint-disable-next-line object-curly-newline
 import { Text, View, TouchableOpacity, Linking } from 'react-native';
+import { connect } from 'react-redux';
 import styles from './styles';
 // eslint-disable-next-line no-console
 const openUrl = (url) => Linking.openURL(url).catch((err) => console.log('An error occurred', err));
@@ -13,4 +15,6 @@ const Showtimes = ({ time, tickets }) => (
   </View>
 );
 
-export default Showtimes;
+const mapStateToProps = ({ movies }) => ({ movies });
+
+export default connect(mapStateToProps)(Showtimes);

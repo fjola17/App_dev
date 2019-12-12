@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, WebView, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 
 const Trailers = ({ results }) => (
   <View>
@@ -17,4 +18,6 @@ const Trailers = ({ results }) => (
   </View>
 );
 
-export default Trailers;
+const mapStateToProps = ({ upcoming }) => ({ upcoming });
+
+export default connect(mapStateToProps)(Trailers);

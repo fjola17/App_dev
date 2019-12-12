@@ -73,10 +73,8 @@ const StackNavigatior = createStackNavigator({
   UpcomingMovies,
 }, {
   headerLayoutPreset: 'center',
-  // initialRouteName: 'Cinemas',
-  // defaultNavigationOptions: ({ navigation }) => {
 
-  // }
+  // eslint-disable-next-line arrow-body-style
   defaultNavigationOptions: ({ navigation }) => {
     return {
       headerStyle: {

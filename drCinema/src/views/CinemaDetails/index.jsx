@@ -5,15 +5,15 @@ import { Text, View, FlatList, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 // import baseStyles from '../../styles/baseStyles';
 import styles from './styles';
-import { cinBlack, cinWhite } from '../../styles/colors';
+// import { cinBlack, cinWhite } from '../../styles/colors';
 import MoviesForCinema from '../../components/MoviesForCinema';
 
 
 class CinemaDetails extends Component {
   // Set Top navigation header/menu options
-  static navigationOptions() {
+  static navigationOptions({ navigation }) {
     return {
-      title: 'Screening Now',
+      title: navigation.getParam('name'),
     };
   }
 
@@ -21,7 +21,7 @@ class CinemaDetails extends Component {
     const { movies, theaters } = this.props;
     const item = theaters[0];
     const { id, city, description, name, phone, website } = item;
-    const address = item["address\t"];
+    const address = item['address\t'];
     // const regexTags = /(<([^>]+)>)/ig;
     // const regexStrip = /[\r\n]+/gm;
     // const infoStrip = description.replace(regexTags, '').replace(regexStrip, '');
@@ -31,9 +31,9 @@ class CinemaDetails extends Component {
       const regexTags = /(<([^>]+)>)/ig;
       const regexStrip = /[\r\n]+/gm;
       infoStrip = (
-          <Text style={styles.description}>
-            {description.replace(regexTags, ' ').replace(regexStrip, '')}
-          </Text>
+        <Text style={styles.description}>
+          {description.replace(regexTags, ' ').replace(regexStrip, '')}
+        </Text>
       );
     }
 

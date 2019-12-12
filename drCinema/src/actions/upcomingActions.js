@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import * as constants from '../constants';
 import upcomingService from '../services/upcomingService';
 
@@ -11,6 +12,7 @@ const getUpcomingFail = (error) => ({
   error,
 });
 
+// eslint-disable-next-line arrow-body-style
 export const getAllUpcoming = () => {
   return async (dispatch) => {
     try {
@@ -18,8 +20,7 @@ export const getAllUpcoming = () => {
       // console.log("Success: Upcoming: ", upcoming);
       dispatch(getUpcomingSuccess(upcoming));
     } catch (err) {
-      console.log("Fail: Upcoming: ", err);
       dispatch(getUpcomingFail(err));
     }
-  }
+  };
 };
