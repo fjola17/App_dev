@@ -17,12 +17,16 @@ class MovieScreen extends Component {
   }
 
   render() {
-    const { movies } = this.props;
+    const { movies, navigation } = this.props;
     const movie = movies[0];
     const { title, poster, year, plot, durationMinutes, showtimes, trailers } = movie;
-    const sk = showtimes[0];
+    const th = navigation.getParam('theaterId');
+    let sk = [{ schedule: [] }];
+    if ((typeof sk !== 'undefined') && (typeof showtimes !== 'undefined')) {
+      sk = showtimes.filter((sh) => sh.cinema.id === th);
+    }
     let { genres } = movie;
-    const { schedule } = sk;
+    const { schedule } = sk[0];
     if (typeof genres[0] !== 'object') {
       const val = [{ ID: '', Name: '' }];
       genres = val;
@@ -125,14 +129,8 @@ class MovieScreen extends Component {
 
 const mapStateToProps = ({ movies }, { navigation }) => {
   const mov = navigation.getParam('movie');
-  const th = navigation.getParam('theaterId');
   const { item } = mov;
-  if ((typeof th !== 'undefined') && (typeof item.showtimes !== 'undefined')) {
-    const showtime = item.showtimes.filter((sh) => sh.cinema.id === th);
-    item.showtimes = showtime;
-  } else {
-    item.showtimes = [{ schedule: [] }];
-  }
+
   let move = movies;
   move = [item];
   return { movies: move };
