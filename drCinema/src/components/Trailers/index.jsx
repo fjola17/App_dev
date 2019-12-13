@@ -10,9 +10,11 @@ const Trailers = ({ results }) => (
       renderItem={(itm) => (
         <View style={styles.padBox}>
           <WebView
-            style={styles.video}
+            useWebKit
+            startInLoadingState
             javaScriptEnabled
             source={{ uri: itm.item.url }}
+            style={styles.video}
           />
         </View>
       )}

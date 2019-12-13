@@ -3,7 +3,8 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": "https://de-ihn.anonymous.drcinema.exp.direct",
-  "packagerNgrokUrl": "https://packager.de-ihn.anonymous.drcinema.exp.direct",
-  "ngrokPid": 22858
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
 }
