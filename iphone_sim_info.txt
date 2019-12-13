@@ -1,0 +1,25 @@
+// Open the iphone simulator. Must have Xcode installed and be on a Mac
+open -a simulator
+
+// Select hardware in toolbar. We select iphone 11 pro Max
+
+// Set up 'show touch indicator' on the iphone simulator
+defaults write com.apple.iphonesimulator ShowSingleTouches 1
+
+// Record video on the simulator
+xcrun simctl io booted recordVideo <filename>.<extension>
+
+// Our recording path and name
+xcrun simctl io booted recordVideo ../Recordings/iphone_01.mp4
+
+// Take screenshot on the simulator
+xcrun simctl io booted screenshot
+
+// Sources
+https://medium.com/@skounis/take-a-screenshot-or-record-video-with-ios-simulator-90c196e03b67
+
+https://medium.com/@ant_one/show-touch-highlights-on-ios-simulator-37c7cc081a2a
+
+https://help.apple.com/simulator/mac/current/#/
+
+

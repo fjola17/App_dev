@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 import * as color from '../styles/colors';
 import styles from './styles';
 
@@ -83,9 +83,9 @@ const StackNavigatior = createStackNavigator({
         fontSize: 20,
       },
       headerRight: () => (
-        <MaterialCommunityIcons
+        <FontAwesome5
           style={styles.iconHeader}
-          name="space-invaders"
+          name="mandalorian"
           onPress={() => navigation.navigate('Cinemas')}
         />
       ),

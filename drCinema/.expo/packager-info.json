@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 32997,
+  "expoServerNgrokUrl": "https://de-ihn.anonymous.drcinema.exp.direct",
+  "packagerNgrokUrl": "https://packager.de-ihn.anonymous.drcinema.exp.direct",
+  "ngrokPid": 33027,
   "webpackServerPort": null
 }

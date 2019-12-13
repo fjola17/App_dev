@@ -9,7 +9,7 @@ export default StyleSheet.create({
   iconHeader: {
     fontSize: 30,
     fontWeight: 'normal',
-    paddingRight: 15,
+    paddingRight: 17,
     alignItems: 'center',
     color: color.salmonRed,
   },
