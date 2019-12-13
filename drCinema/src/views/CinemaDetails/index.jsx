@@ -20,9 +20,6 @@ class CinemaDetails extends Component {
     const item = theaters[0];
     const { id, city, description, name, phone, website } = item;
     const address = item['address\t'];
-    // const regexTags = /(<([^>]+)>)/ig;
-    // const regexStrip = /[\r\n]+/gm;
-    // const infoStrip = description.replace(regexTags, '').replace(regexStrip, '');
 
     let infoStrip = 'Engar upplýsingar til staðar...';
     if (description !== null) {
@@ -49,7 +46,6 @@ class CinemaDetails extends Component {
           <View style={styles.border}>
             <Text
               style={styles.description}
-              // numberOfLines={5}
             >
               {infoStrip}
             </Text>
@@ -68,13 +64,10 @@ class CinemaDetails extends Component {
   }
 }
 
-// CinemaDetails.propTypes = {
-
-// };
-
 const mapStateToProps = ({ theaters, movies }, { navigation }) => {
   const theater = navigation.getParam('theater');
   const { name } = theater.item;
+  // Filter movies per cinema
   const moviefilter = movies.filter((it) => {
     for (let i = 0; i < it.showtimes.length; i += 1) {
       if (it.showtimes[i].cinema.name === name) {

@@ -9,7 +9,7 @@ const openUrl = (url) => Linking.openURL(url).catch((err) => console.log('An err
 const Showtimes = ({ time, tickets }) => (
   <View style={styles.container}>
     <Text style={styles.infoText}>
-      Sýning kl. 
+      Sýning kl.
       {' '}
       {time}
     </Text>

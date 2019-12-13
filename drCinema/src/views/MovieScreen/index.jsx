@@ -20,6 +20,7 @@ class MovieScreen extends Component {
     const { movies, navigation } = this.props;
     const movie = movies[0];
     const { title, poster, year, plot, durationMinutes, showtimes, trailers } = movie;
+    // To filter showtimes per correct cinema
     const th = navigation.getParam('theaterId');
     let sk = [{ schedule: [] }];
     if ((typeof sk !== 'undefined') && (typeof showtimes !== 'undefined')) {
@@ -27,6 +28,7 @@ class MovieScreen extends Component {
     }
     let { genres } = movie;
     const { schedule } = sk[0];
+    // check if gernes is empty or not
     if (typeof genres[0] !== 'object') {
       const val = [{ ID: '', Name: '' }];
       genres = val;

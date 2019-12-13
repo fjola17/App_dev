@@ -72,6 +72,7 @@ const StackNavigatior = createStackNavigator({
   UpcomingMovies,
 }, {
   headerLayoutPreset: 'center',
+  // eslint-disable-next-line arrow-body-style
   defaultNavigationOptions: ({ navigation }) => {
     return {
       headerStyle: {

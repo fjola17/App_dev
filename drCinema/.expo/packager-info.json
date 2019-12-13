@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 8188,
+  "packagerPid": 1588,
   "expoServerNgrokUrl": "https://de-ihn.anonymous.drcinema.exp.direct",
   "packagerNgrokUrl": "https://packager.de-ihn.anonymous.drcinema.exp.direct",
-  "ngrokPid": 2624,
+  "ngrokPid": 12500,
   "webpackServerPort": null
 }

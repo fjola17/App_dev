@@ -15,7 +15,6 @@ class Cinemas extends Component {
   }
 
   render() {
-    // alert(this.props.theaters.length);
     const { theaters } = this.props;
     return (
       <View style={styles.container}>
